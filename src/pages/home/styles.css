@@ -1,0 +1,9 @@
+main {
+  background-image: url("./Home.png");
+  background-color: #cccccc;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: var(--h-full);
+  width: 100%;
+}
