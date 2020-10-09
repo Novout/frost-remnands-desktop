@@ -1,8 +1,10 @@
-# vue-next-tests
+# Frost Remnands - Ficha de Personagem
+
+Aplicação Desktop para geração de fichas do RPG Frost Remnands
 
 ## Project setup
 ```
-yarn install
+yarn
 ```
 
 ### Compiles and hot-reloads for development
