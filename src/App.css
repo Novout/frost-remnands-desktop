@@ -2,7 +2,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background-color: #222222;
+  background-color: #676ee3;
   color: white;
   width: 100%;
   height: 5vh;
@@ -18,16 +18,11 @@
 
 #bar > div:hover {
   cursor: pointer;
-  background-color: #111111;
+  background-color:#171a99;
 }
 
 #bar > div > span {
   -webkit-app-region: no-drag;
-  font-size: 1.1rem;
-}
-
-#bar > h1 {
-  font-family: "Poppins Bold";
-  margin-right: auto;
-  margin-left: var(--margin-2);
+  font-size: 1.3rem;
+  font-family: 'Raleway Tiny';
 }

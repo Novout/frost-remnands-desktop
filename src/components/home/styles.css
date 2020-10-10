@@ -1,0 +1,41 @@
+section {
+  padding: 0 var(--padding-2);
+  border-radius: var(--radius-default);
+  background-color: none;
+  height: 50vh;
+  width: 90%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  @util center;
+}
+
+section > p {
+  font-family: 'Poppins Bold';
+  font-size: 3rem;
+  margin-bottom: var(--margin-5);
+  pointer-events: none;
+}
+
+section > button { 
+  background: none;
+  border-bottom: 2px solid var(--color-2);
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  padding: var(--padding-2);
+}
+
+section > button > a {
+  font-family: 'Raleway Medium';
+  font-size: 1.5rem;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+section > button > a:hover {
+  font-size: 1.8rem;
+}

@@ -21,7 +21,6 @@ export default defineComponent({
     return (
       <>
         <nav id="bar">
-          <h1>Frost Remnands</h1>
           <div id="minimize" onClick={this.windowMinimize}>
             <span>-</span>
           </div>

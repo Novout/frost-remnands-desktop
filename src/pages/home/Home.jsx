@@ -1,23 +1,17 @@
-import { defineComponent, ref, watchEffect } from "vue";
-import Test from "@/components/Test.jsx";
+import { defineComponent } from "vue";
+import HomeItem from "@/components/home/HomeItem.jsx";
 import "./styles.css";
 
 export default defineComponent({
   name: "Home",
   components: {
-    Test
+    HomeItem
   },
   setup() {
-    const value = ref(0);
-
-    watchEffect(() => {
-      console.log(value.value);
-    })
-
     return () => (
       <>
         <main>
-
+          <HomeItem />
         </main>
       </>
     )
