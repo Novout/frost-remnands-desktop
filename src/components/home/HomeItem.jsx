@@ -4,13 +4,13 @@ import "./styles.css";
 export default defineComponent({
   setup() {
     const options = [
-      { title: "Ficha de Personagem", to: "/newcharacter" },
-      { title: "Carregar Personagem", to: "/loadcharacter" }
+      { title: "Ficha de Personagem", to: "/create" },
+      { title: "Carregar Personagem", to: "/load" }
     ]
 
     return () => (
       <>
-        <section>
+        <section class="home">
           <p>Frost Remnands</p>
           {options.map(option => 
             <button><router-link to={option.to}>{option.title}</router-link></button>

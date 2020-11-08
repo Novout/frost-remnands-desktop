@@ -1,8 +1,10 @@
 import { defineStore } from "pinia";
 
-export const useRPGStore = defineStore({
-  id: "main",
-  state: () => ({}),
+export const useDefaultStore = defineStore({
+  id: "character",
+  state: () => ({
+    characters: []
+  }),
   getters: {},
   actions: {
     reset() {},

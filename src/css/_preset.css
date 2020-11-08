@@ -25,6 +25,11 @@
   --color-6: #131313;
   --color-default: #35495e;
   --color-secondary: #b5d6fa;
+  --color-input: #181818;
+  --color-input-hover: #212121;
+  --color-white-hover: #BBB;
+  --background-black: #000;
+  --background-white: #FFF;
   --radius-default: 8px;
   --padding-1: 0.5rem;
   --padding-2: 1rem;
@@ -36,5 +41,23 @@
   --margin-3: 1.5rem;
   --margin-4: 2rem;
   --margin-5: 2.5rem;
-  --h-full: 95vh;
+  --h-full: 100vh;
+  --bar-full: 5vh;
+}
+
+:root::-webkit-scrollbar {
+  width: 12px;
+}
+:root::-webkit-scrollbar-track {
+  background: var(--color-input);
+}
+:root::-webkit-scrollbar-thumb {
+  background: var(--color-default);
+}
+:root::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}
+
+body {
+  background-color: var(--color-6);
 }

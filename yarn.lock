@@ -7726,10 +7726,10 @@ pify@^4.0.1:
   resolved "https://registry.yarnpkg.com/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
   integrity sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==
 
-pinia@^2.0.0-alpha.4:
-  version "2.0.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/pinia/-/pinia-2.0.0-alpha.4.tgz#d82839f6320ac0df17716a48408664ea1e67ad65"
-  integrity sha512-7zfXbjRE86NDF4r+Mlde1lOStieTVq/hqJCIAH9aYDhO3w50INXhXwU793Azm1IU6FjrEc9C2DJufW00vFImfA==
+pinia@^2.0.0-alpha.5:
+  version "2.0.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/pinia/-/pinia-2.0.0-alpha.5.tgz#96fdf6cb037debaf78a0a67a11bc2db5acc26d09"
+  integrity sha512-Oytx1wCji8U2ISl3BdYyyTcdTDRmCJf9Qd7Ivio2WccYoE67FmyaWpnhzAspdB9QCJfTm+1afgDXgZOYcoJsLQ==
 
 pinkie-promise@^2.0.0:
   version "2.0.1"
@@ -10250,10 +10250,10 @@ vue-loader@^15.9.2:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
-vue-router@^4.0.0-beta.13:
-  version "4.0.0-beta.13"
-  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-4.0.0-beta.13.tgz#4611d09a9e44f231cc401ecc294a7f2dcb30e6a6"
-  integrity sha512-dYv9qpHPaojQlfujViiTkPkf1Bf5RCFzkCkdVFc1cENzWJYAGJanpIHiyjyKoM4u7IDFBZMItci+U4ieaEWA8A==
+vue-router@^4.0.0-rc.2:
+  version "4.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-4.0.0-rc.2.tgz#8545cab76a05ca4f6dffbe6c6a671a4dbf585ab2"
+  integrity sha512-51mBp39rzBFpk1nyU9SkhPcwR67gBzWIH8p3pyeDmtNYgWzGF3q8MneD/xbMwsfTQkw2H1qBk6uwRaVy3M8Nxw==
 
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
   version "4.1.2"

@@ -1,0 +1,112 @@
+.character {
+  background-color: var(--color-6);
+  min-height: var(--h-full);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--bar-full) 10rem 0 10rem;
+}
+
+.character >  h1 {
+  padding: var(--padding-2) 0 var(--padding-1) 0;
+  border-bottom: 1px solid var(--background-white);
+  font-size: 2rem;
+  pointer-events: none;
+}
+
+.character >  h2 {
+  padding: var(--padding-1) 0;
+  border-bottom: 1px solid var(--background-white);
+  font-size: 1.3rem;
+  pointer-events: none;
+}
+
+.character >  span {
+  font-family: 'Raleway';
+  font-size: 1.2rem;
+  margin: var(--margin-3) 0;
+  pointer-events: none;
+}
+
+.character >  select {
+  background-color: var(--color-input);
+  padding: var(--padding-1);
+  border: none;
+  border-radius: var(--margin-1);
+  margin: var(--margin-2) 0;
+  width: 100%;
+  cursor: pointer;
+}
+
+.character > select:hover {
+  background-color: var(--color-input-hover);
+}
+
+.character > select > option {
+  background-color: none;
+}
+
+.character > input {
+  background-color: var(--color-input);
+  padding: var(--padding-1) 0;
+  border: none;
+  border-radius: var(--margin-1);
+  margin: var(--margin-2) 0;
+  width: 100%;
+}
+
+.character > input:hover {
+  background-color: var(--color-input-hover);
+}
+
+.character > textarea {
+  font-family: 'Raleway';
+  background-color: var(--color-input);
+  font-size: 0.9.5rem;
+  border: none;
+  width: 100%;
+  margin: var(--margin-2) 0;
+}
+
+.character > article {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.character > article > button {
+  background-color: var(--background-white);
+  padding: var(--padding-1) var(--padding-2);
+  margin: var(--margin-2) 0;
+  color: black;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.character > article > button:hover {
+  background-color: var(--color-secondary);
+  padding: var(--padding-1) var(--padding-2);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.character > textarea:hover {
+  background-color: var(--color-input-hover);
+}
+
+.character > textarea::-webkit-scrollbar {
+  width: 12px;
+}
+
+.character > textarea::-webkit-scrollbar-track {
+  background: var(--color-input);
+}
+
+.character > textarea:-webkit-scrollbar-thumb {
+  background: var(--color-default);
+}
+
+.character > textarea::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}

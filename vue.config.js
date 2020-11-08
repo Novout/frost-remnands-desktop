@@ -10,7 +10,7 @@ module.exports = {
     electronBuilder: {
       nodeIntegration: true,
       builderOptions: {
-        productName: "Frost Remnands RPG - Ficha de Personagem"
+        productName: "Frost Remnands RPG"
       }
     }
   }

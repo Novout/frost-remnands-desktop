@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, protocol, BrowserWindow } from 'electron'
+import { app, protocol, BrowserWindow, globalShortcut } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 import path from 'path'
@@ -45,6 +45,14 @@ const createWindow = () => {
   })
 }
 
+app.on("ready", () => {
+  if(isDevelopment) {
+    globalShortcut.register("CmdOrCtrl+D", () => {
+      // @ts-ignore
+      win.webContents.openDevTools();
+    });
+  }
+});
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
   // On macOS it is common for applications and their menu bar

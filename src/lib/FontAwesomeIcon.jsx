@@ -1,20 +1,8 @@
-<template>
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    :class="$props.class"
-    :viewBox="`0 0 ${width} ${height}`"
-  >
-    <path fill="currentColor" :d="svgPath" />
-  </svg>
-</template>
-
-<script>
 import { defineComponent, computed } from "vue";
 import { findIconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 export default defineComponent({
   name: "FontAwesomeIcon",
-
   props: {
     icon: {
       type: String,
@@ -41,6 +29,15 @@ export default defineComponent({
     const svgPath = computed(() => definition.value.icon[4]);
 
     return { width, height, svgPath };
+  },
+  render() {
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox={`0 0 ${this.width} ${this.height}`}
+      >
+        <path fill="currentColor" d={this.svgPath} />
+      </svg>
+    )
   }
 });
-</script>

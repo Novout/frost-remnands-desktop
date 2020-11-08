@@ -10,7 +10,7 @@ export default defineComponent({
   setup() {
     return () => (
       <>
-        <main>
+        <main class="home">
           <HomeItem />
         </main>
       </>

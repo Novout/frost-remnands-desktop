@@ -1,5 +1,7 @@
 {
-  "name": "vue-next-tests",
+  "name": "frost-remnands-rpg",
+  "author": "Novout",
+  "description": "Aplicação Desktop de Frost Remnands RPG",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -19,11 +21,11 @@
     "autoprefixer": "^9.0.0",
     "core-js": "^3.6.5",
     "electron-drag": "^2.0.0",
-    "pinia": "^2.0.0-alpha.4",
+    "pinia": "^2.0.0-alpha.5",
     "postcss": "^8.1.1",
     "postcss-utilities": "^0.8.4",
     "vue": "^3.0.0",
-    "vue-router": "^4.0.0-beta.13"
+    "vue-router": "^4.0.0-rc.2"
   },
   "devDependencies": {
     "@vue/babel-plugin-jsx": "^1.0.0-rc.3",

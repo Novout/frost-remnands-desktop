@@ -1,4 +1,4 @@
-section {
+.home {
   padding: 0 var(--padding-2);
   border-radius: var(--radius-default);
   background-color: none;
@@ -11,14 +11,14 @@ section {
   @util center;
 }
 
-section > p {
+.home > p {
   font-family: 'Poppins Bold';
   font-size: 3rem;
   margin-bottom: var(--margin-5);
   pointer-events: none;
 }
 
-section > button { 
+.home > button { 
   background-color: var(--color-6);
   border: none;
   padding: var(--padding-2) 0;
@@ -27,12 +27,12 @@ section > button {
   cursor: pointer;
 }
 
-section > button:hover {
+.home > button:hover {
   background-color: var(--color-secondary);
   transition: all 0.2s ease;
 }
 
-section > button > a {
+.home > button > a {
   font-family: 'Raleway Medium';
   font-size: 1.2rem;
   text-decoration: none;
