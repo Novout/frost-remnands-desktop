@@ -12,6 +12,10 @@
   },
   "main": "background.js",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-brands-svg-icons": "^5.15.1",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/vue-fontawesome": "3.0.0-1",
     "autoprefixer": "^9.0.0",
     "core-js": "^3.6.5",
     "electron-drag": "^2.0.0",
