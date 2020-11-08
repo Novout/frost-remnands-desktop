@@ -11,6 +11,7 @@
   outline: 0;
   font-size: 16px;
   font-family: "Poppins Normal";
+  color: white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -21,7 +22,9 @@
   --color-3: #e8e8f8;
   --color-4: #171a99;
   --color-5: #b3b2d3;
-  --color-6: #111111;
+  --color-6: #131313;
+  --color-default: #35495e;
+  --color-secondary: #b5d6fa;
   --radius-default: 8px;
   --padding-1: 0.5rem;
   --padding-2: 1rem;

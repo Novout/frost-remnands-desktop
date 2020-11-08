@@ -4,7 +4,7 @@ import "./styles.css";
 export default defineComponent({
   setup() {
     const options = [
-      { title: "Novo Personagem", to: "/newcharacter" },
+      { title: "Ficha de Personagem", to: "/newcharacter" },
       { title: "Carregar Personagem", to: "/loadcharacter" }
     ]
 
