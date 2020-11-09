@@ -10,7 +10,7 @@ module.exports = {
     electronBuilder: {
       nodeIntegration: true,
       builderOptions: {
-        productName: "Frost Remnands RPG"
+        productName: "Restos da Geada - RPG"
       }
     }
   }

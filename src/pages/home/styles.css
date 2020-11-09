@@ -5,6 +5,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: var(--h-full);
-  width: 96vw;
-  overflow-x: hidden;
+  width: 100%;
+  overflow: hidden;
 }

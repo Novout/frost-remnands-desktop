@@ -24,7 +24,7 @@
     "pinia": "^2.0.0-alpha.5",
     "postcss": "^8.1.1",
     "postcss-utilities": "^0.8.4",
-    "vue": "^3.0.0",
+    "vue": "^3.0.2",
     "vue-router": "^4.0.0-rc.2"
   },
   "devDependencies": {

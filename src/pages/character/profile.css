@@ -1,0 +1,12 @@
+.profile {
+  background-image: url("../home/Home.png");
+  background-color: var(--color-default);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  min-height: calc(var(--h-full) - var(--bar-full));
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: var(--bar-full);
+}

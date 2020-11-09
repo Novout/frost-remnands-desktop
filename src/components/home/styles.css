@@ -18,22 +18,21 @@
   pointer-events: none;
 }
 
-.home > button { 
+.home > a { 
+  display: flex;
+  justify-content: center;
+  font-family: 'Raleway Medium';
   background-color: var(--color-6);
   border: none;
   padding: var(--padding-2) 0;
   margin: var(--margin-1) 0;
   width: 25rem;
+  font-size: 1.2rem;
   cursor: pointer;
+  text-decoration: none;
 }
 
-.home > button:hover {
+.home > a:hover {
   background-color: var(--color-secondary);
   transition: all 0.2s ease;
-}
-
-.home > button > a {
-  font-family: 'Raleway Medium';
-  font-size: 1.2rem;
-  text-decoration: none;
 }

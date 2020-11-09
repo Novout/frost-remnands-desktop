@@ -23,7 +23,7 @@
 .character >  span {
   font-family: 'Raleway';
   font-size: 1.2rem;
-  margin: var(--margin-3) 0;
+  margin: var(--margin-6) 0;
   pointer-events: none;
 }
 

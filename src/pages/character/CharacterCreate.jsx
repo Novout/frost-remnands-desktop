@@ -1,5 +1,6 @@
 import { defineComponent, reactive } from "vue";
 import { useRouter } from "vue-router";
+import { useCharacterStore } from "@/store/character";
 import ItemBox from "@/lib/ItemBox.jsx";
 import "./create.css";
 
@@ -16,6 +17,7 @@ export default defineComponent({
       name: "",
       description: "",
       breakPoint: "",
+      level: 1,
     });
 
     const error = reactive({
@@ -31,6 +33,8 @@ export default defineComponent({
       router.push("/");
     }
 
+    const store = useCharacterStore();
+
     const validateFormulary = () => {
       state.class === "" ? error.class = true : error.class = false
       state.name === "" ? error.name = true : error.name = false
@@ -38,6 +42,20 @@ export default defineComponent({
       state.breakPoint === "" ? error.breakPoint = true : error.breakPoint = false
 
       if(!error.class && !error.name && !error.description && !error.breakPoint) {
+        store.$patch({
+          race: state.race,
+          origin: state.origin,
+          class: state.class,
+          name: state.name,
+          description: state.description,
+          breakPoint: state.breakPoint,
+          level: state.level,
+          classLevel: 1,
+          talents: [],
+          equipment: [],
+          anotations: []
+        })
+
         router.push("/profile");
       }
     }
@@ -82,6 +100,29 @@ export default defineComponent({
           </select>
           <h2>Nome do Personagem</h2>
           <input vModel={state.name} type="text" />
+          <h2>Nome do Personagem</h2>
+          <select vModel={state.level}>
+            <option value="1" selected>1</option> 
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option> 
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+          </select>
           <h2>Descrição do Personagem</h2>
           <textarea 
             vModel={state.description} 
