@@ -11,6 +11,7 @@ export const useCharacterStore = defineStore({
     breakPoint: "",
     level: 1,
     classLevel: 1,
+    classDetails: [],
     availableLevelPoints: 27,
     hability: {
       strength: 8,
@@ -32,7 +33,7 @@ export const useCharacterStore = defineStore({
     anotations: []
   }),
   getters: {
-    characterClass() {
+    getCharacterClass() {
       if(this.class === 'shooter') return 'Atirador';
       if(this.class === 'taught') return 'Autodidata';
       if(this.class === 'barbarian') return 'Bárbaro';
@@ -45,6 +46,20 @@ export const useCharacterStore = defineStore({
       if(this.class === 'monk') return 'Monge';
       if(this.class === 'necromancer') return 'Necromante';
       if(this.class === 'psionic') return 'Psiônico';
+    },
+    getProficiencyBonus() {
+      let proficiency = 0;
+
+      if(this.level >= 1 && this.level <= 4) proficiency = 2;
+      if(this.level >= 5 && this.level <= 8) proficiency = 3;
+      if(this.level >= 9 && this.level <= 12) proficiency = 4;
+      if(this.level >= 13 && this.level <= 16) proficiency = 5;
+      if(this.level >= 17 && this.level <= 20) proficiency = 6;
+      if(this.origin === 'rouanir') proficiency += 1;
+
+      this.proficiencyBonus = proficiency;
+
+      return proficiency;
     },
     strengthModifier() {
       if(this.hability.strength === 1) return -5;
@@ -153,7 +168,7 @@ export const useCharacterStore = defineStore({
       if(this.hability.charisma === 26 || this.hability.charisma === 27) return 8;
       if(this.hability.charisma === 28 || this.hability.charisma === 29) return 9;
       if(this.hability.charisma >= 30) return 10;
-    }
+    },
   },
   actions: {
     addNewTalent(talent) {

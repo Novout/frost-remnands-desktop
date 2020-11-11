@@ -76,6 +76,7 @@
 }
 
 .items {
+  display: flex;
   height: auto;
   padding: var(--padding-2);
   background-color: rgba(0, 0, 0, 0.3);
@@ -88,7 +89,41 @@
   align-items: center;
   border-radius: 8px;
   height: 100%;
-  width: 15vw;
+  width: 10vw;
   background-color: var(--item-primary);
   padding: var(--padding-1);
+}
+
+.items__save {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 8px;
+  height: 100%;
+  width: 30vw;
+  margin-left: var(--margin-2);
+}
+
+.items__save__proficiency {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--item-primary);
+  padding: var(--padding-1);
+  width: 100%;
+}
+
+.items__save--value {
+  background-color: var(--background-white);
+  border-radius: 200px;
+  padding: var(--padding-1) var(--padding-2);
+  color: black;
+}
+
+.items__skills {
+  margin-top: var(--margin-1);
+  background-color: var(--item-primary);
+  padding: var(--padding-1);
+  width: 100%;
 }

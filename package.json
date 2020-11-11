@@ -22,6 +22,7 @@
     "autoprefixer": "^9.0.0",
     "core-js": "^3.6.5",
     "electron-drag": "^2.0.0",
+    "fs": "^0.0.1-security",
     "pinia": "^2.0.0-alpha.5",
     "postcss": "^8.1.1",
     "postcss-utilities": "^0.8.4",

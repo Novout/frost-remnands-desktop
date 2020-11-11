@@ -3,7 +3,6 @@ import { useCharacterStore } from "@/store/character";
 import "./profile.css";
 
 const GenericsBox = defineComponent({
-  
   setup() {
     const character = useCharacterStore();
 
@@ -14,7 +13,7 @@ const GenericsBox = defineComponent({
             <h1 class="generics__initial--title">{character.name}</h1>
             <section class="generics__initial__aside">
               <section class="generics__initial__aside--item">
-                <h2>{character.characterClass} {character.level}</h2>
+                <h2>{character.getCharacterClass} {character.level}</h2>
                 <p>Classe / Nível</p>
               </section>
               <section class="generics__initial__aside--item">
@@ -61,10 +60,34 @@ const HabilityItem = defineComponent({
   }
 })
 
+const ProficiencyItem = defineComponent({
+  setup() {
+    const character = useCharacterStore();
+
+    return () => (
+      <>
+        <article class="items__save__proficiency">
+          <p class="items__save--value">{character.getProficiencyBonus}</p>
+          <p class="items__save--proficiency">Proficiência</p>
+        </article>
+      </>
+    )
+  }
+})
+
+const SkillsItem = defineComponent({
+  setup() {
+    return () => (
+      <>
+        <article class="items__skills">
+          <p>AA</p>
+        </article>
+      </>
+    )
+  }
+})
+
 const ItemsBox = defineComponent({
-  components: {
-    HabilityItem
-  },
   setup() {
     const character = useCharacterStore();
 
@@ -103,12 +126,17 @@ const ItemsBox = defineComponent({
               total={character.hability.charisma} 
             />
           </aside>
+          <section class="items__save">
+            <ProficiencyItem />
+            <SkillsItem />
+          </section>
         </main>
       </>
     )
   }
 })
 
+/*
 const PlaygroundBox = defineComponent({
   setup() {
     return () => (
@@ -116,6 +144,7 @@ const PlaygroundBox = defineComponent({
     )
   }
 })
+*/
 
 export default defineComponent({
   name: "CharacterProfile",
@@ -124,7 +153,6 @@ export default defineComponent({
       <section class="profile">
         <GenericsBox />
         <ItemsBox />
-        <PlaygroundBox />
       </section>
     )
   }
