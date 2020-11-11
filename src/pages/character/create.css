@@ -9,12 +9,14 @@
 .character >  h1 {
   padding: var(--padding-2) 0 var(--padding-1) 0;
   border-bottom: 1px solid var(--background-white);
+  margin: 30px 0;
   font-size: 2rem;
   pointer-events: none;
 }
 
 .character >  h2 {
   padding: var(--padding-1) 0;
+  margin-top: 20px;
   border-bottom: 1px solid var(--background-white);
   font-size: 1.3rem;
   pointer-events: none;
@@ -109,4 +111,28 @@
 
 .character > textarea::-webkit-scrollbar-thumb:hover {
   background: var(--color-secondary);
+}
+
+.talents {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  background-color: var(--color-input);
+  margin: var(--margin-2) 0;
+  width: calc(100% - var(--padding-4));
+  padding: var(--padding-2);
+}
+
+.talents > button {
+  font-family: 'Raleway Normal';
+  background-color: var(--color-input-hover);
+  padding: var(--padding-1) var(--padding-2);
+  margin: var(--margin-1) 0;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+}
+
+.talents > button:hover {
+  color: var(--color-white-hover);
 }

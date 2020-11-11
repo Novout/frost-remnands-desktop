@@ -1,8 +1,49 @@
 import { defineComponent, reactive } from "vue";
 import { useRouter } from "vue-router";
 import { useCharacterStore } from "@/store/character";
-import ItemBox from "@/lib/ItemBox.jsx";
 import "./create.css";
+
+const ItemBox = defineComponent({
+  name: "ItemBox",
+  setup() {
+    const talents = [
+      { title: 'Alouuu', value: 'al' },
+      { title: 'Alouuu', value: 'al' },
+      { title: 'Alouuu', value: 'al' },
+      { title: 'Alouuu', value: 'al' },
+      { title: 'Alouuu', value: 'al' },
+      { title: 'Alouuu', value: 'al' },
+      { title: 'Alouuu', value: 'al' },
+      { title: 'Alouuu', value: 'al' },
+      { title: 'Alouuu', value: 'al' },
+      { title: 'Alouuu', value: 'al' },
+      { title: 'Alouuu', value: 'al' },
+      { title: 'Alouuu', value: 'al' },
+      { title: 'Alouuu', value: 'al' },
+    ]
+
+    const character = useCharacterStore();
+
+    const pushTalent = (talent) => {
+      console.log(character)
+      console.log(talent.value)
+      // character.talents.push(talent);
+    }
+    
+    return { talents, pushTalent }
+  },
+  render() {
+    return (
+      <>
+        <section class="talents">
+          {this.talents.map(talent => 
+            <button onClick={this.pushTalent}>{talent.title}</button>
+          )}
+        </section>
+      </>
+    )
+  }
+});
 
 export default defineComponent({
   name: "CharacterCreate",
@@ -10,6 +51,9 @@ export default defineComponent({
     ItemBox
   },
   setup() {
+    const router = useRouter();
+    const character = useCharacterStore();
+
     const state = reactive({
       race: "nekro",
       origin: "rouanir",
@@ -27,13 +71,27 @@ export default defineComponent({
       breakPoint: true,
     });
 
-    const router = useRouter();
-
     const initialMenu = () => {
       router.push("/");
     }
 
-    const store = useCharacterStore();
+    const goToProfile = () => {
+      character.$patch({
+        race: state.race,
+        origin: state.origin,
+        class: state.class,
+        name: state.name,
+        description: state.description,
+        breakPoint: state.breakPoint,
+        level: state.level,
+        classLevel: 1,
+        talents: [],
+        equipment: [],
+        anotations: []
+      })
+
+      router.push("/profile");
+    }
 
     const validateFormulary = () => {
       state.class === "" ? error.class = true : error.class = false
@@ -42,21 +100,7 @@ export default defineComponent({
       state.breakPoint === "" ? error.breakPoint = true : error.breakPoint = false
 
       if(!error.class && !error.name && !error.description && !error.breakPoint) {
-        store.$patch({
-          race: state.race,
-          origin: state.origin,
-          class: state.class,
-          name: state.name,
-          description: state.description,
-          breakPoint: state.breakPoint,
-          level: state.level,
-          classLevel: 1,
-          talents: [],
-          equipment: [],
-          anotations: []
-        })
-
-        router.push("/profile");
+        goToProfile()
       }
     }
 
