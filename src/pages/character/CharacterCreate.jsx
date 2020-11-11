@@ -140,7 +140,7 @@ export default defineComponent({
             { state.race === 'tiudren' && (<option value="fighter">Lutador</option>) } 
             { state.origin === 'agoni' && (<option value="monk">Monge</option>) } 
             { state.origin === 'gyni' && (<option value="necromancer">Necromante</option>) } 
-            { state.race === 'neutral' && (<option value="shooter">Psiônico</option>) } 
+            { state.race === 'neutral' && (<option value="psionic">Psiônico</option>) } 
           </select>
           <h2>Nome do Personagem</h2>
           <input vModel={state.name} type="text" />

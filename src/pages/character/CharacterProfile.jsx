@@ -1,25 +1,28 @@
 import { defineComponent } from "vue";
-// import { useCharacterStore } from "@/store/character";
+import { useCharacterStore } from "@/store/character";
 import "./profile.css";
 
 const GenericsBox = defineComponent({
+  
   setup() {
+    const character = useCharacterStore();
+
     return () => (
       <>
         <header class="generics">
           <section class="generics__initial">
-            <h1 class="generics__initial--title">Rouanir Intirl</h1>
+            <h1 class="generics__initial--title">{character.name}</h1>
             <section class="generics__initial__aside">
               <section class="generics__initial__aside--item">
-                <h2>Autodidata 20</h2>
+                <h2>{character.characterClass} {character.level}</h2>
                 <p>Classe / Nível</p>
               </section>
               <section class="generics__initial__aside--item">
-                <h2>Nekro</h2>
+                <h2>{character.race}</h2>
                 <p>Raça</p>
               </section>
               <section class="generics__initial__aside--item">
-                <h2>Complexo de Rouanir</h2>
+                <h2>{character.origin}</h2>
                 <p>Origem</p>
               </section>
             </section>
@@ -63,16 +66,42 @@ const ItemsBox = defineComponent({
     HabilityItem
   },
   setup() {
+    const character = useCharacterStore();
+
     return () => (
       <>
         <main class="items">
           <aside class="items__hability">
-            <HabilityItem hability="Força" modifier={0} total={8} />
-            <HabilityItem hability="Destreza" modifier={0} total={8} />
-            <HabilityItem hability="Constituição" modifier={0} total={8} />
-            <HabilityItem hability="Inteligência" modifier={0} total={8} />
-            <HabilityItem hability="Sabedoria" modifier={0} total={8} />
-            <HabilityItem hability="Carisma" modifier={0} total={8} />
+            <HabilityItem 
+              hability="Força" 
+              modifier={character.strengthModifier} 
+              total={character.hability.strength} 
+            />
+            <HabilityItem 
+              hability="Destreza" 
+              modifier={character.dexterityModifier} 
+              total={character.hability.dexterity} 
+            />
+            <HabilityItem 
+              hability="Constituição" 
+              modifier={character.constitutionModifier}  
+              total={character.hability.constitution} 
+            />
+            <HabilityItem 
+              hability="Inteligência" 
+              modifier={character.intelligenceModifier} 
+              total={character.hability.intelligence} 
+            />
+            <HabilityItem 
+              hability="Sabedoria" 
+              modifier={character.wisdomModifier} 
+              total={character.hability.wisdom} 
+            />
+            <HabilityItem 
+              hability="Carisma" 
+              modifier={character.charismaModifier} 
+              total={character.hability.charisma} 
+            />
           </aside>
         </main>
       </>
