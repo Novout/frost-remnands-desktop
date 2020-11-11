@@ -21,6 +21,8 @@ export default defineComponent({
     return (
       <>
         <nav id="bar">
+          <router-link to="/">Menu Inicial</router-link>
+          <router-link to="/profile">Perfil</router-link>
           <div id="minimize" onClick={this.windowMinimize}>
             <span>-</span>
           </div>

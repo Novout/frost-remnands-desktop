@@ -12,6 +12,21 @@
   z-index: 99999;
 }
 
+#bar > a {
+  font-family: 'Raleway Medium';
+  font-size: 0.95rem;
+  margin-right: auto;
+  margin-left: 10px;
+  text-decoration: none;
+  appearance: button;
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+}
+
+#bar > a:hover {
+  color: var(--color-white-hover);
+}
+
 #bar > div {
   height: 100%;
   padding: 0 10px;
