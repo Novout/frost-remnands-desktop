@@ -1,9 +1,14 @@
-@font-face { font-family: "Raleway Tiny";  src: url("../assets/fonts/Raleway-Light.ttf") format("truetype"); }
-@font-face { font-family: "Raleway Normal";  src: url("../assets/fonts/Raleway-Medium.ttf") format("truetype"); }
+@font-face { font-family: "Raleway Tiny"; src: url("../assets/fonts/Raleway-Light.ttf") format("truetype"); }
+
+@font-face { font-family: "Raleway Normal"; src: url("../assets/fonts/Raleway-Medium.ttf") format("truetype"); }
+
 @font-face { font-family: "Raleway ExtraBold"; src: url("../assets/fonts/Raleway-ExtraBoldItalic.ttf") format("truetype"); }
-@font-face { font-family: "Poppins Bold";  src: url("../assets/fonts/Poppins-Bold.otf") format("opentype"); }
-@font-face { font-family: "Poppins Normal";  src: url("../assets/fonts/Poppins-Medium.otf") format("opentype"); }
-@font-face { font-family: "Poppins Light";  src: url("../assets/fonts/Poppins-Light.otf") format("opentype");  }
+
+@font-face { font-family: "Poppins Bold"; src: url("../assets/fonts/Poppins-Bold.otf") format("opentype"); }
+
+@font-face { font-family: "Poppins Normal"; src: url("../assets/fonts/Poppins-Medium.otf") format("opentype"); }
+
+@font-face { font-family: "Poppins Light"; src: url("../assets/fonts/Poppins-Light.otf") format("opentype"); }
 
 * {
   padding: 0;
@@ -23,14 +28,14 @@
   --color-4: #171a99;
   --color-5: #b3b2d3;
   --color-6: #131313;
-  --item-primary: #111111;
+  --item-primary: #111;
   --color-default: #35495e;
   --color-secondary: #b5d6fa;
   --color-input: #181818;
   --color-input-hover: #212121;
-  --color-white-hover: #BBB;
+  --color-white-hover: #bbb;
   --background-black: #000;
-  --background-white: #FFF;
+  --background-white: #fff;
   --radius-default: 8px;
   --padding-1: 0.5rem;
   --padding-2: 1rem;
@@ -49,12 +54,15 @@
 :root::-webkit-scrollbar {
   width: 12px;
 }
+
 :root::-webkit-scrollbar-track {
   background: var(--color-input);
 }
+
 :root::-webkit-scrollbar-thumb {
   background: var(--color-default);
 }
+
 :root::-webkit-scrollbar-thumb:hover {
   background: var(--color-secondary);
 }

@@ -19,6 +19,7 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+
   @util center;
 }
 
@@ -29,7 +30,7 @@
   pointer-events: none;
 }
 
-.main > a { 
+.main > a {
   display: flex;
   justify-content: center;
   font-family: 'Raleway Medium';

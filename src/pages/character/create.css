@@ -6,7 +6,7 @@
   padding: var(--bar-full) 10rem 0 10rem;
 }
 
-.character >  h1 {
+.character > h1 {
   padding: var(--padding-2) 0 var(--padding-1) 0;
   border-bottom: 1px solid var(--background-white);
   margin: 30px 0;
@@ -14,7 +14,7 @@
   pointer-events: none;
 }
 
-.character >  h2 {
+.character > h2 {
   padding: var(--padding-1) 0;
   margin-top: 20px;
   border-bottom: 1px solid var(--background-white);
@@ -22,14 +22,14 @@
   pointer-events: none;
 }
 
-.character >  span {
+.character > span {
   font-family: 'Raleway';
   font-size: 1.2rem;
   margin: var(--margin-6) 0;
   pointer-events: none;
 }
 
-.character >  select {
+.character > select {
   background-color: var(--color-input);
   padding: var(--padding-1);
   border: none;
@@ -63,7 +63,7 @@
 .character > textarea {
   font-family: 'Raleway';
   background-color: var(--color-input);
-  font-size: 0.9.5rem;
+  font-size: 0.95rem;
   border: none;
   width: 100%;
   margin: var(--margin-2) 0;
@@ -93,10 +93,6 @@
   cursor: pointer;
 }
 
-.character > textarea:hover {
-  background-color: var(--color-input-hover);
-}
-
 .character > textarea::-webkit-scrollbar {
   width: 12px;
 }
@@ -107,6 +103,10 @@
 
 .character > textarea:-webkit-scrollbar-thumb {
   background: var(--color-default);
+}
+
+.character > textarea:hover {
+  background-color: var(--color-input-hover);
 }
 
 .character > textarea::-webkit-scrollbar-thumb:hover {

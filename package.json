@@ -7,7 +7,9 @@
   "scripts": {
     "build": "vue-cli-service electron:build",
     "serve": "vue-cli-service electron:serve",
-    "lint": "vue-cli-service lint",
+    "lint": "yarn lint:vue && yarn lint:style",
+    "lint:vue": "vue-cli-service lint",
+    "lint:style": "stylelint src/**/*.css --fix --ignore-path .gitignore",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps",
     "icons": "electron-icon-builder --input=./public/icon.png --output=build --flatten"
@@ -30,6 +32,8 @@
     "vue-router": "^4.0.0-rc.2"
   },
   "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "@vue/babel-plugin-jsx": "^1.0.0-rc.3",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
@@ -41,6 +45,11 @@
     "electron-icon-builder": "^1.0.2",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.1",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.5.1",
+    "pretty-quick": "^3.1.0",
+    "stylelint": "^13.7.2",
+    "stylelint-config-standard": "^20.0.0",
     "vue-cli-plugin-electron-builder": "~2.0.0-rc.4"
   },
   "eslintConfig": {
@@ -61,5 +70,14 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "lint-staged": {
+    "*.{css}": "stylelint"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  }
 }
