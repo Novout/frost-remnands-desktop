@@ -1,18 +1,19 @@
 {
   "name": "frost-remnands-rpg",
-  "author": "Novout",
-  "description": "Aplicação Desktop de Frost Remnands RPG",
   "version": "0.0.1",
   "private": true,
+  "description": "Aplicação Desktop de Frost Remnands RPG",
+  "author": "Novout",
   "scripts": {
-    "build": "vue-cli-service electron:build",
     "serve": "yarn lint && vue-cli-service electron:serve",
+    "build": "vue-cli-service electron:build",
+    "test": "vue-cli-service test:e2e --headless",
     "lint": "yarn lint:style",
-    "lint:vue": "vue-cli-service lint",
+    "icons": "electron-icon-builder --input=./public/icon.png --output=build --flatten",
     "lint:style": "stylelint src/**/*.css --fix --ignore-path .gitignore",
+    "lint:vue": "vue-cli-service lint",
     "postinstall": "electron-builder install-app-deps",
-    "postuninstall": "electron-builder install-app-deps",
-    "icons": "electron-icon-builder --input=./public/icon.png --output=build --flatten"
+    "postuninstall": "electron-builder install-app-deps"
   },
   "main": "background.js",
   "dependencies": {
@@ -35,6 +36,7 @@
     "@commitlint/config-conventional": "^11.0.0",
     "@vue/babel-plugin-jsx": "^1.0.0-rc.3",
     "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-e2e-cypress": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0-0",
@@ -71,13 +73,13 @@
     "last 2 versions",
     "not dead"
   ],
-  "lint-staged": {
-    "*.css": "stylelint"
-  },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.css": "stylelint"
   }
 }
