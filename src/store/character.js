@@ -3,14 +3,14 @@ import { defineStore } from "pinia";
 export const useCharacterStore = defineStore({
   id: "character",
   state: () => ({
-    race: "",
-    origin: "",
-    class: "",
-    name: "",
-    description: "",
-    breakPoint: "",
-    level: 1,
-    classLevel: 1,
+    race: "nekro",
+    origin: "rouanir",
+    class: "taught",
+    name: "Rouanir Intirl",
+    description: "Test",
+    breakPoint: "Test",
+    level: 20,
+    classLevel: 20,
     classDetails: [],
     availableLevelPoints: 27,
     hability: {
@@ -60,6 +60,22 @@ export const useCharacterStore = defineStore({
       this.proficiencyBonus = proficiency;
 
       return proficiency;
+    },
+    getRaceName() {
+      if(this.race === 'nekro') return 'Nekro';
+      if(this.race === 'tiudren') return 'Tiudren';
+      if(this.race === 'asserkarus') return 'Asserkarus';
+      if(this.race === 'phortem') return 'Phortem';
+      if(this.race === 'neutral') return 'Raça Neutra';
+    },
+    getOriginName() {
+      if(this.origin === 'aligned') return 'Não-Alinhado';
+      if(this.origin === 'rouanir') return 'Complexo de Rouanir';
+      if(this.origin === 'yayr') return 'Yayr';
+      if(this.origin === 'gyni') return 'Gyni';
+      if(this.origin === 'frederitch') return 'Frederitch';
+      if(this.origin === 'agoni') return 'Agoni';
+      if(this.origin === 'pacyentesn') return 'Não-Alinhado';
     },
     strengthModifier() {
       if(this.hability.strength === 1) return -5;

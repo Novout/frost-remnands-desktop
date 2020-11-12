@@ -17,11 +17,11 @@ const GenericsBox = defineComponent({
                 <p>Classe / Nível</p>
               </section>
               <section class="generics__initial__aside--item">
-                <h2>{character.race}</h2>
+                <h2>{character.getRaceName}</h2>
                 <p>Raça</p>
               </section>
               <section class="generics__initial__aside--item">
-                <h2>{character.origin}</h2>
+                <h2>{character.getOriginName}</h2>
                 <p>Origem</p>
               </section>
             </section>
@@ -149,8 +149,14 @@ const PlaygroundBox = defineComponent({
 export default defineComponent({
   name: "CharacterProfile",
   setup() {
+    const character = useCharacterStore();
+
+    const profileBackground = () => {
+      return `profile--${character.origin}`
+    }
+
     return () => (
-      <section class="profile">
+      <section class={profileBackground()}>
         <GenericsBox />
         <ItemsBox />
       </section>
