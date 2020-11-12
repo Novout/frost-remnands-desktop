@@ -160,7 +160,6 @@
   display: flex;
   height: auto;
   padding: var(--padding-2);
-  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .items__hability {

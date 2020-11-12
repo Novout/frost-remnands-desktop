@@ -119,27 +119,27 @@ export default defineComponent({
           </select>
           <h2>Origem</h2>
           <select vModel={state.origin}>
-            <option value="rouanir" selected>Complexo de Rouanir</option> 
-            <option value="agoni">Consciência Agoni</option>
-            <option value="gyni">Gyni</option>
-            <option value="yayr">Henismo de Yayr</option>
-            <option value="pacyentesn">Império de Pacyentesn</option>
+           { state.race !== 'neutral' && (<option value="rouanir" selected>Complexo de Rouanir</option>) } 
+           { state.race !== 'neutral' && (<option value="agoni">Consciência Agoni</option>)}
+           { state.race !== 'neutral' && (<option value="gyni">Gyni</option>)}
+           { state.race !== 'neutral' && (<option value="yayr">Henismo de Yayr</option>)}
+           { state.race !== 'neutral' && (<option value="pacyentesn">Império de Pacyentesn</option>)}
             <option value="aligned">Não-Alinado</option>
-            <option value="frederitch">República Henista de Frederitch</option>
+          { state.race !== 'neutral' &&  (<option value="frederitch">República Henista de Frederitch</option>)}
           </select>
           <h2>Classes</h2>
           <select vModel={state.class}>
-            { state.origin === 'frederitch' && (<option value="shooter">Atirador</option>) } 
-            { state.origin === 'rouanir' && (<option value="taught">Autodidata</option>) } 
-            { state.race === 'asserkarus' && (<option value="barbarian">Bárbaro</option>) } 
-            { state.origin === 'pacyentesn' && (<option value="bard">Bardo</option>) } 
-            { state.origin === 'yayr' && (<option value="witcher">Bruxo</option>) } 
-            { state.race === 'phortem' && (<option value="conjurer">Conjurador</option>) } 
-            { state.origin === 'aligned' && (<option value="corrupt">Corrupto</option>) } 
-            { state.race === 'nekro' && (<option value="inventor">Inventor</option>) } 
-            { state.race === 'tiudren' && (<option value="fighter">Lutador</option>) } 
-            { state.origin === 'agoni' && (<option value="monk">Monge</option>) } 
-            { state.origin === 'gyni' && (<option value="necromancer">Necromante</option>) } 
+            { (state.origin === 'frederitch' && state.race !== 'neutral') && (<option value="shooter">Atirador</option>) } 
+            { (state.origin === 'rouanir' && state.race !== 'neutral') && (<option value="taught">Autodidata</option>) } 
+            { (state.race === 'asserkarus' && state.race !== 'neutral') && (<option value="barbarian">Bárbaro</option>) } 
+            { (state.origin === 'pacyentesn' && state.race !== 'neutral') && (<option value="bard">Bardo</option>) } 
+            { (state.origin === 'yayr' && state.race !== 'neutral') && (<option value="witcher">Bruxo</option>) } 
+            { (state.race === 'phortem' && state.race !== 'neutral') && (<option value="conjurer">Conjurador</option>) } 
+            { (state.origin === 'aligned' && state.race !== 'neutral') && (<option value="corrupt">Corrupto</option>) } 
+            { (state.race === 'nekro' && state.race !== 'neutral') && (<option value="inventor">Inventor</option>) } 
+            { (state.race === 'tiudren' && state.race !== 'neutral') && (<option value="fighter">Lutador</option>) } 
+            { (state.origin === 'agoni' && state.race !== 'neutral') && (<option value="monk">Monge</option>) } 
+            { (state.origin === 'gyni' && state.race !== 'neutral') && (<option value="necromancer">Necromante</option>) } 
             { state.race === 'neutral' && (<option value="psionic">Psiônico</option>) } 
           </select>
           <h2>Nome do Personagem</h2>
