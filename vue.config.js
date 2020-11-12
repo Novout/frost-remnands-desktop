@@ -11,8 +11,7 @@ module.exports = {
       nodeIntegration: true,
       builderOptions: {
         productName: "Restos da Geada - RPG"
-      },
-      mainProcessFile: "src/electron/background.js"
+      }
     }
   }
 };

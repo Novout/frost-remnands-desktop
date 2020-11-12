@@ -14,7 +14,7 @@
     "postuninstall": "electron-builder install-app-deps",
     "icons": "electron-icon-builder --input=./public/icon.png --output=build --flatten"
   },
-  "main": "electron/background.js",
+  "main": "background.js",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
