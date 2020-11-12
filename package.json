@@ -72,7 +72,7 @@
     "not dead"
   ],
   "lint-staged": {
-    "*.{css}": "stylelint"
+    "src/**/*.css": "stylelint"
   },
   "husky": {
     "hooks": {
