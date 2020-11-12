@@ -2,7 +2,7 @@
   "name": "frost-remnands-rpg",
   "author": "Novout",
   "description": "Aplicação Desktop de Frost Remnands RPG",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "build": "vue-cli-service electron:build",
