@@ -46,6 +46,8 @@ const createWindow = () => {
 }
 
 app.on("ready", () => {
+  globalShortcut.register("CmdOrCtrl+R", () => {});
+  
   if(isDevelopment) {
     globalShortcut.register("CmdOrCtrl+D", () => {
       // @ts-ignore
