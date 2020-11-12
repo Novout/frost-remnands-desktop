@@ -104,6 +104,7 @@
 .generics__initial--title {
   color: black;
   font-size: 3vw;
+  cursor: pointer;
 }
 
 .generics__initial__aside {
@@ -138,10 +139,15 @@
   margin: var(--margin-1) 0;
   padding: var(--padding-2) 0;
   border-bottom: 1px solid var(--background-white);
+  border-radius: 16px;
+}
+
+.hability:hover {
+  background-color: var(--item-primary-hover);
 }
 
 .hability--title {
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .hability--general {
@@ -150,10 +156,15 @@
   padding: 4px var(--padding-3);
   border-radius: 180px;
   color: black;
+  cursor: pointer;
+}
+
+.hability--general:hover {
+  background-color: var(--color-secondary);
 }
 
 .hability--main {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .items {
@@ -169,7 +180,7 @@
   align-items: center;
   border-radius: 8px;
   height: 100%;
-  width: 10vw;
+  width: 12vw;
   background-color: var(--item-primary);
   padding: var(--padding-1);
 }
@@ -191,7 +202,12 @@
   align-items: center;
   background-color: var(--item-primary);
   padding: var(--padding-1);
+  border-radius: 8px;
   width: 100%;
+}
+
+.items__save__proficiency:hover {
+  background-color: var(--item-primary-hover);
 }
 
 .items__save--value {
