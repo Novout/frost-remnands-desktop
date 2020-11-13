@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@/plugins/fontawesome";
 
 const app = createApp(App);
 
+app.component("fa", FontAwesomeIcon);
 app.use(createPinia());
 app.use(router);
-app.component("fa", FontAwesomeIcon)
-app.mount("#app");
+router.isReady().then(() => app.mount("#app"));

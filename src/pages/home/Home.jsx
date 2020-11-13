@@ -25,9 +25,6 @@ const HomeItem = defineComponent({
 
 export default defineComponent({
   name: "Home",
-  components: {
-    HomeItem
-  },
   setup() {
     return () => (
       <>

@@ -43,3 +43,11 @@
   font-size: 1.3rem;
   font-family: 'Raleway Tiny';
 }
+
+.app-enter-active, .app-leave-active {
+  transition: opacity .5s;
+}
+
+.app-enter, .app-leave-to {
+  opacity: 0;
+}

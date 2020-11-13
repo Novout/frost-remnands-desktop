@@ -47,16 +47,13 @@ const ItemBox = defineComponent({
 
 export default defineComponent({
   name: "CharacterCreate",
-  components: {
-    ItemBox
-  },
   setup() {
     const router = useRouter();
     const character = useCharacterStore();
 
     const state = reactive({
-      race: "nekro",
-      origin: "rouanir",
+      race: "",
+      origin: "",
       class: "",
       name: "",
       description: "",
