@@ -1,4 +1,4 @@
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import { useCharacterStore } from "@/store/character";
 import "./profile.css";
 
@@ -77,11 +77,113 @@ const ProficiencyItem = defineComponent({
 
 const SkillsItem = defineComponent({
   setup() {
+    const character = useCharacterStore();
+
     return () => (
       <>
-        <article class="items__skills">
-          <p>AA</p>
-        </article>
+        {character.skills.map((skill) => {
+          return (
+            <article class="items__skills">
+              <input type="checkbox" vModel={skill.isActive} /> 
+              <p>{skill.name}</p>
+            </article>
+          )
+        })}
+      </>
+    )
+  }
+})
+
+const DataItem = defineComponent({
+  setup() {
+    const character = useCharacterStore();
+
+    const toggleChance = () => character.lastChance = !character.lastChance
+
+    return () => (
+      <>
+        <section class="items__base__data">
+          <article class="data__container">
+            <h2>Iniciativa</h2>
+            <p>{character.initiative}</p>
+          </article>
+          <article class="data__container">
+            <h2>CA</h2>
+            <p>{character.CA}</p>
+          </article>
+          <article class="data__container">
+            <h2>Velocidade</h2>
+            <p>{character.speed}</p>
+          </article>
+          <article class="data__container" onClick={toggleChance}>
+            <h2>UC</h2>
+            {character.lastChance ? <p>Sim</p> : <p>Não</p>}
+          </article>
+        </section>
+      </>
+    )
+  }
+})
+
+const TextItemDescription = defineComponent({
+  setup() {
+    const character = useCharacterStore();
+
+    return () => (
+      <span class="base__text__description">{character.description}</span>
+    )
+  }
+})
+
+const TextItem = defineComponent({
+  setup() {
+    let toggleTextItem = ref(false);
+
+    const toggleButton = () => toggleTextItem.value = !toggleTextItem.value;
+
+    return () => (
+      <>
+        <section class="base__text">
+          <section class="base__text__initial">
+            <h2>Descrição:</h2>
+            <button onClick={toggleButton}>{toggleTextItem.value ? "-": ">"}</button>
+          </section>
+          {toggleTextItem.value ? (
+            <TextItemDescription />
+          ) : null}
+        </section>
+      </>
+    )
+  }
+})
+
+const BreakItemDescription = defineComponent({
+  setup() {
+    const character = useCharacterStore();
+
+    return () => (
+      <span class="base__text__description">{character.breakPoint}</span>
+    )
+  }
+})
+
+const BreakItem = defineComponent({
+  setup() {
+    let toggleBreakItem = ref(false);
+
+    const toggleButton = () => toggleBreakItem.value = !toggleBreakItem.value;
+
+    return () => (
+      <>
+        <section class="base__text">
+          <section class="base__text__initial">
+            <h2>Ponto de Quebra:</h2>
+            <button onClick={toggleButton}>{toggleBreakItem.value ? "-": ">"}</button>
+          </section>
+          {toggleBreakItem.value ? (
+            <BreakItemDescription />
+          ) : null}
+        </section>
       </>
     )
   }
@@ -93,7 +195,7 @@ const ItemsBox = defineComponent({
 
     return () => (
       <>
-        <main class="items">
+        <section class="items">
           <aside class="items__hability">
             <HabilityItem 
               hability="Força" 
@@ -130,7 +232,12 @@ const ItemsBox = defineComponent({
             <ProficiencyItem />
             <SkillsItem />
           </section>
-        </main>
+          <section class="items__base">
+            <DataItem />
+            <TextItem />
+            <BreakItem />
+          </section>
+        </section>
       </>
     )
   }

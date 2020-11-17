@@ -7,8 +7,8 @@ export const useCharacterStore = defineStore({
     origin: "rouanir",
     class: "taught",
     name: "Rouanir Intirl",
-    description: "Test",
-    breakPoint: "Test",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    breakPoint: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     level: 20,
     classLevel: 20,
     classDetails: [],
@@ -21,6 +21,23 @@ export const useCharacterStore = defineStore({
       wisdom: 8,
       charisma: 8
     },
+    skills: [
+      { name: 'Atletismo', code: 'athletics', type: 'strength', isActive: false },
+      { name: 'Reação', code: 'reaction', type: 'dexterity', isActive: false },
+      { name: 'Acrobacias', code: 'acrobatics', type: 'dexterity', isActive: false },
+      { name: 'Resiliência', code: 'resilience', type: 'constitution', isActive: false },
+      { name: 'Velho Mundo', code: 'oldworld', type: 'intelligence', isActive: false },
+      { name: 'Novo Mundo', code: 'newworld', type: 'intelligence', isActive: false },
+      { name: 'Investigação', code: 'investigation', type: 'intelligence', isActive: false },
+      { name: 'Natureza', code: 'nature', type: 'intelligence', isActive: false },
+      { name: 'Crença', code: 'faith', type: 'intelligence', isActive: false },
+      { name: 'Anormalidade', code: 'abnormality', type: 'wisdom', isActive: false },
+      { name: 'Percepção', code: 'perception', type: 'wisdom', isActive: false },
+      { name: 'Enganar', code: 'deception', type: 'charisma', isActive: false },
+      { name: 'Intimidação', code: 'intimidation', type: 'charisma', isActive: false },
+      { name: 'Performar', code: 'performance', type: 'charisma', isActive: false },
+      { name: 'Persuasão', code: 'persuasion', type: 'charisma', isActive: false },
+    ],
     proficiencyBonus: 2,
     hitPoints: 0,
     hitDice: 6,
@@ -75,7 +92,7 @@ export const useCharacterStore = defineStore({
       if(this.origin === 'gyni') return 'Gyni';
       if(this.origin === 'frederitch') return 'Frederitch';
       if(this.origin === 'agoni') return 'Agoni';
-      if(this.origin === 'pacyentesn') return 'Não-Alinhado';
+      if(this.origin === 'pacyentesn') return 'Império de Pacyentesn';
     },
     strengthModifier() {
       if(this.hability.strength === 1) return -5;

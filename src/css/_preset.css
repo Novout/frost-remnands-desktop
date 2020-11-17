@@ -53,7 +53,7 @@
 }
 
 :root::-webkit-scrollbar {
-  width: 12px;
+  width: 10px;
 }
 
 :root::-webkit-scrollbar-track {
@@ -62,6 +62,7 @@
 
 :root::-webkit-scrollbar-thumb {
   background: var(--color-default);
+  border-radius: 180px;
 }
 
 :root::-webkit-scrollbar-thumb:hover {
@@ -74,4 +75,12 @@ html {
 
 body {
   background-color: var(--color-6);
+}
+
+.app-enter-active, .app-leave-active {
+  transition: opacity .5s;
+}
+
+.app-enter, .app-leave-to {
+  opacity: 0;
 }
