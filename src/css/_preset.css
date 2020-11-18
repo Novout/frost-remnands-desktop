@@ -57,16 +57,16 @@
 }
 
 :root::-webkit-scrollbar-track {
-  background: var(--color-input);
+  background: theme("colors.dark.input");
 }
 
 :root::-webkit-scrollbar-thumb {
-  background: var(--color-default);
+  background: theme("colors.default.blueDark");
   border-radius: 180px;
 }
 
 :root::-webkit-scrollbar-thumb:hover {
-  background: var(--color-secondary);
+  background: theme("colors.default.blueLight");
 }
 
 html {
@@ -74,7 +74,7 @@ html {
 }
 
 body {
-  background-color: var(--color-6);
+  background-color: theme("colors.default.black");
 }
 
 .app-enter-active, .app-leave-active {

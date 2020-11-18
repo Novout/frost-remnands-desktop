@@ -1,9 +1,12 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import { router } from "./router";
-import App from "./App.jsx";
-import "./css/_preset.css";
 import { FontAwesomeIcon } from "@/plugins/fontawesome";
+import App from "./App.jsx";
+
+import "./css/_tailwind.css";
+import "./css/_preset.css";
+import "./css/_components.css";
 
 const app = createApp(App);
 
