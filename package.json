@@ -11,7 +11,7 @@
     "lint": "yarn lint:style",
     "icons": "electron-icon-builder --input=./public/icon.png --output=build --flatten",
     "lint:style": "stylelint src/**/*.css --fix --ignore-path .gitignore",
-    "lint:vue": "vue-cli-service lint",
+    "lint:vue": "eslint --fix --ext .jsx,.vue src",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps"
   },

@@ -1,3 +1,4 @@
+/* General */
 .drag {
   -webkit-user-select: none;
   -webkit-app-region: drag;
@@ -5,4 +6,18 @@
 
 .no-drag {
   -webkit-app-region: no-drag;
+}
+
+.center {
+  @util center;
+}
+
+/* Vue Transitions */
+
+.app-enter-active, .app-leave-active {
+  transition: opacity .5s;
+}
+
+.app-enter, .app-leave-to {
+  opacity: 0;
 }

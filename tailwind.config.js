@@ -67,7 +67,8 @@ module.exports = {
 		},
 		backgroundColor: (theme) => theme('colors'),
 		backgroundImage: {
-			none: 'none',
+      none: 'none',
+      'home-page': "url('img/Home.png')",
 			'gradient-to-t': 'linear-gradient(to top, var(--gradient-color-stops))',
 			'gradient-to-tr': 'linear-gradient(to top right, var(--gradient-color-stops))',
 			'gradient-to-r': 'linear-gradient(to right, var(--gradient-color-stops))',
@@ -125,7 +126,7 @@ module.exports = {
 			md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
 			lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
 			xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-			'2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+			'2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.4)',
 			inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
 			outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
 			none: 'none',
@@ -188,8 +189,54 @@ module.exports = {
 				'"Courier New"',
 				'monospace',
       ],
-      ralewayMedium: ['"Raleway Normal"', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
-      ralewayTiny: ['"Raleway Tiny"', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif']
+      ralewayMedium: [
+        '"Raleway Normal"', 
+        'Georgia', 
+        'Cambria', 
+        '"Times New Roman"', 
+        'Times', 
+        'serif'
+      ],
+      ralewayTiny: [
+        '"Raleway Tiny"', 
+        'Georgia', 
+        'Cambria', 
+        '"Times New Roman"', 
+        'Times', 
+        'serif'
+      ],
+      ralewayExtraBold: [
+        '"Raleway ExtraBold"', 
+        'Georgia', 
+        'Cambria', 
+        '"Times New Roman"', 
+        'Times', 
+        'serif'
+      ],
+      poppinsBold: [
+        '"Poppins Bold"', 
+        'Georgia', 
+        'Cambria', 
+        '"Times New Roman"', 
+        'Times', 
+        'serif'
+      ],
+      poppinsMedium: [
+        '"Poppins Normal"', 
+        'Georgia', 
+        'Cambria', 
+        '"Times New Roman"', 
+        'Times', 
+        'serif'
+      ],
+      poppinsLight: [
+        '"Poppins Light"', 
+        'Georgia', 
+        'Cambria', 
+        '"Times New Roman"', 
+        'Times', 
+        'serif'
+      ]
 		},
 		fontSize: {
 			xs: ['0.75rem', { lineHeight: '1rem' }],
@@ -222,8 +269,10 @@ module.exports = {
 			...theme('spacing'),
 			'almost-full': '95%',
       full: '100%',
+      medium: '50vh',
       bar: '30px',
-			screen: '100vh',
+      screen: '100vh',
+      'bar': '5vh',
 		}),
 		inset: (theme, { negative }) => ({
 			auto: 'auto',
@@ -273,14 +322,6 @@ module.exports = {
 			disc: 'disc',
 			decimal: 'decimal',
 		},
-		margin: (theme, { negative }) => ({
-      auto: 'auto',
-      10: '10px',
-      20: '20px',
-      30: '30px',
-			...theme('spacing'),
-			...negative(theme('spacing')),
-		}),
 		maxHeight: (theme) => ({
 			...theme('spacing'),
 			full: '100%',
@@ -364,8 +405,28 @@ module.exports = {
 			none: ['2px solid transparent', '2px'],
 			white: ['2px dotted white', '2px'],
 			black: ['2px dotted black', '2px'],
-		},
-		padding: (theme) => theme('spacing'),
+    },
+    margin: (theme, { negative }) => ({
+      auto: 'auto',
+      10: '10px',
+      20: '20px',
+      30: '30px',
+      ':1': '0.5rem',
+      ':2': '1rem',
+      ':3': '1.5rem',
+      ':4': '2rem',
+      ':5': '2.5rem',
+			...theme('spacing'),
+			...negative(theme('spacing')),
+		}),
+		padding: (theme) => ({ 
+      ':1': '0.5rem',
+      ':2': '1rem',
+      ':3': '1.5rem',
+      ':4': '2rem',
+      ':5': '2.5rem',
+      ...theme('spacing')
+    }),
 		placeholderColor: (theme) => theme('colors'),
 		placeholderOpacity: (theme) => theme('opacity'),
 		space: (theme, { negative }) => ({
