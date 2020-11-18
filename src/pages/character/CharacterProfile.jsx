@@ -125,6 +125,20 @@ const DataItem = defineComponent({
   }
 })
 
+const HitItem = defineComponent({
+  setup() {
+    // const character = useCharacterStore();
+
+    return () => (
+      <>
+        <section class="items__base__data">
+          <p>AA</p>
+        </section>
+      </>
+    )
+  }
+})
+
 const TextItemDescription = defineComponent({
   setup() {
     const character = useCharacterStore();
@@ -234,6 +248,7 @@ const ItemsBox = defineComponent({
           </section>
           <section class="items__base">
             <DataItem />
+            <HitItem />
             <TextItem />
             <BreakItem />
           </section>
