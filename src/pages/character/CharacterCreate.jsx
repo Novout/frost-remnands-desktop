@@ -1,26 +1,13 @@
-import { defineComponent, reactive } from "vue";
+import { defineComponent, reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useCharacterStore } from "@/store/character";
+import { JsonFileSync } from "@/services/fs";
 import "./create.css";
 
 const ItemBox = defineComponent({
   name: "ItemBox",
   setup() {
-    const talents = [
-      { title: 'Alouuu', value: 'al' },
-      { title: 'Alouuu', value: 'al' },
-      { title: 'Alouuu', value: 'al' },
-      { title: 'Alouuu', value: 'al' },
-      { title: 'Alouuu', value: 'al' },
-      { title: 'Alouuu', value: 'al' },
-      { title: 'Alouuu', value: 'al' },
-      { title: 'Alouuu', value: 'al' },
-      { title: 'Alouuu', value: 'al' },
-      { title: 'Alouuu', value: 'al' },
-      { title: 'Alouuu', value: 'al' },
-      { title: 'Alouuu', value: 'al' },
-      { title: 'Alouuu', value: 'al' },
-    ]
+    const talents = ref(JsonFileSync("constants/character/talents.json"));
 
     const character = useCharacterStore();
 
@@ -37,7 +24,7 @@ const ItemBox = defineComponent({
       <>
         <section class="talents">
           {this.talents.map(talent => 
-            <button onClick={this.pushTalent}>{talent.title}</button>
+            <button onClick={this.pushTalent} class="focus:outline-none">{talent.title}</button>
           )}
         </section>
       </>
@@ -177,8 +164,8 @@ export default defineComponent({
           <h2>Talentos</h2>
           <ItemBox />
           <article>
-            <button onClick={initialMenu}>Menu Inicial</button>
-            <button onClick={validateFormulary}>Finalizar</button>
+            <button onClick={initialMenu} class="focus:outline-none">Menu Inicial</button>
+            <button onClick={validateFormulary} class="focus:outline-none">Finalizar</button>
           </article>
         </main>
       </>

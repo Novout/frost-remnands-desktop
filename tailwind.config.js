@@ -272,7 +272,6 @@ module.exports = {
       medium: '50vh',
       bar: '30px',
       screen: '100vh',
-      'bar': '5vh',
 		}),
 		inset: (theme, { negative }) => ({
 			auto: 'auto',
