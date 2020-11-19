@@ -1,0 +1,6 @@
+[
+  { "title": "Ficha de Personagem", "to": "/create" },
+  { "title": "Carregar Personagem", "to": "/load" },
+  { "title": "Playground - Desabilitado", "to": "/" },
+  { "title": "Multiplayer - Desabilitado", "to": "/" }
+]

@@ -1,13 +1,9 @@
 import { defineComponent } from "vue";
+import { JsonFileSync } from "@/services/fs";
 
 const HomeItem = defineComponent({
   setup() {
-    const options = [
-      { title: "Ficha de Personagem", to: "/create" },
-      { title: "Carregar Personagem", to: "/load" },
-      { title: "Playground - Desabilitado", to: "/" },
-      { title: "Multiplayer - Desabilitado", to: "/" }
-    ]
+    const options = JsonFileSync("constants/pages/home.json");
 
     return () => (
       <>
