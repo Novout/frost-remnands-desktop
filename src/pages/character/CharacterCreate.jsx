@@ -1,7 +1,7 @@
 import { defineComponent, reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useCharacterStore } from "@/store/character";
-import { JsonFileSync } from "@/services/fs";
+import { JsonFileSync } from "../../../public/services/fs";
 import "./create.css";
 
 const ItemBox = defineComponent({

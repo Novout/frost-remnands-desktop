@@ -1,6 +1,9 @@
 module.exports = {
   future: {},
-  purge: [],
+  purge: [
+    './src/**/*.html',
+    './src/**/*.jsx',
+  ],
   theme: {
     screens: {
 			sm: '640px',

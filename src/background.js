@@ -26,7 +26,8 @@ const createWindow = () => {
     frame: false,
     webPreferences: {
       nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
-      enableRemoteModule: true
+      enableRemoteModule: true,
+      preload: path.join(__static, 'services/fs.js')
     },
     icon: path.join(__static, 'icon.png')
   })
@@ -46,7 +47,7 @@ const createWindow = () => {
 app.on("ready", () => {
   if(!fr.reload) globalShortcut.register("CmdOrCtrl+R", () => {});
   
-  if(isDevelopment && fr.console) {
+  if(fr.console) {
     globalShortcut.register("CmdOrCtrl+D", () => {
       win.webContents.openDevTools();
     });

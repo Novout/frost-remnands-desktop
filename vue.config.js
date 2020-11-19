@@ -10,8 +10,9 @@ module.exports = {
     electronBuilder: {
       nodeIntegration: true,
       builderOptions: {
-        productName: "Restos da Geada - RPG"
-      }
+        productName: "Restos da Geada - RPG",
+      },
+      preload: { fs: 'public/services/fs.js' }
     }
   }
 };

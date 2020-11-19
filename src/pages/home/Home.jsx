@@ -1,5 +1,5 @@
 import { defineComponent } from "vue";
-import { JsonFileSync } from "@/services/fs";
+import { JsonFileSync } from "../../../public/services/fs";
 
 const HomeItem = defineComponent({
   setup() {
