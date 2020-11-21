@@ -77,19 +77,19 @@ const ProficiencyItem = defineComponent({
   }
 })
 
-const SkillsItem = defineComponent({
+const ExpertiseItem = defineComponent({
   setup() {
     const character = useCharacterStore();
 
-    const skills = JsonFileSync("constants/character/skills.json");
+    const expertises = JsonFileSync("constants/character/expertise.json");
 
     return () => (
       <>
-        {skills.map((skill) => {
+        {expertises.map((expertise) => {
           return (
             <article class="items__skills">
-              <input type="checkbox" vModel={character.skills[skill.code]} />
-              <p>{skill.name}</p>
+              <input type="checkbox" vModel={character.expertises[expertise.code]} />
+              <p>{expertise.name}</p>
             </article>
           )
         })}
@@ -248,7 +248,7 @@ const ItemsBox = defineComponent({
           </aside>
           <section class="items__save">
             <ProficiencyItem />
-            <SkillsItem />
+            <ExpertiseItem />
           </section>
           <section class="items__base">
             <DataItem />
