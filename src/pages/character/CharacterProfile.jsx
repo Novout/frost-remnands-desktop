@@ -1,6 +1,8 @@
 import { defineComponent, ref } from "vue";
 import { useCharacterStore } from "@/store/character";
+import { JsonFileSync } from "../../../public/services/fs";
 import "./profile.css";
+
 
 const GenericsBox = defineComponent({
   setup() {
@@ -79,12 +81,14 @@ const SkillsItem = defineComponent({
   setup() {
     const character = useCharacterStore();
 
+    const skills = JsonFileSync("constants/character/skills.json");
+
     return () => (
       <>
-        {character.skills.map((skill) => {
+        {skills.map((skill) => {
           return (
             <article class="items__skills">
-              <input type="checkbox" vModel={skill.isActive} /> 
+              <input type="checkbox" vModel={character.skills[skill.code]} />
               <p>{skill.name}</p>
             </article>
           )

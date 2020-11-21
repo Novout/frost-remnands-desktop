@@ -2,7 +2,77 @@
   "class": [
     {
       "name": "shooter",
-      "saving": []
+      "permition": {
+        "exclusive": "frederitch",
+        "neutral": false
+      },
+      "proficiency": {
+        "hit_dice": [8, "constitution"],
+        "armor": ["medium_armor"],
+        "saving": ["dexterity", "intelligence"],
+        "skills": ["perception", "reaction"]
+      },
+      "hability": {
+        "0": [],
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": [],
+        "7": [],
+        "8": [],
+        "9": [],
+        "10": [],
+        "11": [],
+        "12": [],
+        "13": [],
+        "14": [],
+        "15": [],
+        "16": [],
+        "17": [],
+        "18": [],
+        "19": [],
+        "20": []
+      },
+      "equipment": []
+    },
+    {
+      "name": "taught",
+      "permition": {
+        "exclusive": "rouanir",
+        "neutral": false
+      },
+      "proficiency": {
+        "hit_dice": [6, "constitution"],
+        "armor": [],
+        "saving": ["wisdom", "intelligence", "charisma"],
+        "skills": []
+      },
+      "hability": {
+        "0": [],
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": [],
+        "7": [],
+        "8": [],
+        "9": [],
+        "10": [],
+        "11": [],
+        "12": [],
+        "13": [],
+        "14": [],
+        "15": [],
+        "16": [],
+        "17": [],
+        "18": [],
+        "19": [],
+        "20": []
+      },
+      "equipment": []
     }
   ]
 }
