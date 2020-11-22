@@ -21,7 +21,7 @@ export const useCharacterStore = defineStore({
       wisdom: 8,
       charisma: 8
     },
-    skills: {
+    expertises: {
       athletics: false,
       reaction: false,
       acrobatics: false,
