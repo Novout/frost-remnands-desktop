@@ -1,6 +1,6 @@
 import { defineComponent, ref } from "vue";
-import { useCharacterStore } from "@/store/character";
-import { JsonFileSync } from "../../../public/services/fs";
+import { useCharacterStore } from "-/character";
+import { JsonFileSync } from "_/services/fs";
 import "./profile.css";
 
 
