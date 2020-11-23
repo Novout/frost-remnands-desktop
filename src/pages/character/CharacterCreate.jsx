@@ -88,6 +88,11 @@ export default defineComponent({
       }
     }
 
+    const races = JsonFileSync("constants/character/races.json");
+    const origins = JsonFileSync("constants/character/origin.json");
+    const classes = JsonFileSync("constants/character/class.json");
+    const levels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+
     return () => (
       <>
         <main class="character">
@@ -95,61 +100,32 @@ export default defineComponent({
           <span>Crie seu personagem seguindo a ordem recomendada do cenário. Seu personagem irá ficar salvo no sistema para utilização futura.</span>
           <h2>Raça</h2>
           <select vModel={state.race}>
-            <option value="nekro" selected>Nekro</option> 
-            <option value="tiudren">Tiudren</option>
-            <option value="asserkarus">Asserkarus</option>
-            <option value="phortem">Phortem</option>
-            <option value="neutral">Raça Neutra</option>
+            {races.map((race) => 
+              <option value={race.code}>{race.name}</option>
+            )}
           </select>
           <h2>Origem</h2>
           <select vModel={state.origin}>
-           { state.race !== 'neutral' && (<option value="rouanir" selected>Complexo de Rouanir</option>) } 
-           { state.race !== 'neutral' && (<option value="agoni">Consciência Agoni</option>)}
-           { state.race !== 'neutral' && (<option value="gyni">Gyni</option>)}
-           { state.race !== 'neutral' && (<option value="yayr">Henismo de Yayr</option>)}
-           { state.race !== 'neutral' && (<option value="pacyentesn">Império de Pacyentesn</option>)}
-            <option value="aligned">Não-Alinado</option>
-          { state.race !== 'neutral' &&  (<option value="frederitch">República Henista de Frederitch</option>)}
+            {origins.map((origin) => 
+              <option v-show={!origin.ban_races[state.race]} value={origin.code}>{origin.name}</option>
+            )}
           </select>
           <h2>Classes</h2>
           <select vModel={state.class}>
-            { (state.origin === 'frederitch' && state.race !== 'neutral') && (<option value="shooter">Atirador</option>) } 
-            { (state.origin === 'rouanir' && state.race !== 'neutral') && (<option value="taught">Autodidata</option>) } 
-            { (state.race === 'asserkarus' && state.race !== 'neutral') && (<option value="barbarian">Bárbaro</option>) } 
-            { (state.origin === 'pacyentesn' && state.race !== 'neutral') && (<option value="bard">Bardo</option>) } 
-            { (state.origin === 'yayr' && state.race !== 'neutral') && (<option value="witcher">Bruxo</option>) } 
-            { (state.race === 'phortem' && state.race !== 'neutral') && (<option value="conjurer">Conjurador</option>) } 
-            { (state.origin === 'aligned' && state.race !== 'neutral') && (<option value="corrupt">Corrupto</option>) } 
-            { (state.race === 'nekro' && state.race !== 'neutral') && (<option value="inventor">Inventor</option>) } 
-            { (state.race === 'tiudren' && state.race !== 'neutral') && (<option value="fighter">Lutador</option>) } 
-            { (state.origin === 'agoni' && state.race !== 'neutral') && (<option value="monk">Monge</option>) } 
-            { (state.origin === 'gyni' && state.race !== 'neutral') && (<option value="necromancer">Necromante</option>) } 
-            { state.race === 'neutral' && (<option value="psionic">Psiônico</option>) } 
+            {classes.map((cl) => {
+              return (
+                <>
+                  <option v-show={((cl.permition.exclusive === state.origin || cl.permition.exclusive === state.race) && !cl.permition.neutral && !(state.origin === "aligned" && state.race === "neutral"))} value={cl.code}>{cl.name}</option>
+                </>
+              )
+            })}
+            <option v-show={(state.race === "neutral")} value="psionic">Psiônico</option>
           </select>
           <h2>Nome do Personagem</h2>
           <input vModel={state.name} type="text" />
-          <h2>Nome do Personagem</h2>
+          <h2>Nível do Personagem</h2>
           <select vModel={state.level}>
-            <option value="1" selected>1</option> 
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option> 
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-            <option value="17">17</option>
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
+            { levels.map(level => <option value={level}>{level}</option>)}
           </select>
           <h2>Descrição do Personagem</h2>
           <textarea 

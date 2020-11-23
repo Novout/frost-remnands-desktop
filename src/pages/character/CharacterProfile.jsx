@@ -166,9 +166,7 @@ const TextItem = defineComponent({
             <h2>Descrição:</h2>
             <button onClick={toggleButton}>{toggleTextItem.value ? "-": ">"}</button>
           </section>
-          {toggleTextItem.value ? (
-            <TextItemDescription />
-          ) : null}
+          {toggleTextItem.value && <TextItemDescription />}
         </section>
       </>
     )

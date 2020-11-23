@@ -1,6 +1,7 @@
 [
   {
-    "name": "shooter",
+    "name": "Atirador",
+    "code": "shooter",
     "permition": {
       "exclusive": "frederitch",
       "neutral": false
@@ -37,7 +38,8 @@
     "equipment": []
   },
   {
-    "name": "taught",
+    "name": "Autodidata",
+    "code": "taught",
     "permition": {
       "exclusive": "rouanir",
       "neutral": false
@@ -72,5 +74,75 @@
       "20": []
     },
     "equipment": []
+  }, {
+    "name": "Bárbaro",
+    "code": "barbarian",
+    "permition": {
+      "exclusive": "asserkarus",
+      "neutral": false
+    }
+  }, {
+    "name": "Bardo",
+    "code": "bard",
+    "permition": {
+      "exclusive": "pacyentesn",
+      "neutral": false
+    }
+  }, {
+    "name": "Bruxo",
+    "code": "witcher",
+    "permition": {
+      "exclusive": "yayr",
+      "neutral": false
+    }
+  }, {
+    "name": "Conjurador",
+    "code": "conjurer",
+    "permition": {
+      "exclusive": "phortem",
+      "neutral": false
+    }
+  }, {
+    "name": "Corrupto",
+    "code": "corrupt",
+    "permition": {
+      "exclusive": "aligned",
+      "neutral": false
+    }
+  }, {
+    "name": "Inventor",
+    "code": "inventor",
+    "permition": {
+      "exclusive": "nekro",
+      "neutral": false
+    }
+  }, {
+    "name": "Lutador",
+    "code": "fighter",
+    "permition": {
+      "exclusive": "tiudren",
+      "neutral": false
+    }
+  }, {
+    "name": "Monge",
+    "code": "monk",
+    "permition": {
+      "exclusive": "agoni",
+      "neutral": false
+    }
+  }, {
+    "name": "Necromante",
+    "code": "necromancer",
+    "permition": {
+      "exclusive": "gyni",
+      "neutral": false
+    }
+  }, {
+    "name": "Psiônico",
+    "code": "psionic",
+    "permition": {
+      "exclusive": "neutral",
+      "neutral": true
+    }
   }
 ]

@@ -1,0 +1,86 @@
+[
+  { 
+    "name": "Complexo de Rouanir", 
+    "code": "rouanir", 
+    "ban_races": {
+      "nekro": false,
+      "tiudren": false,
+      "asserkarus": false,
+      "phortem": false,
+      "neutral": true
+    },
+    "exclusive": "taught"
+  },
+  { 
+    "name": "Consciência Agoni", 
+    "code": "agoni", 
+    "ban_races": {
+      "nekro": false,
+      "tiudren": false,
+      "asserkarus": false,
+      "phortem": false,
+      "neutral": true
+    },
+    "exclusive": "monk"
+  },
+  { 
+    "name": "Gyni", 
+    "code": "gyni", 
+    "ban_races": {
+      "nekro": false,
+      "tiudren": false,
+      "asserkarus": false,
+      "phortem": false,
+      "neutral": true
+    },
+    "exclusive": "necromancer"
+  },
+  { 
+    "name": "Henismo de Yayr", 
+    "code": "yayr", 
+    "ban_races": {
+      "nekro": false,
+      "tiudren": false,
+      "asserkarus": false,
+      "phortem": false,
+      "neutral": true
+    },
+    "exclusive": "witcher"
+  },
+  { 
+    "name": "Império de Pacyentesn", 
+    "code": "rouanir", 
+    "ban_races": {
+      "nekro": false,
+      "tiudren": false,
+      "asserkarus": false,
+      "phortem": false,
+      "neutral": true
+    },
+    "exclusive": "bard"
+  },
+  { 
+    "name": "Não-Alinhado", 
+    "code": "aligned", 
+    "ban_races": {
+      "nekro": false,
+      "tiudren": false,
+      "asserkarus": false,
+      "phortem": false,
+      "neutral": false
+    },
+    "exclusive": "psionic"
+  },
+  { 
+    "name": "República Henista de Frederitch", 
+    "code": "frederitch", 
+    "ban_races": {
+      "nekro": false,
+      "tiudren": false,
+      "asserkarus": false,
+      "phortem": false,
+      "neutral": true
+    },
+    "exclusive": "shooter"
+  }
+]
