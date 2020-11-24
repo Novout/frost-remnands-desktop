@@ -1,9 +1,23 @@
-import { defineComponent } from "vue";
+import { defineComponent, onMounted } from "vue";
 import { remote } from "electron";
+import { useDefaultStore } from "-/config";
+import { JsonFileSync } from "_/services/fs";
 
 export default defineComponent({
   name: "App",
   setup() {
+    onMounted(() => {
+      const store = useDefaultStore();
+      const { theme } = JsonFileSync("config/base.json");
+      console.log(theme);
+
+      store.base.theme = theme;
+
+      store.base.theme === "dark" 
+        ? document.querySelector("html").classList.add("dark")
+        : document.querySelector("html").classList.remove("dark");
+    });
+
     const win = remote.getCurrentWindow();
     
     const windowMinimize = () => {

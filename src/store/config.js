@@ -1,9 +1,14 @@
 import { defineStore } from "pinia";
 
 export const useDefaultStore = defineStore({
-  id: "main",
+  id: "config",
   state: () => ({
-    characters: []
+    base: {
+      theme: "light"
+    },
+    save: {
+      characters: []
+    }
   }),
   getters: {},
   actions: {

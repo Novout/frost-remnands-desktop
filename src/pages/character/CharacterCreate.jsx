@@ -91,7 +91,7 @@ export default defineComponent({
     const races = JsonFileSync("constants/character/races.json");
     const origins = JsonFileSync("constants/character/origin.json");
     const classes = JsonFileSync("constants/character/class.json");
-    const levels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+    const levels = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
     return () => (
       <>
@@ -112,20 +112,16 @@ export default defineComponent({
           </select>
           <h2>Classes</h2>
           <select vModel={state.class}>
-            {classes.map((cl) => {
-              return (
-                <>
-                  <option v-show={((cl.permition.exclusive === state.origin || cl.permition.exclusive === state.race) && !cl.permition.neutral && !(state.origin === "aligned" && state.race === "neutral"))} value={cl.code}>{cl.name}</option>
-                </>
-              )
-            })}
+            {classes.map((cl) => 
+              <option v-show={((cl.permition.exclusive === state.origin || cl.permition.exclusive === state.race) && !cl.permition.neutral && !(state.origin === "aligned" && state.race === "neutral"))} value={cl.code}>{cl.name}</option>
+            )}
             <option v-show={(state.race === "neutral")} value="psionic">Psiônico</option>
           </select>
           <h2>Nome do Personagem</h2>
           <input vModel={state.name} type="text" />
           <h2>Nível do Personagem</h2>
           <select vModel={state.level}>
-            { levels.map(level => <option value={level}>{level}</option>)}
+            {levels.map((level) => <option value={level}>{level}</option>)}
           </select>
           <h2>Descrição do Personagem</h2>
           <textarea 
