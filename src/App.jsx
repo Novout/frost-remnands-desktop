@@ -9,7 +9,6 @@ export default defineComponent({
     onMounted(() => {
       const store = useDefaultStore();
       const { theme } = JsonFileSync("config/base.json");
-      console.log(theme);
 
       store.base.theme = theme;
 

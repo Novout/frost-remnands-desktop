@@ -1,5 +1,6 @@
 import { defineComponent, ref, watch } from "vue";
 import { useDefaultStore } from "-/config";
+import { JsonWriteFile, JsonFileSync } from "_/services/fs";
 
 export default defineComponent({
   name: "Config",
@@ -7,13 +8,17 @@ export default defineComponent({
     const store = useDefaultStore();
     const theme = ref(store.base.theme);
 
-    watch(theme, (theme) => {
+    watch(theme, async (theme) => {
       theme === "dark" 
         ? document.querySelector("html").classList.add("dark")
         : document.querySelector("html").classList.remove("dark");
 
+      const config = JsonFileSync("config/base.json");
+      config.theme = theme;
+
+      await JsonWriteFile("config/base.json", config);
       store.base.theme = theme;
-    })
+    });
 
     return () => (
       <section class="pt-8">
