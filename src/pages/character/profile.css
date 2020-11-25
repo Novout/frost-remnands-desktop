@@ -120,51 +120,11 @@
   font-family: 'Raleway Medium';
   font-size: 2.2vw;
   border-bottom: 1px solid black;
-  color: black;
 }
 
 .generics__initial__aside--item > p {
   font-size: 2vw;
   font-family: 'Raleway Medium';
-  color: black;
-}
-
-.hability {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  margin: var(--margin-1) 0;
-  padding: var(--padding-2) 0;
-  border-bottom: 1px solid var(--background-white);
-  border-radius: 16px;
-}
-
-.hability:hover {
-  background-color: var(--item-primary-hover);
-}
-
-.hability--title {
-  font-size: 0.9rem;
-}
-
-.hability--general {
-  font-size: 1rem;
-  background-color: var(--background-white);
-  padding: 4px var(--padding-3);
-  border-radius: 180px;
-  color: black;
-  cursor: pointer;
-}
-
-.hability--general:hover {
-  background-color: var(--color-default);
-}
-
-.hability--main {
-  font-size: 1.3rem;
 }
 
 .items {

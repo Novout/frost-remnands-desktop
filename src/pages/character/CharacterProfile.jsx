@@ -11,26 +11,26 @@ const GenericsBox = defineComponent({
       const toast = useToast();
       toast.success("Personagem Carregado!");
     });
-    
+
     const character = useCharacterStore();
 
     return () => (
       <>
         <header class="generics">
           <section class="generics__initial">
-            <h1 class="generics__initial--title">{character.name}</h1>
+            <h1 class="generics__initial--title text-default-black dark:text-default-white">{character.name}</h1>
             <section class="generics__initial__aside">
               <section class="generics__initial__aside--item">
-                <h2>{character.getCharacterClass} {character.level}</h2>
-                <p>Classe / Nível</p>
+                <h2 class="text-default-black dark:text-default-white">{character.getCharacterClass} {character.level}</h2>
+                <p class="text-default-black dark:text-default-white">Classe / Nível</p>
               </section>
               <section class="generics__initial__aside--item">
-                <h2>{character.getRaceName}</h2>
-                <p>Raça</p>
+                <h2 class="text-default-black dark:text-default-white">{character.getRaceName}</h2>
+                <p class="text-default-black dark:text-default-white">Raça</p>
               </section>
               <section class="generics__initial__aside--item">
-                <h2>{character.getOriginName}</h2>
-                <p>Origem</p>
+                <h2 class="text-default-black dark:text-default-white">{character.getOriginName}</h2>
+                <p class="text-default-black dark:text-default-white">Origem</p>
               </section>
             </section>
           </section>
@@ -58,10 +58,10 @@ const HabilityItem = defineComponent({
   setup(props) {
     return () => (
       <>
-        <article class="hability">
-          <p class="hability--title">{props.hability}</p>
-          <p class="hability--main">{props.modifier}</p>
-          <p class="hability--general">{props.total}</p>
+        <article class="character-hability">
+          <p class="text-sm dark:text-default-black">{props.hability}</p>
+          <p class="text-2xl dark:text-default-black">{props.modifier}</p>
+          <p class="text-base bg-default-white dark:bg-dark-one dark:text-default-white py-1 px-:3 rounded-full text-default-black cursor-pointer hover:bg-default-blueLight dark:hover:bg-default-blueDark">{props.total}</p>
         </article>
       </>
     )
@@ -74,9 +74,9 @@ const ProficiencyItem = defineComponent({
 
     return () => (
       <>
-        <article class="items__save__proficiency">
-          <p class="items__save--value">{character.getProficiencyBonus}</p>
-          <p class="items__save--proficiency">Proficiência</p>
+        <article class="character-proficiency">
+          <p class="items__save--value dark:text-default-white rounded-full dark:bg-default-black">{character.getProficiencyBonus}</p>
+          <p class="items__save--proficiency dark:text-default-black">Proficiência</p>
         </article>
       </>
     )
@@ -202,9 +202,7 @@ const BreakItem = defineComponent({
             <h2>Ponto de Quebra:</h2>
             <button onClick={toggleButton}>{toggleBreakItem.value ? "-": ">"}</button>
           </section>
-          {toggleBreakItem.value ? (
-            <BreakItemDescription />
-          ) : null}
+          {toggleBreakItem.value && <BreakItemDescription />}
         </section>
       </>
     )
@@ -218,7 +216,7 @@ const ItemsBox = defineComponent({
     return () => (
       <>
         <section class="items">
-          <aside class="items__hability">
+          <aside class="items__hability shadow-lg dark:bg-default-white">
             <HabilityItem 
               hability="Força" 
               modifier={character.strengthModifier} 
@@ -286,7 +284,7 @@ export default defineComponent({
     }
 
     return () => (
-      <section class={profileBackground()}>
+      <section class="bg-default-white dark:bg-dark-one pt-bar">
         <GenericsBox />
         <ItemsBox />
       </section>
