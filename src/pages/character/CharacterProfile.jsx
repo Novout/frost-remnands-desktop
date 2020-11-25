@@ -1,11 +1,17 @@
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, onMounted } from "vue";
 import { useCharacterStore } from "-/character";
 import { JsonFileSync } from "_/services/fs";
+import { useToast } from "vue-toastification";
 import "./profile.css";
 
 
 const GenericsBox = defineComponent({
   setup() {
+    onMounted(() => {
+      const toast = useToast();
+      toast.success("Personagem Carregado!");
+    });
+    
     const character = useCharacterStore();
 
     return () => (

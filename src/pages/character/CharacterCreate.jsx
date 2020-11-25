@@ -1,7 +1,8 @@
 import { defineComponent, reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useCharacterStore } from "-/character";
-import { JsonFileSync } from "_/services/fs";
+import { JsonFileSync, JsonWriteFile } from "_/services/fs";
+import { useToast } from "vue-toastification";
 import "./create.css";
 
 const ItemBox = defineComponent({
@@ -35,6 +36,7 @@ const ItemBox = defineComponent({
 export default defineComponent({
   name: "CharacterCreate",
   setup() {
+    const toast = useToast();
     const router = useRouter();
     const character = useCharacterStore();
 
@@ -60,7 +62,7 @@ export default defineComponent({
     }
 
     const goToProfile = () => {
-      character.$patch({
+      const item = {
         race: state.race,
         origin: state.origin,
         class: state.class,
@@ -72,9 +74,18 @@ export default defineComponent({
         talents: [],
         equipment: [],
         anotations: []
-      })
+      };
 
-      router.push("/profile");
+      character.$patch(item);
+
+      try {
+        const save = JsonFileSync("register/characters.json");
+        save.push(item);
+        JsonWriteFile("register/characters.json", [...save, item]);
+        router.push("/profile");
+      } catch(error) {
+        toast.error("Ocorreu um erro ao salvar o personagem :(");
+      }
     }
 
     const validateFormulary = () => {

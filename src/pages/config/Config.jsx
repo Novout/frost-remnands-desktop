@@ -1,23 +1,24 @@
 import { defineComponent, ref, watch } from "vue";
 import { useDefaultStore } from "-/config";
-import { JsonWriteFile, JsonFileSync } from "_/services/fs";
+import { useToast } from "vue-toastification";
 
 export default defineComponent({
   name: "Config",
   setup() {
+    const toast = useToast();
     const store = useDefaultStore();
     const theme = ref(store.base.theme);
 
-    watch(theme, async (theme) => {
+    watch(theme, (theme) => {
       theme === "dark" 
         ? document.querySelector("html").classList.add("dark")
         : document.querySelector("html").classList.remove("dark");
 
-      const config = JsonFileSync("config/base.json");
-      config.theme = theme;
-
-      await JsonWriteFile("config/base.json", config);
       store.base.theme = theme;
+
+      const msg = theme === "dark" ? "Escuro" : "Claro";
+
+      toast.success(`Tema ${msg} selecionado!`);
     });
 
     return () => (
@@ -26,7 +27,6 @@ export default defineComponent({
           <option value="light" class="text-default-white dark:text-default-black">Light</option>
           <option value="dark" class="text-default-white dark:text-default-black">Dark</option>
         </select>
-        <router-link to="/">Home</router-link>
       </section>
     )
   }
