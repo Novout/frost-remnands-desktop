@@ -20,8 +20,8 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
-    "@fortawesome/vue-fontawesome": "3.0.0-1",
-    "@vueuse/core": "^4.0.0-rc.2",
+    "@fortawesome/vue-fontawesome": "^3.0.0-2",
+    "@vueuse/core": "^4.0.0-rc.4",
     "autoprefixer": "9",
     "core-js": "^3.6.5",
     "electron-drag": "^2.0.0",
@@ -30,15 +30,15 @@
     "postcss": "7",
     "postcss-utilities": "^0.8.4",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
-    "vue": "^3.0.2",
-    "vue-router": "^4.0.0-rc.2",
+    "vue": "^3.0.3",
+    "vue-router": "^4.0.0-rc.5",
     "vue-toastification": "^2.0.0-beta.7"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@vue/babel-plugin-jsx": "^1.0.0-rc.3",
-    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-babel": "^4.5.9",
     "@vue/cli-plugin-e2e-cypress": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0-0",
@@ -66,8 +66,5 @@
   },
   "lint-staged": {
     "*.css": "stylelint"
-  },
-  "resolutions": {
-    "cypress": "3.4.1"
   }
 }
