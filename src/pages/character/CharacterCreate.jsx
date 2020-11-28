@@ -22,9 +22,9 @@ const ItemBox = defineComponent({
   render() {
     return (
       <>
-        <section class="talents">
+        <section class="flex flex-row flex-wrap justify-start items-center py-:2 bg-white-one dark:bg-dark-one">
           {this.talents.map(talent => 
-            <button onClick={this.pushTalent} class="focus:outline-none">{talent.title}</button>
+            <button onClick={this.pushTalent} class="focus:outline-none p-:2 flex-1 hover:bg-white-oneHover dark:hover:bg-dark-oneHover">{talent.title}</button>
           )}
         </section>
       </>
