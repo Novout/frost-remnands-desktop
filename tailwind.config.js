@@ -29,7 +29,9 @@ module.exports = {
       },
       white: {
         one: '#EEE',
-        oneHover: '#bbb'
+        oneHover: '#bbb',
+        input: '#DDD',
+        inputHover: '#CCC'
       }
     },
     spacing: {
