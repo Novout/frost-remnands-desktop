@@ -66,5 +66,8 @@
   },
   "lint-staged": {
     "*.css": "stylelint"
+  },
+  "resolutions": {
+    "cypress": "3.4.1"
   }
 }

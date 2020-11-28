@@ -3,7 +3,6 @@ import { useRouter } from "vue-router";
 import { useCharacterStore } from "-/character";
 import { JsonFileSync, JsonWriteFile } from "_/services/fs";
 import { useToast } from "vue-toastification";
-import "./create.css";
 
 const ItemBox = defineComponent({
   name: "ItemBox",
@@ -106,49 +105,51 @@ export default defineComponent({
 
     return () => (
       <>
-        <main class="character">
-          <h1>Ficha de Personagem</h1>
-          <span>Crie seu personagem seguindo a ordem recomendada do cenário. Seu personagem irá ficar salvo no sistema para utilização futura.</span>
-          <h2>Raça</h2>
-          <select vModel={state.race}>
+        <main class=" bg-default-white h-full overflow-y-auto overflow-x-hidden px-:20 pt-bar dark:bg-default-black">
+          <h1 class="pt-:2 pb-:1 border-b-2 border-default-black dark:border-default-white py-16 text-3xl pointer-events-none text-default-black dark:text-default-white">Ficha de Personagem</h1>
+          <span class="font-ralewayMedium text-xl my-:5 pointer-events-none">Crie seu personagem seguindo a ordem recomendada do cenário. Seu personagem irá ficar salvo no sistema para utilização futura.</span>
+          <h2 class="py-:1 mt-5 border-default-black dark:border-default-white border-b-2 text-xl pointer-events-none">Raça</h2>
+          <select vModel={state.race} class="dark:bg-dark-input bg-default-white p-:1 border-none rounded-lg my-:2 w-full cursor-pointer hover:bg-white-oneHover dark:hover:bg-dark-oneHover">
             {races.map((race) => 
-              <option value={race.code}>{race.name}</option>
+              <option value={race.code} class="bg-none">{race.name}</option>
             )}
           </select>
-          <h2>Origem</h2>
-          <select vModel={state.origin}>
+          <h2 class="py-:1 mt-5 border-default-black dark:border-default-white border-b-2 text-xl pointer-events-none">Origem</h2>
+          <select vModel={state.origin} class="dark:bg-dark-input bg-default-white p-:1 border-none rounded-lg my-:2 w-full cursor-pointer hover:bg-white-oneHover dark:hover:bg-dark-oneHover">
             {origins.map((origin) => 
-              <option v-show={!origin.ban_races[state.race]} value={origin.code}>{origin.name}</option>
+              <option v-show={!origin.ban_races[state.race]} value={origin.code} class="bg-none">{origin.name}</option>
             )}
           </select>
-          <h2>Classes</h2>
-          <select vModel={state.class}>
+          <h2 class="py-:1 mt-5 border-default-black dark:border-default-white border-b-2 text-xl pointer-events-none">Classes</h2>
+          <select vModel={state.class} class="dark:bg-dark-input bg-default-white p-:1 border-none rounded-lg my-:2 w-full cursor-pointer hover:bg-white-oneHover dark:hover:bg-dark-oneHover">
             {classes.map((cl) => 
-              <option v-show={((cl.permition.exclusive === state.origin || cl.permition.exclusive === state.race) && !cl.permition.neutral && !(state.origin === "aligned" && state.race === "neutral"))} value={cl.code}>{cl.name}</option>
+              <option v-show={((cl.permition.exclusive === state.origin || cl.permition.exclusive === state.race) && !cl.permition.neutral && !(state.origin === "aligned" && state.race === "neutral"))} value={cl.code} class="bg-none">{cl.name}</option>
             )}
-            <option v-show={(state.race === "neutral")} value="psionic">Psiônico</option>
+            <option v-show={(state.race === "neutral")} value="psionic" class="bg-none">Psiônico</option>
           </select>
-          <h2>Nome do Personagem</h2>
-          <input vModel={state.name} type="text" />
-          <h2>Nível do Personagem</h2>
-          <select vModel={state.level}>
+          <h2 class="py-:1 mt-5 border-default-black dark:border-default-white border-b-2 text-xl pointer-events-none">Nome do Personagem</h2>
+          <input vModel={state.name} type="text" class="bg-white-one dark:bg-dark-one hover:bg-white-oneHover dark:hover:bg-dark-oneHover py-:1 border-none rounded-lg my-:2 w-full" />
+          <h2 class="py-:1 mt-5 border-default-black dark:border-default-white border-b-2 text-xl pointer-events-none">Nível do Personagem</h2>
+          <select vModel={state.level} class="dark:bg-dark-input bg-default-white p-:1 border-none rounded-lg my-:2 w-full cursor-pointer hover:bg-white-oneHover dark:hover:bg-dark-oneHover">
             {levels.map((level) => <option value={level}>{level}</option>)}
           </select>
-          <h2>Descrição do Personagem</h2>
+          <h2 class="py-:1 mt-5 border-default-black dark:border-default-white border-b-2 text-xl pointer-events-none">Descrição do Personagem</h2>
           <textarea 
             vModel={state.description} 
             rows = "8"
+            class="font-ralewayMedium bg-white-one hover:bg-white-oneHover dark:bg-dark-one dark:hover:bg-dark-oneHover text-base border-none w-full my-:2"
           />
-          <h2>Ponto de Quebra</h2>
+          <h2 class="py-:1 mt-5 border-default-black dark:border-default-white border-b-2 text-xl pointer-events-none">Ponto de Quebra</h2>
           <textarea 
             vModel={state.breakPoint} 
             rows = "8"
+            class="font-ralewayMedium bg-white-one hover:bg-white-oneHover dark:bg-dark-one dark:hover:bg-dark-oneHover text-base border-none w-full my-:2"
           />
-          <h2>Talentos</h2>
+          <h2 class="py-:1 mt-5 border-default-black dark:border-default-white border-b-2 text-xl pointer-events-none">Talentos</h2>
           <ItemBox />
-          <article>
-            <button onClick={initialMenu} class="focus:outline-none">Menu Inicial</button>
-            <button onClick={validateFormulary} class="focus:outline-none">Finalizar</button>
+          <article class="flex flex-row w-full justify-end">
+            <button onClick={initialMenu} class="focus:outline-none dark:bg-default-white bg-default-black py-:1 px-:2 my-:2 mx-:2 dark:text-default-black text-default-white border-none cursor-pointer">Menu Inicial</button>
+            <button onClick={validateFormulary} class="focus:outline-none dark:bg-default-white bg-default-black py-:1 px-:2 my-:2 dark:text-default-black text-default-white border-none cursor-pointer">Finalizar</button>
           </article>
         </main>
       </>

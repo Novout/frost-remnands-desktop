@@ -430,6 +430,7 @@ module.exports = {
       ':3': '1.5rem',
       ':4': '2rem',
       ':5': '2.5rem',
+      ':20': '10rem',
       'bar': '30px',
       ...theme('spacing')
     }),
