@@ -1,5 +1,6 @@
 import { defineComponent, ref, watch } from "vue";
 import { useDefaultStore } from "-/config";
+import { JsonWriteFile } from "_/services/fs";
 import { useToast } from "vue-toastification";
 
 export default defineComponent({
@@ -19,10 +20,15 @@ export default defineComponent({
       const msg = theme === "dark" ? "Escuro" : "Claro";
 
       toast.success(`Tema ${msg} selecionado!`);
+
+      // router reload page in write file, remove with vue-router fix.
+      setTimeout(() => {
+        JsonWriteFile("config/base.json", store.base);
+      }, 2000);
     });
 
     return () => (
-      <section class="pt-8">
+      <section class="pt-8 bg-default-white dark:bg-default-black h-screen">
         <select vModel={theme.value} class="bg-dark-one dark:bg-default-white dark:text-default-black rounded-lg p-1">
           <option value="light" class="text-default-white dark:text-default-black">Light</option>
           <option value="dark" class="text-default-white dark:text-default-black">Dark</option>
