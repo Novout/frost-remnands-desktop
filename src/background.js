@@ -20,6 +20,7 @@ const createWindow = () => {
     minWidth: 750,
     minHeight: 550,
     frame: false,
+    transparent: true,
     webPreferences: {
       nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
       enableRemoteModule: true,

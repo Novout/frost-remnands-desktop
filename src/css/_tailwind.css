@@ -10,4 +10,36 @@
   .character-proficiency {
     @apply flex justify-around items-center w-full h-16 overflow-x-hidden bg-dark-one hover:bg-dark-oneHover dark:bg-default-white dark:hover:bg-white-oneHover;
   }
+
+  :root::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  :root::-webkit-scrollbar-track {
+    background: theme("colors.default.white");
+  }
+  
+  :root::-webkit-scrollbar-thumb {
+    background: theme("colors.dark.input");
+  }
+  
+  :root::-webkit-scrollbar-thumb:hover {
+    background: theme("colors.default.blueLight");
+  }
+  
+  .dark::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .dark::-webkit-scrollbar-track {
+    background: theme("colors.dark.input");
+  }
+  
+  .dark::-webkit-scrollbar-thumb {
+    background: theme("colors.default.blueDark");
+  }
+  
+  .dark::-webkit-scrollbar-thumb:hover {
+    background: theme("colors.default.blueLight");
+  }
 }

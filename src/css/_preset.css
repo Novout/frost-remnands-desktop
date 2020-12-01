@@ -16,7 +16,7 @@
   outline: 0;
   font-size: 16px;
   font-family: "Poppins Normal";
-  color: white;
+  color: theme("colors.default.white");
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -50,23 +50,6 @@
   --margin-5: 2.5rem;
   --h-full: 100vh;
   --bar-full: 5vh;
-}
-
-:root::-webkit-scrollbar {
-  width: 10px;
-}
-
-:root::-webkit-scrollbar-track {
-  background: theme("colors.dark.input");
-}
-
-:root::-webkit-scrollbar-thumb {
-  background: theme("colors.default.blueDark");
-  border-radius: 180px;
-}
-
-:root::-webkit-scrollbar-thumb:hover {
-  background: theme("colors.default.blueLight");
 }
 
 html {
