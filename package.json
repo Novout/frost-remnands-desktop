@@ -4,6 +4,7 @@
   "private": true,
   "description": "Aplicação Desktop de Frost Remnands RPG",
   "author": "Novout",
+  "license": "GNU",
   "scripts": {
     "serve": "yarn lint && vue-cli-service electron:serve",
     "build": "vue-cli-service electron:build",
