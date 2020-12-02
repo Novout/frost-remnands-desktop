@@ -53,18 +53,20 @@ export const useCharacterStore = defineStore({
   }),
   getters: {
     getCharacterClass() {
-      if(this.class === 'shooter') return 'Atirador';
-      if(this.class === 'taught') return 'Autodidata';
-      if(this.class === 'barbarian') return 'Bárbaro';
-      if(this.class === 'bard') return 'Bardo';
-      if(this.class === 'witcher') return 'Bruxo';
-      if(this.class === 'conjurer') return 'Conjurador';
-      if(this.class === 'corrupt') return 'Corrupto';
-      if(this.class === 'inventor') return 'Inventor';
-      if(this.class === 'fighter') return 'Lutador';
-      if(this.class === 'monk') return 'Monge';
-      if(this.class === 'necromancer') return 'Necromante';
-      if(this.class === 'psionic') return 'Psiônico';
+      return ({
+        "shooter": "Atirador",
+        "taught": "Autodidata",
+        "barbarian": "Bárbaro",
+        "bard": "Bardo",
+        "witcher": "Bruxo",
+        "conjurer": "Conjurador",
+        "corrupt": "Corrupto",
+        "inventor": "Inventor",
+        "fighter": "Lutador",
+        "monk": "Monge",
+        "necromancer": "Necromante",
+        "psionic": "Psiônico"
+      }[this.class]);
     },
     getProficiencyBonus() {
       let proficiency = 0;
@@ -74,27 +76,31 @@ export const useCharacterStore = defineStore({
       if(this.level >= 9 && this.level <= 12) proficiency = 4;
       if(this.level >= 13 && this.level <= 16) proficiency = 5;
       if(this.level >= 17 && this.level <= 20) proficiency = 6;
-      if(this.origin === 'rouanir') proficiency += 1;
+      if(this.origin === "rouanir") proficiency += 1;
 
       this.proficiencyBonus = proficiency;
 
       return proficiency;
     },
     getRaceName() {
-      if(this.race === 'nekro') return 'Nekro';
-      if(this.race === 'tiudren') return 'Tiudren';
-      if(this.race === 'asserkarus') return 'Asserkarus';
-      if(this.race === 'phortem') return 'Phortem';
-      if(this.race === 'neutral') return 'Raça Neutra';
+      return ({
+        "nekro": "Nekro",
+        "tiudren": "Tiudren",
+        "asserkarus": "Asserkarus",
+        "phortem": "Phortem",
+        "neutral": "Raça Neutra"
+      }[this.race]);
     },
     getOriginName() {
-      if(this.origin === 'aligned') return 'Não-Alinhado';
-      if(this.origin === 'rouanir') return 'Complexo de Rouanir';
-      if(this.origin === 'yayr') return 'Yayr';
-      if(this.origin === 'gyni') return 'Gyni';
-      if(this.origin === 'frederitch') return 'Frederitch';
-      if(this.origin === 'agoni') return 'Agoni';
-      if(this.origin === 'pacyentesn') return 'Império de Pacyentesn';
+      return ({
+        "aligned": "Não-Alinhado",
+        "rouanir": "Complexo de Rounir",
+        "yayr": "Yayr",
+        "gyni": "Gyni",
+        "frederitch": "Frederitch",
+        "agoni": "Agoni",
+        "pacyentesn": "Império de Pacyentesn"
+      }[this.origin]);
     },
     strengthModifier() {
       if(this.hability.strength === 1) return -5;
@@ -205,10 +211,5 @@ export const useCharacterStore = defineStore({
       if(this.hability.charisma >= 30) return 10;
     },
   },
-  actions: {
-    addNewTalent(talent) {
-      console.log(talent)
-    },
-    reset() {},
-  },
+  actions: {},
 })
