@@ -24,7 +24,7 @@ export default defineComponent({
       // router reload page in write file, remove with vue-router fix.
       setTimeout(() => {
         JsonWriteFile("config/base.json", store.base);
-      }, 2000);
+      }, 1000);
     });
 
     return () => (

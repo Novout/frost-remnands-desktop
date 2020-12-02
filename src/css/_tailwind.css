@@ -4,11 +4,21 @@
 
 @layer components {
   .character-hability {
-    @apply flex flex-col justify-between items-center h-full w-full my-:1 py-:2 border-default-white rounded-lg border-b-2 dark:border-default-black  hover:bg-dark-oneHover dark:hover:bg-white-oneHover;
+    @apply flex flex-col justify-between items-center h-full w-full my-:1 py-:2 bg-dark-one dark:bg-white-one hover:bg-dark-oneHover dark:hover:bg-white-oneHover rounded-xl border-b-2 border-default-white dark:border-default-black;
   }
 
   .character-proficiency {
-    @apply flex justify-around items-center w-full h-16 overflow-x-hidden bg-dark-one hover:bg-dark-oneHover dark:bg-default-white dark:hover:bg-white-oneHover;
+    @apply flex justify-around items-center w-full h-16 overflow-x-hidden bg-dark-one dark:bg-white-one hover:bg-dark-oneHover dark:hover:bg-white-oneHover;
+  }
+
+  .outline-solid-white {
+    outline: 2px solid theme("colors.default.white");
+    outline-offset: 2px;
+  }
+
+  .outline-solid-black {
+    outline: 2px solid theme("colors.default.black");
+    outline-offset: 2px;
   }
 
   :root::-webkit-scrollbar {

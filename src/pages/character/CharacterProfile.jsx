@@ -2,8 +2,6 @@ import { defineComponent, ref, onMounted } from "vue";
 import { useCharacterStore } from "-/character";
 import { JsonFileSync } from "_/services/fs";
 import { useToast } from "vue-toastification";
-import "./profile.css";
-
 
 const GenericsBox = defineComponent({
   setup() {
@@ -16,21 +14,33 @@ const GenericsBox = defineComponent({
 
     return () => (
       <>
-        <header class="generics">
-          <section class="generics__initial">
-            <h1 class="generics__initial--title text-default-black dark:text-default-white">{character.name}</h1>
-            <section class="generics__initial__aside">
-              <section class="generics__initial__aside--item">
-                <h2 class="text-default-black dark:text-default-white">{character.getCharacterClass} {character.level}</h2>
-                <p class="text-default-black dark:text-default-white">Classe / Nível</p>
+        <header class="generics flex flex-col flex-nowrap">
+          <section class="flex flex-row flex-nowrap justify-around items-center">
+            <h1 class="text-3vw cursor-pointer text-default-black dark:text-default-white">{character.name}</h1>
+            <section class="flex flex-row flex-nowrap">
+              <section class="py-:1 px-:2">
+                <h2 
+                  class="text-default-black dark:text-default-white font-ralewayMedium text-2-2vw border-b-2 border-default-black"
+                >{character.getCharacterClass} {character.level}</h2>
+                <p 
+                  class="text-default-black dark:text-default-white text-2vw font-ralewayMedium"
+                >Classe / Nível</p>
               </section>
-              <section class="generics__initial__aside--item">
-                <h2 class="text-default-black dark:text-default-white">{character.getRaceName}</h2>
-                <p class="text-default-black dark:text-default-white">Raça</p>
+              <section class="py-:1 px-:2">
+                <h2 
+                  class="text-default-black dark:text-default-white font-ralewayMedium text-2-2vw border-b-2 border-default-black"
+                >{character.getRaceName}</h2>
+                <p 
+                  class="text-default-black dark:text-default-white text-2vw font-ralewayMedium"
+                >Raça</p>
               </section>
-              <section class="generics__initial__aside--item">
-                <h2 class="text-default-black dark:text-default-white">{character.getOriginName}</h2>
-                <p class="text-default-black dark:text-default-white">Origem</p>
+              <section class="py-:1 px-:2">
+                <h2 
+                  class="text-default-black dark:text-default-white font-ralewayMedium text-2-2vw border-b-2 border-default-black"
+                >{character.getOriginName}</h2>
+                <p 
+                  class="text-default-black dark:text-default-white text-2vw font-ralewayMedium"
+                >Origem</p>
               </section>
             </section>
           </section>
@@ -61,7 +71,9 @@ const HabilityItem = defineComponent({
         <article class="character-hability">
           <p class="text-sm dark:text-default-black">{props.hability}</p>
           <p class="text-2xl dark:text-default-black">{props.modifier}</p>
-          <p class="text-base bg-default-white dark:bg-dark-one dark:text-default-white py-1 px-:3 rounded-full text-default-black cursor-pointer hover:bg-default-blueLight dark:hover:bg-default-blueDark">{props.total}</p>
+          <p 
+            class="text-base bg-default-white dark:bg-dark-one dark:text-default-white py-1 px-:3 rounded-full text-default-black cursor-pointer hover:bg-default-blueLight dark:hover:bg-default-blueDark"
+          >{props.total}</p>
         </article>
       </>
     )
@@ -75,8 +87,12 @@ const ProficiencyItem = defineComponent({
     return () => (
       <>
         <article class="character-proficiency">
-          <p class="items__save--value dark:text-default-white rounded-full dark:bg-default-black">{character.getProficiencyBonus}</p>
-          <p class="items__save--proficiency dark:text-default-black">Proficiência</p>
+          <p 
+            class="bg-default-white py-:1 px-:2 dark:text-default-white text-default-black rounded-full dark:bg-default-black ml-:2"
+          >{character.getProficiencyBonus}</p>
+          <p 
+          class="text-default-white dark:text-default-black flex justify-around items-center"
+          >Proficiência</p>
         </article>
       </>
     )
@@ -93,9 +109,15 @@ const ExpertiseItem = defineComponent({
       <>
         {expertises.map((expertise) => {
           return (
-            <article class="items__skills">
-              <input type="checkbox" vModel={character.expertises[expertise.code]} />
-              <p>{expertise.name}</p>
+            <article class="flex justify-between items-center mt-:1 bg-dark-one dark:bg-white-one hover:bg-dark-oneHover dark:hover:bg-white-oneHover w-full p-:1">
+              <input 
+                class="text-default-white dark:text-default-black" 
+                type="checkbox" 
+                vModel={character.expertises[expertise.code]} 
+              />
+              <p 
+                class="text-default-white dark:text-default-black"
+              >{expertise.name}</p>
             </article>
           )
         })}
@@ -112,22 +134,37 @@ const DataItem = defineComponent({
 
     return () => (
       <>
-        <section class="items__base__data">
-          <article class="data__container">
-            <h2>Iniciativa</h2>
-            <p>{character.initiative}</p>
+        <section class="flex justify-around items-center w-full bg-dark-one dark:bg-white-one p-:1 ml-:2">
+          <article class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer hover:bg-dark-oneHover dark:hover:bg-white-oneHover">
+            <h2 
+              class="text-default-white dark:text-default-black"
+            >Iniciativa</h2>
+            <p 
+              class="text-default-white dark:text-default-black"
+            >{character.initiative}</p>
           </article>
-          <article class="data__container">
-            <h2>CA</h2>
-            <p>{character.CA}</p>
+          <article class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer hover:bg-dark-oneHover dark:hover:bg-white-oneHover">
+            <h2 
+              class="text-default-white dark:text-default-black"
+            >CA</h2>
+            <p 
+              class="text-default-white dark:text-default-black"
+            >{character.CA}</p>
           </article>
-          <article class="data__container">
-            <h2>Velocidade</h2>
-            <p>{character.speed}</p>
+          <article class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer hover:bg-dark-oneHover dark:hover:bg-white-oneHover">
+            <h2 
+              class="text-default-white dark:text-default-black"
+            >Velocidade</h2>
+            <p 
+              class="text-default-white dark:text-default-black"
+            >{character.speed}</p>
           </article>
-          <article class="data__container" onClick={toggleChance}>
-            <h2>UC</h2>
-            {character.lastChance ? <p>Sim</p> : <p>Não</p>}
+          <article 
+            class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer hover:bg-dark-oneHover dark:hover:bg-white-oneHover" 
+            onClick={toggleChance}
+          >
+            <h2 class="text-default-white dark:text-default-black">UC</h2>
+            {character.lastChance ? <p class="text-default-white dark:text-default-black">Sim</p> : <p class="text-default-white dark:text-default-black">Não</p>}
           </article>
         </section>
       </>
@@ -141,8 +178,8 @@ const HitItem = defineComponent({
 
     return () => (
       <>
-        <section class="items__base__data">
-          <p>AA</p>
+        <section class="flex justify-around items-center w-full bg-dark-one dark:bg-white-one p-:1 ml-:2">
+          <p class="text-default-white dark:text-default-black">AA</p>
         </section>
       </>
     )
@@ -154,7 +191,9 @@ const TextItemDescription = defineComponent({
     const character = useCharacterStore();
 
     return () => (
-      <span class="base__text__description">{character.description}</span>
+      <span 
+        class="font-ralewayMedium text-base text-default-white dark:text-default-black"
+      >{character.description}</span>
     )
   }
 })
@@ -167,10 +206,15 @@ const TextItem = defineComponent({
 
     return () => (
       <>
-        <section class="base__text">
-          <section class="base__text__initial">
-            <h2>Descrição:</h2>
-            <button onClick={toggleButton}>{toggleTextItem.value ? "-": ">"}</button>
+        <section class="flex flex-col justify-start items-center w-full bg-dark-one dark:bg-white-one hover:bg-dark-oneHover dark:hover:bg-white-oneHover p-:1 ml-:2 mt-:2">
+          <section class="flex justify-between w-full">
+            <h2 
+              class="font-poppinsBold  text-default-white dark:text-default-black"
+            >Descrição:</h2>
+            <button 
+              class="h-6 rounded-full px-:1 border-2 focus:outline-none border-white-input hover:bg-dark-inputHover dark:bg-white-input dark:hover:bg-white-oneHover bg-none cursor-pointer text-default-white dark:text-default-black" 
+              onClick={toggleButton}
+            >{toggleTextItem.value ? "-": ">"}</button>
           </section>
           {toggleTextItem.value && <TextItemDescription />}
         </section>
@@ -184,7 +228,9 @@ const BreakItemDescription = defineComponent({
     const character = useCharacterStore();
 
     return () => (
-      <span class="base__text__description">{character.breakPoint}</span>
+      <span 
+        class="font-ralewayTiny text-base text-default-white dark:text-default-black"
+      >{character.breakPoint}</span>
     )
   }
 })
@@ -197,10 +243,15 @@ const BreakItem = defineComponent({
 
     return () => (
       <>
-        <section class="base__text">
-          <section class="base__text__initial">
-            <h2>Ponto de Quebra:</h2>
-            <button onClick={toggleButton}>{toggleBreakItem.value ? "-": ">"}</button>
+        <section class="flex flex-col justify-start items-center w-full bg-dark-one dark:bg-white-one hover:bg-dark-oneHover dark:hover:bg-white-oneHover p-:1 ml-:2 mt-:2">
+          <section class="flex justify-between w-full">
+            <h2 
+              class="font-poppinsBold text-default-white dark:text-default-black"
+            >Ponto de Quebra:</h2>
+            <button 
+              class="h-6 rounded-full px-:1 border-2 focus:outline-none border-white-input hover:bg-dark-inputHover dark:bg-white-input dark:hover:bg-white-oneHover bg-none cursor-pointer  text-default-white dark:text-default-black" 
+              onClick={toggleButton}
+            >{toggleBreakItem.value ? "-": ">"}</button>
           </section>
           {toggleBreakItem.value && <BreakItemDescription />}
         </section>
@@ -215,8 +266,8 @@ const ItemsBox = defineComponent({
 
     return () => (
       <>
-        <section class="items">
-          <aside class="items__hability shadow-lg dark:bg-default-white">
+        <section class="flex h-auto p-:2">
+          <aside class="flex flex-col flex-nowrap justify-between items-center rounded-lg h-auto w-28 shadow-lg bg-dark-one dark:bg-white-one p-:1">
             <HabilityItem 
               hability="Força" 
               modifier={character.strengthModifier} 
@@ -248,11 +299,11 @@ const ItemsBox = defineComponent({
               total={character.hability.charisma} 
             />
           </aside>
-          <section class="items__save">
+          <section class="flex flex-col flex-nowrap justify-between items-center rounded-lg h-auto w-60 ml-:2 dark:bg-default-black">
             <ProficiencyItem />
             <ExpertiseItem />
           </section>
-          <section class="items__base">
+          <section class="flex flex-col flex-nowrap justify-start items-center rounded-lg h-auto w-72 ml-:2 dark:bg-default-black">
             <DataItem />
             <HitItem />
             <TextItem />
@@ -277,12 +328,6 @@ const PlaygroundBox = defineComponent({
 export default defineComponent({
   name: "CharacterProfile",
   setup() {
-    const character = useCharacterStore();
-
-    const profileBackground = () => {
-      return `profile--${character.origin}`
-    }
-
     return () => (
       <section class="bg-default-white dark:bg-dark-one pt-bar">
         <GenericsBox />
