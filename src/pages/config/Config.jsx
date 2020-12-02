@@ -30,8 +30,8 @@ export default defineComponent({
     return () => (
       <section class="pt-8 bg-default-white dark:bg-default-black h-screen">
         <select vModel={theme.value} class="bg-dark-one dark:bg-default-white dark:text-default-black rounded-lg p-1">
-          <option value="light" class="text-default-white dark:text-default-black">Light</option>
-          <option value="dark" class="text-default-white dark:text-default-black">Dark</option>
+          <option value="light" class="text-default-white dark:text-default-black">Claro</option>
+          <option value="dark" class="text-default-white dark:text-default-black">Escuro</option>
         </select>
       </section>
     )
