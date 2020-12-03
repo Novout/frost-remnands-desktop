@@ -1,0 +1,7 @@
+{
+  "TOAST": {
+    "PROFILE_DEFAULT_SUCCESS": "Personagem Carregado",
+    "PROFILE_ITEMS_SUCCESS": "Alterado com Sucesso!",
+    "PROFILE_INTEGER_ERROR": "Digite um número inteiro!"
+  }
+}

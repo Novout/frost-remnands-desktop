@@ -4,14 +4,16 @@ import { JsonFileSync } from "_/services/fs";
 import { useToast } from "vue-toastification";
 import { validateNumber } from "@/utils/validate";
 
+
 const GenericsBox = defineComponent({
   setup() {
-    onMounted(() => {
-      const toast = useToast();
-      toast.success("Personagem Carregado!");
-    });
-
     const character = useCharacterStore();
+
+    onMounted(() => {
+      const { TOAST } = JsonFileSync("localisation/pt_BR.json");
+      const toast = useToast();
+      toast.success(TOAST.PROFILE_DEFAULT_SUCCESS);
+    });
 
     return () => (
       <>
@@ -129,6 +131,7 @@ const ExpertiseItem = defineComponent({
 
 const DataItem = defineComponent({
   setup() {
+    const { TOAST } = JsonFileSync("localisation/pt_BR.json");
     const character = useCharacterStore();
     const toast = useToast();
     const modal = reactive({
@@ -174,11 +177,11 @@ const DataItem = defineComponent({
           }
         }[modal.id]() || (() =>  { return; })();
         modal.isOpen = false;
-        toast.success("Alterado com Sucesso!");
+        toast.success(TOAST.PROFILE_ITEMS_SUCCESS);
         return;
       }
 
-      toast.error("Digite um número inteiro!");
+      toast.error(TOAST.PROFILE_INTEGER_ERROR);
     }
 
     const toggleChance = () => character.lastChance = !character.lastChance;
