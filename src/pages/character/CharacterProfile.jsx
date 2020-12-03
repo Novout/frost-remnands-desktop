@@ -229,7 +229,7 @@ const BreakItemDescription = defineComponent({
 
     return () => (
       <span 
-        class="font-ralewayTiny text-base text-default-white dark:text-default-black"
+        class="font-ralewayMedium text-base text-default-white dark:text-default-black"
       >{character.breakPoint}</span>
     )
   }
