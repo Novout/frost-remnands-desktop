@@ -1,0 +1,1 @@
+export const validateNumber = (value) => value.match(/^[0-9]*$/);

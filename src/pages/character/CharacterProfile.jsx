@@ -1,7 +1,8 @@
-import { defineComponent, ref, onMounted } from "vue";
+import { defineComponent, ref, reactive, onMounted } from "vue";
 import { useCharacterStore } from "-/character";
 import { JsonFileSync } from "_/services/fs";
 import { useToast } from "vue-toastification";
+import { validateNumber } from "@/utils/validate";
 
 const GenericsBox = defineComponent({
   setup() {
@@ -129,38 +130,117 @@ const ExpertiseItem = defineComponent({
 const DataItem = defineComponent({
   setup() {
     const character = useCharacterStore();
+    const toast = useToast();
+    const modal = reactive({
+      isOpen: false,
+      payload: undefined,
+      id: "",
+      title: "",
+      save: "Salvar"
+    });
 
-    const toggleChance = () => character.lastChance = !character.lastChance
+    const modalOpen = (event) => {
+      modal.id = event.target.id;
+      modal.payload = undefined;
+      const execute = {
+        "initiative": () => {
+          modal.title = "Alterar Iniciativa";
+          return;
+        },
+        "ca": () => {
+          modal.title = "Alterar CA";
+          return;
+        },
+        "speed": () => {
+          modal.title = "Alterar Velocidade Base";
+          return;
+        },
+      }[modal.id]() || (() =>  { return; })();
+
+      modal.isOpen = true;
+    }
+
+    const closeModal = () => {
+      if(validateNumber(modal.payload)) {
+        const execute = {
+          "initiative": () => {
+            character.initiative = modal.payload;
+          },
+          "ca": () => {
+            character.CA = modal.payload;
+          },
+          "speed": () => {
+            character.speed = modal.payload;
+          }
+        }[modal.id]() || (() =>  { return; })();
+        modal.isOpen = false;
+        toast.success("Alterado com Sucesso!");
+        return;
+      }
+
+      toast.error("Digite um número inteiro!");
+    }
+
+    const toggleChance = () => character.lastChance = !character.lastChance;
 
     return () => (
       <>
+        <section 
+          class="modal-background"
+          v-show={modal.isOpen}
+        >
+          <article class="flex flex-col justify-between h-40 items-start dark:bg-white-input bg-dark-input p-:3">
+            <h1 class="text-default-white dark:text-default-black font-poppinsMedium text-xl">{modal.title}</h1>
+            <input 
+              class="text-default-black dark:text-default-black"
+              type="text"
+              vModel={modal.payload} 
+            />
+            <button 
+              class="text-default-white dark:text-default-black bg-default-black dark:bg-default-white rounded-full cursor-pointer mt-:2 px-:2 py-:1 focus:outline-none"
+              onClick={closeModal}
+            >{modal.save}</button>
+          </article>
+        </section>
         <section class="flex justify-around items-center w-full bg-dark-one dark:bg-white-one p-:1 ml-:2">
-          <article class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer hover:bg-dark-oneHover dark:hover:bg-white-oneHover">
+          <article 
+            class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer hover:bg-dark-oneHover dark:hover:bg-white-oneHover flex-1"
+            id="initiative"
+            onClick={modalOpen}
+          >
             <h2 
-              class="text-default-white dark:text-default-black"
+              class="text-default-white dark:text-default-black pointer-events-none"
             >Iniciativa</h2>
             <p 
-              class="text-default-white dark:text-default-black"
+              class="text-default-white dark:text-default-black pointer-events-none"
             >{character.initiative}</p>
           </article>
-          <article class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer hover:bg-dark-oneHover dark:hover:bg-white-oneHover">
+          <article 
+            class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer hover:bg-dark-oneHover dark:hover:bg-white-oneHover flex-1"
+            id="ca"
+            onClick={modalOpen}
+          >
             <h2 
-              class="text-default-white dark:text-default-black"
+              class="text-default-white dark:text-default-black pointer-events-none"
             >CA</h2>
             <p 
-              class="text-default-white dark:text-default-black"
+              class="text-default-white dark:text-default-black pointer-events-none"
             >{character.CA}</p>
           </article>
-          <article class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer hover:bg-dark-oneHover dark:hover:bg-white-oneHover">
+          <article 
+            class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer hover:bg-dark-oneHover dark:hover:bg-white-oneHover flex-1"
+            id="speed"
+            onClick={modalOpen}
+          >
             <h2 
-              class="text-default-white dark:text-default-black"
+              class="text-default-white dark:text-default-black pointer-events-none"
             >Velocidade</h2>
             <p 
-              class="text-default-white dark:text-default-black"
+              class="text-default-white dark:text-default-black pointer-events-none"
             >{character.speed}</p>
           </article>
           <article 
-            class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer hover:bg-dark-oneHover dark:hover:bg-white-oneHover" 
+            class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer hover:bg-dark-oneHover dark:hover:bg-white-oneHover flex-1" 
             onClick={toggleChance}
           >
             <h2 class="text-default-white dark:text-default-black">UC</h2>

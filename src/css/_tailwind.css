@@ -11,6 +11,10 @@
     @apply flex justify-around items-center w-full h-16 overflow-x-hidden bg-dark-one dark:bg-white-one hover:bg-dark-oneHover dark:hover:bg-white-oneHover;
   }
 
+  .modal-background { 
+    @apply fixed h-full top-0 left-0 w-screen flex justify-center items-center bg-opacity-90 hover:bg-opacity-90 bg-dark-oneHover hover:bg-default-black transition duration-200 ease-in-out select-none;
+  }
+
   .outline-solid-white {
     outline: 2px solid theme("colors.default.white");
     outline-offset: 2px;
