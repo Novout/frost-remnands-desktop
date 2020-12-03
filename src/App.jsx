@@ -28,7 +28,7 @@ export default defineComponent({
   render() {
     return (
       <>
-        <nav id="bar" class="flex justify-end items-center fixed bg-opacity-10 dark:bg-opacity-10 bg-default-black dark:bg-default-black text-default-black dark:text-default-white w-full h-bar drag z-max">
+        <nav id="bar" class="flex justify-end items-center fixed bg-default-white dark:bg-default-black text-default-black dark:text-default-white w-full h-bar drag z-max">
           <router-link to="/" class="font-ralewayMedium text-sm mr-auto ml-10 no-underline appearance-none cursor-pointer no-drag hover:text-white-oneHover">Menu Inicial</router-link>
           <router-link to="/profile" class="font-ralewayMedium text-sm mr-auto ml-10 no-underline appearance-none cursor-pointer no-drag hover:text-white-oneHover">Perfil</router-link>
           <div id="minimize" onClick={this.windowMinimize} class="h-full px-px10 no-drag cursor-pointer hover:bg-default-red dark:hover:bg-default-red">

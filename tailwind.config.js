@@ -267,6 +267,12 @@ module.exports = {
       '3vw': ['3vw', { lineHeight: '1.25rem' }],
       '4vw': ['4vw', { lineHeight: '1.25rem' }],
       '5vw': ['5vw', { lineHeight: '1.25rem' }],
+      '1vh': ['1vh', { lineHeight: '1rem' }],
+      '2vh': ['2vh', { lineHeight: '1rem' }],
+      '2-2vh': ['2.2vh', { lineHeight: '1.25rem' }],
+      '3vh': ['3vh', { lineHeight: '1.25rem' }],
+      '4vh': ['4vh', { lineHeight: '1.25rem' }],
+      '5vh': ['5vh', { lineHeight: '1.25rem' }],
 		},
 		fontWeight: {
 			thin: '100',
@@ -287,6 +293,7 @@ module.exports = {
       medium: '50vh',
       bar: '30px',
       screen: '100vh',
+      'profile-header': '10vh'
 		}),
 		inset: (theme, { negative }) => ({
 			auto: 'auto',
@@ -491,7 +498,10 @@ module.exports = {
 			full: '100%',
 			screen: '100vw',
 			min: 'min-content',
-			max: 'max-content',
+      max: 'max-content',
+      'profile-aside': '15vw',
+      'profile-main': '25vw',
+      'profile-general': '60vw'
 		}),
 		zIndex: {
 			auto: 'auto',

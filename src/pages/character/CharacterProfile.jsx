@@ -14,32 +14,32 @@ const GenericsBox = defineComponent({
 
     return () => (
       <>
-        <header class="generics flex flex-col flex-nowrap">
-          <section class="flex flex-row flex-nowrap justify-around items-center">
+        <header class="flex flex-col flex-nowrap">
+          <section class="flex flex-row flex-nowrap justify-around items-center h-profile-header">
             <h1 class="text-3vw cursor-pointer text-default-black dark:text-default-white">{character.name}</h1>
             <section class="flex flex-row flex-nowrap">
               <section class="py-:1 px-:2">
                 <h2 
-                  class="text-default-black dark:text-default-white font-ralewayMedium text-2-2vw border-b-2 border-default-black"
-                >{character.getCharacterClass} {character.level}</h2>
+                  class="text-default-black dark:text-default-white font-ralewayMedium text-3vh border-b-2 border-default-black dark:border-default-white mb-1"
+                >{character.getCharacterClass} / {character.level}</h2>
                 <p 
-                  class="text-default-black dark:text-default-white text-2vw font-ralewayMedium"
+                  class="text-default-black dark:text-default-white text font-ralewayMedium text-3vh"
                 >Classe / Nível</p>
               </section>
               <section class="py-:1 px-:2">
                 <h2 
-                  class="text-default-black dark:text-default-white font-ralewayMedium text-2-2vw border-b-2 border-default-black"
+                  class="text-default-black dark:text-default-white font-ralewayMedium text-3vh border-b-2 border-default-black dark:border-default-white mb-1"
                 >{character.getRaceName}</h2>
                 <p 
-                  class="text-default-black dark:text-default-white text-2vw font-ralewayMedium"
+                  class="text-default-black dark:text-default-white text-3vh font-ralewayMedium"
                 >Raça</p>
               </section>
               <section class="py-:1 px-:2">
                 <h2 
-                  class="text-default-black dark:text-default-white font-ralewayMedium text-2-2vw border-b-2 border-default-black"
+                  class="text-default-black dark:text-default-white font-ralewayMedium text-3vh border-b-2 border-default-black dark:border-default-white mb-1"
                 >{character.getOriginName}</h2>
                 <p 
-                  class="text-default-black dark:text-default-white text-2vw font-ralewayMedium"
+                  class="text-default-black dark:text-default-white text-3vh font-ralewayMedium"
                 >Origem</p>
               </section>
             </section>
@@ -267,7 +267,7 @@ const ItemsBox = defineComponent({
     return () => (
       <>
         <section class="flex h-auto p-:2">
-          <aside class="flex flex-col flex-nowrap justify-between items-center rounded-lg h-auto w-28 shadow-lg bg-dark-one dark:bg-white-one p-:1">
+          <aside class="flex flex-col flex-nowrap justify-between items-center rounded-lg h-auto w-profile-aside shadow-lg bg-dark-one dark:bg-white-one p-:1">
             <HabilityItem 
               hability="Força" 
               modifier={character.strengthModifier} 
@@ -299,11 +299,11 @@ const ItemsBox = defineComponent({
               total={character.hability.charisma} 
             />
           </aside>
-          <section class="flex flex-col flex-nowrap justify-between items-center rounded-lg h-auto w-60 ml-:2 dark:bg-default-black">
+          <section class="flex flex-col flex-nowrap justify-between items-center rounded-lg h-auto w-profile-main ml-:2 dark:bg-default-black">
             <ProficiencyItem />
             <ExpertiseItem />
           </section>
-          <section class="flex flex-col flex-nowrap justify-start items-center rounded-lg h-auto w-72 ml-:2 dark:bg-default-black">
+          <section class="flex flex-col flex-nowrap justify-start items-center rounded-lg h-auto w-profile-general ml-:1 dark:bg-default-black">
             <DataItem />
             <HitItem />
             <TextItem />
