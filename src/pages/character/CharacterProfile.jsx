@@ -4,7 +4,6 @@ import { JsonFileSync } from "_/services/fs";
 import { useToast } from "vue-toastification";
 import { validateNumber } from "@/utils/validate";
 
-
 const GenericsBox = defineComponent({
   setup() {
     const character = useCharacterStore();
