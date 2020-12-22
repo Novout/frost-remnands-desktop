@@ -73,35 +73,40 @@ const ItemBox = defineComponent({
     return (
       <>
         <section class="py-:2 bg-white-one dark:bg-dark-one">
-          <section class="flex flex-col justify-start items-center w-full">
+          <section class="flex flex-col flex-wrap justify-start items-center w-full">
             {/* Conhecimento */}
+            <section class="w-full h-auto">
+              <h2 class="font-poppinsBold text-default-dark dark:text-default-blueLight text-xl mr-auto ml-:2">Talentos Escolhidos:</h2>
+            </section>
+            <section class="flex flex-row flex-wrap items-center justify-start w-full p-:2">
+              {this.talentList.map(talent => <p class="bg-default-blueDark p-:1 mr-:1 rounded-full my-:1 pointer-events-none">{talent.title}</p>)}
+            </section>
             <section class="flex flex-row justify-between items-center w-full p-:2">
               <h2 class="font-poppinsBold text-default-dark dark:text-default-blueLight text-xl">Conhecimento</h2>
               <button
                 onClick={this.toggleKnowledge}
-                class="cursor-pointer focus:outline-none"
+                class="cursor-pointer focus:outline-none text-default-black dark:text-default-white"
               >||</button>
             </section>
             <section 
               class="w-full" 
               v-show={this.toggle.knowledge}
             >
-              {this.talentList.map(talent => <p>{talent.title}</p>)}
               {this.talents.map(talent => 
                 <article 
                   class="flex flex-row flex-nowrap justify-between items-center w-full px-:2 mt-2" 
                   v-show={talent.code === 'knowledge'}
                 >
-                  <h3 class="flex-1">{talent.title}</h3>
+                  <h3 class="flex-1 text-default-black dark:text-default-white">{talent.title}</h3>
                   <button 
                     onClick={this.pushTalent}
                     id={talent.id}
-                    class="dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
+                    class="dark:bg-white-one bg-default-black hover:bg-default-blueDark dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
                   >+</button>
                   <button 
                     onClick={this.removeTalent}
                     id={talent.id}
-                    class="ml-:1 dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
+                    class="ml-:1 dark:bg-white-one bg-default-black hover:bg-default-blueDark dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
                   >-</button>
                 </article>
               )}
@@ -111,7 +116,7 @@ const ItemBox = defineComponent({
               <h2 class="font-poppinsBold text-default-dark dark:text-default-blueLight text-xl">Crença</h2>
               <button
                 onClick={this.toggleFaith}
-                class="cursor-pointer focus:outline-none"
+                class="cursor-pointer focus:outline-none text-default-black dark:text-default-white"
               >||</button>
             </section>
             <section 
@@ -123,16 +128,16 @@ const ItemBox = defineComponent({
                   class="flex flex-row flex-nowrap justify-between items-center w-full px-:2 mt-2" 
                   v-show={talent.code === 'faith'}
                 >
-                  <h3 class="flex-1">{talent.title}</h3>
+                  <h3 class="flex-1 text-default-black dark:text-default-white">{talent.title}</h3>
                   <button 
                     onClick={this.pushTalent}
                     id={talent.id}
-                    class="dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
+                    class="bg-default-black hover:bg-default-blueDark dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
                   >+</button>
                   <button 
                     onClick={this.removeTalent}
                     id={talent.id}
-                    class="ml-:1 dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
+                    class="bg-default-black hover:bg-default-blueDark ml-:1 dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
                   >-</button>
                 </article>
               )}
@@ -142,7 +147,7 @@ const ItemBox = defineComponent({
               <h2 class="font-poppinsBold text-default-dark dark:text-default-blueLight text-xl">Fúria</h2>
               <button
                 onClick={this.toggleRage}
-                class="cursor-pointer focus:outline-none"
+                class="cursor-pointer focus:outline-none text-default-black dark:text-default-white"
               >||</button>
             </section>
             <section 
@@ -154,16 +159,16 @@ const ItemBox = defineComponent({
                   class="flex flex-row flex-nowrap justify-between items-center w-full px-:2 mt-2" 
                   v-show={talent.code === 'rage'}
                 >
-                  <h3 class="flex-1">{talent.title}</h3>
+                  <h3 class="flex-1 text-default-black dark:text-default-white">{talent.title}</h3>
                   <button 
                     onClick={this.pushTalent}
                     id={talent.id}
-                    class="dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
+                    class="bg-default-black hover:bg-default-blueDark dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
                   >+</button>
                   <button 
                     onClick={this.removeTalent}
                     id={talent.id}
-                    class="ml-:1 dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
+                    class="bg-default-black hover:bg-default-blueDark ml-:1 dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
                   >-</button>
                 </article>
               )}
@@ -173,7 +178,7 @@ const ItemBox = defineComponent({
               <h2 class="font-poppinsBold text-default-dark dark:text-default-blueLight text-xl">União</h2>
               <button
                 onClick={this.toggleUnity}
-                class="cursor-pointer focus:outline-none"
+                class="cursor-pointer focus:outline-none text-default-black dark:text-default-white"
               >||</button>
             </section>
             <section 
@@ -185,16 +190,16 @@ const ItemBox = defineComponent({
                   class="flex flex-row flex-nowrap justify-between items-center w-full px-:2 mt-2" 
                   v-show={talent.code === 'unity'}
                 >
-                  <h3 class="flex-1">{talent.title}</h3>
+                  <h3 class="flex-1 text-default-black dark:text-default-white">{talent.title}</h3>
                   <button 
                     onClick={this.pushTalent}
                     id={talent.id}
-                    class="dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
+                    class="bg-default-black hover:bg-default-blueDark dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
                   >+</button>
                   <button 
                     onClick={this.removeTalent}
                     id={talent.id}
-                    class="ml-:1 dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
+                    class="bg-default-black hover:bg-default-blueDark ml-:1 dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
                   >-</button>
                 </article>
               )}
