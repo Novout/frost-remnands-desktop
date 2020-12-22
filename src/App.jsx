@@ -20,7 +20,8 @@ export default defineComponent({
     }
 
     const windowClose = () => {
-      win.close();
+      const close = window.confirm("Deseja realmente fechar o aplicativo?");
+      if(close) win.close();
     }
 
     return { windowClose, windowMinimize }
