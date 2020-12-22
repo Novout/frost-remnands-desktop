@@ -1,4 +1,4 @@
-import { defineComponent, ref, reactive, onMounted } from "vue";
+import { defineComponent, ref, reactive, onMounted, withModifiers } from "vue";
 import { useCharacterStore } from "-/character";
 import { JsonFileSync } from "_/services/fs";
 import { useToast } from "vue-toastification";
@@ -256,6 +256,8 @@ const DataItem = defineComponent({
 
 const HitItemModal = defineComponent({
   setup() {
+    const { TOAST } = JsonFileSync("localisation/pt_BR.json");
+    const toast = useToast();
     const character = useCharacterStore();
     const toggleHitModal = ref(false);
 
@@ -265,6 +267,7 @@ const HitItemModal = defineComponent({
 
     const closeHitModal = () => {
       toggleHitModal.value = false;
+      toast.success(TOAST.PROFILE_ITEMS_SUCCESS);
     }
 
     return () => (
@@ -425,54 +428,158 @@ const BreakItem = defineComponent({
   }
 })
 
-const ItemsBox = defineComponent({
+const InventoryItem = defineComponent({
   setup() {
-    const character = useCharacterStore();
+    let toggleInventoryItem = ref(false);
+
+    const toggleButton = () => toggleInventoryItem.value = !toggleInventoryItem.value;
 
     return () => (
       <>
+        <section class="flex flex-col justify-start items-center w-full bg-dark-one dark:bg-dark-bg p-:1 ml-:2 mt-:2">
+          <section class="flex justify-between w-full">
+            <h2 
+              class="font-ralewayMedium text-default-white dark:text-default-white"
+            >Inventário:</h2>
+            <button 
+              class="h-6 rounded-full px-:1 border-2 focus:outline-none border-white-input hover:bg-dark-inputHover dark:bg-white-input dark:hover:bg-white-oneHover bg-none cursor-pointer  text-default-white dark:text-default-black" 
+              onClick={toggleButton}
+            >{toggleInventoryItem.value ? ">": ">"}</button>
+          </section>
+          {toggleInventoryItem.value && <Inventory />}
+        </section>
+      </>
+    )
+  }
+})
+
+const ItemsBox = defineComponent({
+  setup() {
+    const { TOAST } = JsonFileSync("localisation/pt_BR.json");
+    const toast = useToast();
+    const character = useCharacterStore();
+
+    const toggleHitModal = ref(false);
+
+    const openHabilityModal = () => {
+      toggleHitModal.value = true;
+    }
+
+    const closeHabilityModal = () => {
+      toggleHitModal.value = false;
+      toast.success(TOAST.PROFILE_ITEMS_SUCCESS);
+    }
+
+    return () => (
+      <>
+        <section 
+          class="modal-background" 
+          v-show={toggleHitModal.value}
+        >
+          <section class="flex flex-col justify-start items-center h-fully w-2/4 bg-default-white dark:bg-dark-one">
+            <section class="flex flex-row flex-wrap items-center justify-center mt-:1 w-2/4">
+              <h2 class="text-default-blueTertiary">Força:</h2>
+              <input 
+                vModel={[character.hability.strength, ['number']]}
+                class="text-default-white bg-default-black dark:text-default-black dark:bg-default-white px-:1"
+                type="number" 
+              />
+            </section>
+            <section class="flex flex-row flex-wrap items-center justify-center mt-:1 w-2/4">
+              <h2 class="text-default-blueTertiary">Destreza:</h2>
+              <input 
+                vModel={[character.hability.dexterity, ['number']]}
+                class="text-default-white bg-default-black dark:text-default-black dark:bg-default-white px-:1"
+                type="number" 
+              />
+            </section>
+            <section class="flex flex-row flex-wrap items-center justify-center mt-:1 w-2/4">
+              <h2 class="text-default-blueTertiary">Constituição:</h2>
+              <input 
+                vModel={[character.hability.constitution, ['number']]}
+                class="text-default-white bg-default-black dark:text-default-black dark:bg-default-white px-:1"
+                type="number" 
+              />
+            </section>
+            <section class="flex flex-row flex-wrap items-center justify-center mt-:1 w-2/4">
+              <h2 class="text-default-blueTertiary">Inteligência:</h2>
+              <input 
+                vModel={[character.hability.intelligence, ['number']]}
+                class="text-default-white bg-default-black dark:text-default-black dark:bg-default-white px-:1"
+                type="number" 
+              />
+            </section>
+            <section class="flex flex-row flex-wrap items-center justify-center mt-:1 w-2/4">
+              <h2 class="text-default-blueTertiary">Sabedoria:</h2>
+              <input 
+                vModel={[character.hability.wisdom, ['number']]}
+                class="text-default-white bg-default-black dark:text-default-black dark:bg-default-white px-:1"
+                type="number" 
+              />
+            </section>
+            <section class="flex flex-row flex-wrap items-center justify-center my-:1 w-2/4">
+              <h2 class="text-default-white bg-default-black dark:text-default-black dark:bg-default-white px-:1">Carisma:</h2>
+              <input 
+                vModel={[character.hability.charisma, ['number']]}
+                class="text-default-white bg-default-black dark:text-default-black dark:bg-default-white px-:1"
+                type="number" 
+              />
+            </section>
+            <button 
+              onClick={closeHabilityModal}
+              class="px-:2 py-:1 mb-:1 bg-default-black dark:bg-default-white text-default-white dark:text-default-black rounded-full cursor-pointer focus:outline-none"
+            >Salvar</button>
+          </section>
+        </section>
         <section class="flex h-auto p-:2">
           <aside class="flex flex-col flex-nowrap justify-between items-center rounded-lg h-auto w-profile-aside shadow-lg bg-dark-one dark:bg-dark-bg p-:1">
             <HabilityItem 
               hability="Força" 
               modifier={character.strengthModifier} 
-              total={character.hability.strength} 
+              total={character.hability.strength}
+              onClick={openHabilityModal} 
             />
             <HabilityItem 
               hability="Destreza" 
               modifier={character.dexterityModifier} 
               total={character.hability.dexterity} 
+              onClick={openHabilityModal} 
             />
             <HabilityItem 
               hability="Constituição" 
               modifier={character.constitutionModifier}  
               total={character.hability.constitution} 
+              onClick={openHabilityModal}
             />
             <HabilityItem 
               hability="Inteligência" 
               modifier={character.intelligenceModifier} 
               total={character.hability.intelligence} 
+              onClick={openHabilityModal}
             />
             <HabilityItem 
               hability="Sabedoria" 
               modifier={character.wisdomModifier} 
-              total={character.hability.wisdom} 
+              total={character.hability.wisdom}
+              onClick={openHabilityModal}  
             />
             <HabilityItem 
               hability="Carisma" 
               modifier={character.charismaModifier} 
-              total={character.hability.charisma} 
+              total={character.hability.charisma}
+              onClick={openHabilityModal} 
             />
           </aside>
           <section class="flex flex-col flex-nowrap justify-between items-center rounded-lg h-auto w-profile-main ml-:2 dark:bg-default-black">
             <ProficiencyItem />
             <ExpertiseItem />
           </section>
-          <section class="flex flex-col flex-nowrap justify-start items-center rounded-lg h-auto w-profile-general ml-:1 dark:bg-default-black">
+          <section class="flex flex-col flex-nowrap justify-start items-center h-auto w-profile-general ml-:1">
             <DataItem />
             <HitItem />
             <TextItem />
             <BreakItem />
+            <InventoryItem />
           </section>
         </section>
       </>
