@@ -2,6 +2,8 @@
   "TOAST": {
     "PROFILE_DEFAULT_SUCCESS": "Personagem Carregado",
     "PROFILE_ITEMS_SUCCESS": "Alterado com Sucesso!",
-    "PROFILE_INTEGER_ERROR": "Digite um número inteiro!"
+    "PROFILE_INTEGER_ERROR": "Digite um número inteiro!",
+    "PROFILE_CREATION_TALENT": "Talento Adicionado com Sucesso!",
+    "PROFILE_CREATION_TALENT_DELETE": "Talento Deletado com Sucesso!"
   }
 }

@@ -1,56 +1,226 @@
 [
-  { 
-    "title": "Alouuu", 
-    "value": "al",
-    "type": "rage",
-    "isActive": false 
+  {
+    "id": "template",
+    "title": "Template",
+    "code": "unknown",
+    "description": "",
+    "requirements": "",
+    "bonus": ""
   },
   { 
-    "title": "Alouuu", 
-    "value": "al",
-    "type": "rage", 
-    "isActive": false 
+    "id": "bestiary",
+    "title": "Bestiário",
+    "code": "knowledge" ,
+    "description": "Nenhum",
+    "requirements": "Anotações pode entender muitos padrões que normalmente são descartáveis.",
+    "bonus": "Sempre que derrotar um Irracional ou Monstro, ganha +1 na rolagem de Ataque e Atirar contra esta criatura em encontros futuros. Acumulável de no máximo +3. Mesmo se derrotar mais de um mesmo Irracional ou Monstro em uma mesma cena, ganha apenas +1 na contagem."
   },
-  { 
-    "title": "Alouuu", 
-    "value": "al",
-    "type": "rage",
-    "isActive": false 
+  {
+    "id": "original-flavor",
+    "title": "Sabor Original",
+    "code": "knowledge",
+    "description": "Bom gosto é para poucos.",
+    "requirements": "Nenhum",
+    "bonus": "Sempre que ganhar itens em recompensas, sempre será de no mínimo +1."
   },
-  { 
-    "title": "Alouuu", 
-    "value": "al",
-    "type": "rage",
-    "isActive": false 
+  {
+    "id": "something-of-life",
+    "title": "Algo da Vida",
+    "code": "knowledge",
+    "description": "Aprendizado pode vir de muitas formas diferentes, e você admira isso.",
+    "requirements": "Nenhum",
+    "bonus": "Ganha +1 no modificador de Sabedoria pela metade de uma Névoa sempre que aprender algo novo com um Personagem Relevante que não seja do grupo. Não é acumulável."
   },
-  { 
-    "title": "Alouuu", 
-    "value": "al",
-    "type": "rage",
-    "isActive": false 
+  {
+    "id": "profiteer",
+    "title": "Aproveitador",
+    "code": "knowledge",
+    "description": "Tem a manha para as coisas.",
+    "requirements": "Nenhum",
+    "bonus": "Se um item deveria Quebrar devido a uma Falha Crítica e está sendo utilizado por você, o efeito é anulado."
   },
-  { 
-    "title": "Alouuu", 
-    "value": "al",
-    "type": "rage",
-    "isActive": false 
+  {
+    "id": "hacker",
+    "title": "Hacker",
+    "code": "knowledge",
+    "description": "O grande sonho de muitos pode se tornar comum.",
+    "requirements": "Nenhum",
+    "bonus": "Você ganha a habilidade de Hackear um série de itens tecnológicos do Velho Mundo. O seu dado de Hackear é 10 + bônus de proficiência + modificador de Inteligência. Possui uma única utilização por cada descanso curto/longo. Ganha novos truques a cada nível do personagem: 1-2: CD12 - Abrir caixas/portas, alterar a iluminação e desligar itens tecnológicos básicos. 3-4: CD14 - Desabilitar um item único que esteja pelo menos 100 pés de você, sendo de qualquer tipo tecnológico exceto Lendário. 5-6: CD10 - Vantagem em qualquer tipo de teste em estruturas base, exceto Mineração. 7-8: CD15 - Desativar relíquias e acessar hologramas e câmeras. 9-10: CD30 - Se o alvo único estiver conectado a algum tipo de energia (Phortem/Nekro/tipos de armaduras tecnológicas), o alvo entra diretamente no estado Morto."
   },
-  { 
-    "title": "Alouuu", 
-    "value": "al",
-    "type": "rage",
-    "isActive": false 
+  {
+    "id": "cyberpunk",
+    "title": "Cyberpunk 2371",
+    "code": "knowledge",
+    "description": "Um grande interesse por utensílios raros e de funcionalidade duvidosa.",
+    "requirements": "Raça Nekro",
+    "bonus": "Ganha um espaço adicional para Relíquia Base."
   },
-  { 
-    "title": "Alouuu", 
-    "value": "al",
-    "type": "rage",
-    "isActive": false 
+  {
+    "id": "like-a-cat",
+    "title": "Como um Gato",
+    "code": "knowledge",
+    "description": "Acostumado com escaladas de grande risco.",
+    "requirements": "Raça Tiudren",
+    "bonus": "Ganha a habilidade de Escalar. A cada 10 pés de altura, realize um teste de Destreza CD10, se falhar, você é derrubado. Qualquer dano de queda é reduzido pela metade."
   },
-  { 
-    "title": "Alouuu", 
-    "value": "al",
-    "type": "rage",
-    "isActive": false 
+  {
+    "id": "colosso",
+    "title": "Colosso",
+    "code": "knowledge",
+    "description": "Facilmente confundido com uma estátua.",
+    "requirements": "Raça Asserkarus",
+    "bonus": "+1 no modificador de Consituição e 40 centímetros de altura adicional. Se for Corrupto, ganha desvantagem em testes para entrar em Furtividade."
+  },
+  {
+    "id": "self-knowledge",
+    "title": "Como um Gato",
+    "code": "knowledge",
+    "description": "Adaptação sempre será necessária, independente da névoa.",
+    "requirements": "Raça Phortem",
+    "bonus": "Fica permanentemente com a condição Energizado, sem a necessidade de gastar Efrium."
+  },
+  {
+    "id": "doubtful-feeling",
+    "title": "Sentimento Duvidável",
+    "code": "knowledge",
+    "description": "Presentimentos é mais teórico que muita teoria.",
+    "requirements": "Raça Neutra",
+    "bonus": "Consegue presentir se algo de alta escala (muito ruim ou muito bom) em cerca de 200 pés vai acontecer em poucos minutos."
+  },
+  {
+    "id": "pure-lucky",
+    "title": "Pura Sorte",
+    "code": "faith",
+    "description": "A sorte pode ser um conceito vazio, mas real.",
+    "requirements": "Nenhum",
+    "bonus": "A cada descanso longo, você pode rerolar um dado jogado por você exceto em Atacar e Atirar. Em caso de vantagem ou desvantagem, você pode rerolar apenas 1 dado."
+  },
+  {
+    "id": "welcomed-by-sadness",
+    "title": "Acolhido pela Tristeza",
+    "code": "faith",
+    "description": "Estar sozinho pode ser algo vago demais.",
+    "requirements": "Nenhum",
+    "bonus": "Nas Mecânicas da Névoa, se entrar no estado Perdido, você não fica neste estado em troca de ter desvantagem para todos os testes no hexágono."
+  },
+  {
+    "id": "disguised-thanks",
+    "title": "Agradecimento Disfarçado",
+    "code": "faith",
+    "description": "A mentira pode ser uma grande virtude.",
+    "requirements": "Nenhum",
+    "bonus": "Ganhe 1 de Influência em sua Origem que foi expulso."
+  },
+  {
+    "id": "defense-of-continuity",
+    "title": "Defesa da Continuidade",
+    "code": "faith",
+    "description": "A sequência da origem de tudo.",
+    "requirements": "Nenhum",
+    "bonus": "Como reação, pode anular uma magia que seja de Alvo Único e como você de alvo. Pode usar uma única vez a cada descanso longo."
+  },
+  {
+    "id": "ancestry",
+    "title": "Ascendência",
+    "code": "faith",
+    "description": "Está na hora de arrumar os problemas evitáveis.",
+    "requirements": "Nenhum",
+    "bonus": "Seu personagem é um ser Ascendente, onde participou de algum acontecimento grande no Velho Mundo e foi punido para o Novo Mundo. Apenas possui efeito narrativo."
+  },
+  {
+    "id": "under-the-skin",
+    "title": "A Flor da Pele",
+    "code": "rage",
+    "description": "A vontade de viver pode ser muito mais retratada como necessidade de redenção do que propósito divino.",
+    "requirements": "Nenhum",
+    "bonus": "Ao receber um dano fatal, ignore este dano e fique com 1 Ponto de Vida."
+  },
+  {
+    "id": "contrary-to-expected",
+    "title": "Contrariando o Esperado",
+    "code": "rage",
+    "description": "A crença real é para poucos, entre falsos profetas e falácias confortáveis, algo sobrevive.",
+    "requirements": "Nenhum",
+    "bonus": "Como reação a um ataque corpo-a-corpo de sucesso do inimigo, pode executar um contra-ataque como Atacar, se acertar, ignore o dano do adversário e role o seu dano, se falhar, o inimigo ganha uma ação extra exclusivamente contra você, além de você receber o dano normalmente. As ações extras são acumuláveis. Esta reação não possui nenhum tipo de limite de uso, podendo executar em cada ataque de uma sequência na mesma rodada."
+  },
+  {
+    "id": "feeling-of-victory",
+    "title": "Sensação de Vitória",
+    "code": "rage",
+    "description": "A glória se manifesta de formas diferentes.",
+    "requirements": "Nenhum",
+    "bonus": "Começando da primeira rodada em um combate, a cada novo turno seu em que você não receber dano durante o turno passado, ganha 1 ponto na contagem, se sofrer dano, perde todos os pontos e consequentemente todos os bônus. A cada ponto vai até o máximo 5, receba os seguintes bônus: 1: 5 na movimentação base adicionalmente. 2: +1 no modificador de Destreza. 3: 1 ação bônus adicional por turno. 4: 1 ação normal adicional por turno. 5: Dano dobrado em um ataque/tiro/magia por turno."
+  },
+  {
+    "id": "saving-greed",
+    "title": "Sensação de Vitória",
+    "code": "rage",
+    "description": "A tentativa pra mudar de vida.",
+    "requirements": "Nenhum",
+    "bonus": "Você pode forçar rejogar qualquer dado único seu exceto Dano e Falha Crítica, se falhar novamente, o teste é considerado uma Falha Crítica."
+  },
+  {
+    "id": "ignoring-the-pain",
+    "title": "Ignorando a Dor",
+    "code": "rage",
+    "description": "A própria personificação da vida, em todos os sentidos possíveis.",
+    "requirements": "Raça Asserkarus",
+    "bonus": "Seus Pontos de Vida são reduzidos pela metade (arredondando para cima), mas ganha os seguintes bônus: Permanentemente no estado Morrendo, mas o seu efeito base de recuperação da Exaustão é reduzido por 2 turnos. Imune as condições: Sangramento, Paralizado e Petrificado. Ganha vantagem nos testes no estado Morrendo."
+  },
+  {
+    "id": "specialist-with-vitality",
+    "title": "Especialista com Vitalidade",
+    "code": "unity",
+    "description": "A sua perspectiva sobre a vida pode ser consideravelmente diferente do que a maioria dos seres vivos deste universo, onde a importância dos outros se torna evidente.",
+    "requirements": "Nenhum",
+    "bonus": "Se algum aliado estiver no estado Morrendo, você pode utilizar Ajudar em Ferimentos como uma ação bônus. Se adicionalmente utilizar sua Exaustão, anula as desvantagens causadas por Ajudar em Ferimentos."
+  },
+  {
+    "id": "iluminated",
+    "title": "Iluminado",
+    "code": "unity",
+    "description": "A percepção da realidade é apenas uma pura questão de sorte.",
+    "requirements": "Nenhum",
+    "bonus": "Ganha +1 de Sabedoria e +1 de Inteligência."
+  },
+  {
+    "id": "crooked-talk",
+    "title": "Papo Torto",
+    "code": "unity",
+    "description": "Lábia de certa forma duvidosa.",
+    "requirements": "Nenhum",
+    "bonus": "Ganha a perícia Persuasão. O bônus de proficiência é dobrado para Persuasão."
+  },
+  {
+    "id": "foot-on-the-floor",
+    "title": "Pé no Chão",
+    "code": "unity",
+    "description": "Tentando fazer o mesmo com mais.",
+    "requirements": "Nenhum",
+    "bonus": "Se estiver adjascente a um aliado, pode gastar a sua Exaustão ou ação bônus para o seu aliado recuperar totalmente a Exaustão."
+  },
+  {
+    "id": "natural-leadership",
+    "title": "Liderança Nata",
+    "code": "unity",
+    "description": "Sempre se deu melhor quando o controle está em suas mãos.",
+    "requirements": "Nenhum",
+    "bonus": "Ganha a perícia Estrategismo. O bônus de proficiência é dobrado para Estrategismo."
+  },
+  {
+    "id": "temporal-sensation",
+    "title": "Sensação Temporal",
+    "code": "unity",
+    "description": "A arte de decorar é com você mesmo.",
+    "requirements": "Nenhum",
+    "bonus": "Ganha a habilidade de entender exatamente o tempo da Névoa (ou seja, se está no começo/meio/fim). Também consegue entender a percepção de prazos/demora. Por exemplo, consegue determinar o exato tempo que um ser vivo da nação saiu para a expedição e voltou."
+  },
+  {
+    "id": "chronological-readaptation",
+    "title": "Readaptação Cronológica",
+    "code": "unity",
+    "description": "A lerdeza pode te render muitos problemas futuros. A adaptação é necessária.",
+    "requirements": "Raça Tiudren",
+    "bonus": "Estando no modo Azul, ignora o efeito de movimentação reduzida pela metade. O tempo de andar na Nevoa na forma azul é reduzido de 2 hex para 1 hex."
   }
 ]
