@@ -18,9 +18,9 @@ const ItemBox = defineComponent({
       modal: false
     });
     const modal = ref({
-      "id": "template",
-      "title": "Template",
-      "code": "unknown",
+      "id": "",
+      "title": "",
+      "code": "",
       "description": "",
       "requirements": "",
       "bonus": ""

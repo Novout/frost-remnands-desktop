@@ -26,6 +26,8 @@ module.exports = {
       dark: {
         one: '#161616',
         oneHover: '#2f2f2f',
+        bg: '#1C1E25',
+        bgHover: '#292C38',
         input: '#181818',
         inputHover: '#212121'
       },

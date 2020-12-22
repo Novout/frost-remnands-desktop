@@ -71,10 +71,10 @@ const HabilityItem = defineComponent({
     return () => (
       <>
         <article class="character-hability">
-          <p class="text-sm dark:text-default-black">{props.hability}</p>
-          <p class="text-2xl dark:text-default-black">{props.modifier}</p>
+          <p class="text-sm dark:text-default-white font-ralewayMedium">{props.hability}</p>
+          <p class="text-2xl dark:text-default-white font-ralewayMedium">{props.modifier}</p>
           <p 
-            class="text-base bg-default-white dark:bg-dark-one dark:text-default-white py-1 px-:3 rounded-full text-default-black cursor-pointer hover:bg-default-blueLight dark:hover:bg-default-blueDark"
+            class="bg-default-white text-lg dark:bg-dark-one dark:text-default-white py-1 px-:3 rounded-full text-default-black cursor-pointer hover:bg-default-blueLight dark:hover:bg-default-blueDark font-ralewayMedium"
           >{props.total}</p>
         </article>
       </>
@@ -93,7 +93,7 @@ const ProficiencyItem = defineComponent({
             class="bg-default-white py-:1 px-:2 dark:text-default-white text-default-black rounded-full dark:bg-default-black ml-:2"
           >{character.getProficiencyBonus}</p>
           <p 
-          class="text-default-white dark:text-default-black flex justify-around items-center"
+          class="text-default-white dark:text-default-white flex justify-around items-center font-ralewayMedium"
           >Proficiência</p>
         </article>
       </>
@@ -111,14 +111,14 @@ const ExpertiseItem = defineComponent({
       <>
         {expertises.map((expertise) => {
           return (
-            <article class="flex justify-between items-center mt-:1 bg-dark-one dark:bg-white-one hover:bg-dark-oneHover dark:hover:bg-white-oneHover w-full p-:1">
+            <article class="flex justify-between items-center mt-:1 bg-dark-one dark:bg-dark-bg hover:bg-dark-oneHover dark:hover:bg-dark-bgHover w-full p-:1">
               <input 
-                class="text-default-white dark:text-default-black" 
+                class="text-default-white dark:text-default-white" 
                 type="checkbox" 
                 vModel={character.expertises[expertise.code]} 
               />
               <p 
-                class="text-default-white dark:text-default-black"
+                class="text-default-white dark:text-default-white font-ralewayMedium"
               >{expertise.name}</p>
             </article>
           )
@@ -191,8 +191,8 @@ const DataItem = defineComponent({
           class="modal-background"
           v-show={modal.isOpen}
         >
-          <article class="flex flex-col justify-between h-40 items-start dark:bg-white-input bg-dark-input p-:3">
-            <h1 class="text-default-white dark:text-default-black font-poppinsMedium text-xl">{modal.title}</h1>
+          <article class="flex flex-col justify-between h-40 items-start dark:bg-dark-one bg-dark-input p-:3">
+            <h1 class="text-default-white dark:text-default-white font-poppinsMedium text-xl">{modal.title}</h1>
             <input 
               class="text-default-black dark:text-default-black"
               type="text"
@@ -204,50 +204,122 @@ const DataItem = defineComponent({
             >{modal.save}</button>
           </article>
         </section>
-        <section class="flex justify-around items-center w-full bg-dark-one dark:bg-white-one p-:1 ml-:2">
+        <section class="flex justify-around items-center w-full bg-dark-one dark:bg-dark-bg p-:1 ml-:2">
           <article 
-            class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer hover:bg-dark-oneHover dark:hover:bg-white-oneHover flex-1"
+            class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer flex-1 dark:hover:bg-dark-bgHover"
             id="initiative"
             onClick={modalOpen}
           >
             <h2 
-              class="text-default-white dark:text-default-black pointer-events-none"
+              class="text-default-white dark:text-default-white pointer-events-none font-ralewayMedium"
             >Iniciativa</h2>
             <p 
-              class="text-default-white dark:text-default-black pointer-events-none"
+              class="text-default-white dark:text-default-white pointer-events-none"
             >{character.initiative}</p>
           </article>
           <article 
-            class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer hover:bg-dark-oneHover dark:hover:bg-white-oneHover flex-1"
+            class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer flex-1 dark:hover:bg-dark-bgHover"
             id="ca"
             onClick={modalOpen}
           >
             <h2 
-              class="text-default-white dark:text-default-black pointer-events-none"
+              class="text-default-white dark:text-default-white pointer-events-none font-ralewayMedium"
             >CA</h2>
             <p 
-              class="text-default-white dark:text-default-black pointer-events-none"
+              class="text-default-white dark:text-default-white pointer-events-none"
             >{character.CA}</p>
           </article>
           <article 
-            class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer hover:bg-dark-oneHover dark:hover:bg-white-oneHover flex-1"
+            class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer flex-1 dark:hover:bg-dark-bgHover"
             id="speed"
             onClick={modalOpen}
           >
             <h2 
-              class="text-default-white dark:text-default-black pointer-events-none"
+              class="text-default-white dark:text-default-white pointer-events-none font-ralewayMedium"
             >Velocidade</h2>
             <p 
-              class="text-default-white dark:text-default-black pointer-events-none"
+              class="text-default-white dark:text-default-white pointer-events-none"
             >{character.speed}</p>
           </article>
           <article 
-            class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer hover:bg-dark-oneHover dark:hover:bg-white-oneHover flex-1" 
+            class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer flex-1 dark:hover:bg-dark-bgHover" 
             onClick={toggleChance}
           >
-            <h2 class="text-default-white dark:text-default-black">UC</h2>
-            {character.lastChance ? <p class="text-default-white dark:text-default-black">Sim</p> : <p class="text-default-white dark:text-default-black">Não</p>}
+            <h2 class="text-default-white dark:text-default-white font-ralewayMedium">UC</h2>
+            {character.lastChance ? <p class="text-default-white dark:text-default-white">Sim</p> : <p class="text-default-white dark:text-default-white">Não</p>}
           </article>
+        </section>
+      </>
+    )
+  }
+})
+
+const HitItemModal = defineComponent({
+  setup() {
+    const character = useCharacterStore();
+    const toggleHitModal = ref(false);
+
+    const hitModal = () => {
+      toggleHitModal.value = true;
+    }
+
+    const closeHitModal = () => {
+      toggleHitModal.value = false;
+    }
+
+    return () => (
+      <>
+        <section 
+          class="modal-background" 
+          v-show={toggleHitModal.value}
+        >
+          <section class="flex flex-col justify-around items-center h-fully w-2/4 bg-default-white dark:bg-dark-one">
+            <section class="flex flex-col items-center justify-center my-:1 w-2/4">
+              <h2 class="text-default-blueTertiary">Alterar Dado de Vida</h2>
+              <select 
+                vModel={character.hitDice} 
+                class="text-default-black p-1"
+              >
+                <option value="4" class="text-default-black">4</option>
+                <option value="6" class="text-default-black">6</option>
+                <option value="8" class="text-default-black">8</option>
+                <option value="10" class="text-default-black">10</option>
+                <option value="12" class="text-default-black">12</option>
+                <option value="20" class="text-default-black">20</option>
+              </select>
+            </section>
+            <section class="flex flex-col items-center justify-center my-:1 w-2/4">
+              <h2 class="text-default-blueTertiary">Alterar Pontos de Vida</h2>
+              <input 
+                vModel={character.hitPoints} 
+                class="text-default-black p-1"
+                type="text" 
+              />
+            </section>
+            <button 
+              onClick={closeHitModal}
+              class="px-:2 py-:1 mb-:1 bg-default-black dark:bg-default-white text-default-white dark:text-default-black rounded-full cursor-pointer focus:outline-none"
+            >Salvar</button>
+          </section>
+        </section>
+        <section 
+          onClick={hitModal}
+          class="flex flex-row w-full py-:2 px-:1 justify-between items-center bg-default-black dark:bg-dark-bg"
+        >
+          <section 
+            id="hit-dice"
+            class="flex flex-1 flex-col justify-center items-center h-full p-:1 cursor-pointer"
+          >
+            <h2 class="font-ralewayMedium text-default-white hover:text-white-one">Dado de Vida</h2>
+            <p class="text-default-white hover:text-white-oneHover">1d{character.hitDice}</p>
+          </section>
+          <section 
+            id="hit-points"
+            class="flex flex-1 flex-col justify-center items-center h-full p-:1 cursor-pointer"
+          >
+            <h2 class="font-ralewayMedium text-default-white hover:text-white-one">Pontos de Vida</h2>
+            <p class="text-default-white hover:text-white-oneHover">{character.hitPoints}</p>
+          </section>
         </section>
       </>
     )
@@ -256,12 +328,23 @@ const DataItem = defineComponent({
 
 const HitItem = defineComponent({
   setup() {
-    // const character = useCharacterStore();
+    let toggleTextItem = ref(false);
+
+    const toggleButton = () => toggleTextItem.value = !toggleTextItem.value;
 
     return () => (
       <>
-        <section class="flex justify-around items-center w-full bg-dark-one dark:bg-white-one p-:1 ml-:2">
-          <p class="text-default-white dark:text-default-black">AA</p>
+        <section class="flex flex-col justify-start items-center w-full bg-dark-one dark:bg-dark-bg p-:1 ml-:2 mt-:2">
+          <section class="flex justify-between w-full">
+            <h2 
+              class="font-ralewayMedium text-default-white dark:text-default-white"
+            >Vida:</h2>
+            <button 
+              class="h-6 rounded-full px-:1 border-2 focus:outline-none border-white-input dark:hover:bg-white-oneHover hover:bg-dark-inputHover dark:bg-white-input bg-none cursor-pointer text-default-white dark:text-default-black" 
+              onClick={toggleButton}
+            >{toggleTextItem.value ? "-": ">"}</button>
+          </section>
+          {toggleTextItem.value && <HitItemModal />}
         </section>
       </>
     )
@@ -274,7 +357,7 @@ const TextItemDescription = defineComponent({
 
     return () => (
       <span 
-        class="font-ralewayMedium text-base text-default-white dark:text-default-black"
+        class="font-ralewayMedium text-base text-default-white dark:text-default-white"
       >{character.description}</span>
     )
   }
@@ -288,10 +371,10 @@ const TextItem = defineComponent({
 
     return () => (
       <>
-        <section class="flex flex-col justify-start items-center w-full bg-dark-one dark:bg-white-one hover:bg-dark-oneHover dark:hover:bg-white-oneHover p-:1 ml-:2 mt-:2">
+        <section class="flex flex-col justify-start items-center w-full bg-dark-one dark:bg-dark-bg p-:1 ml-:2 mt-:2">
           <section class="flex justify-between w-full">
             <h2 
-              class="font-poppinsBold  text-default-white dark:text-default-black"
+              class="font-ralewayMedium text-default-white dark:text-default-white"
             >Descrição:</h2>
             <button 
               class="h-6 rounded-full px-:1 border-2 focus:outline-none border-white-input hover:bg-dark-inputHover dark:bg-white-input dark:hover:bg-white-oneHover bg-none cursor-pointer text-default-white dark:text-default-black" 
@@ -311,7 +394,7 @@ const BreakItemDescription = defineComponent({
 
     return () => (
       <span 
-        class="font-ralewayMedium text-base text-default-white dark:text-default-black"
+        class="font-ralewayMedium text-base text-default-white dark:text-default-white"
       >{character.breakPoint}</span>
     )
   }
@@ -325,10 +408,10 @@ const BreakItem = defineComponent({
 
     return () => (
       <>
-        <section class="flex flex-col justify-start items-center w-full bg-dark-one dark:bg-white-one hover:bg-dark-oneHover dark:hover:bg-white-oneHover p-:1 ml-:2 mt-:2">
+        <section class="flex flex-col justify-start items-center w-full bg-dark-one dark:bg-dark-bg p-:1 ml-:2 mt-:2">
           <section class="flex justify-between w-full">
             <h2 
-              class="font-poppinsBold text-default-white dark:text-default-black"
+              class="font-ralewayMedium text-default-white dark:text-default-white"
             >Ponto de Quebra:</h2>
             <button 
               class="h-6 rounded-full px-:1 border-2 focus:outline-none border-white-input hover:bg-dark-inputHover dark:bg-white-input dark:hover:bg-white-oneHover bg-none cursor-pointer  text-default-white dark:text-default-black" 
@@ -349,7 +432,7 @@ const ItemsBox = defineComponent({
     return () => (
       <>
         <section class="flex h-auto p-:2">
-          <aside class="flex flex-col flex-nowrap justify-between items-center rounded-lg h-auto w-profile-aside shadow-lg bg-dark-one dark:bg-white-one p-:1">
+          <aside class="flex flex-col flex-nowrap justify-between items-center rounded-lg h-auto w-profile-aside shadow-lg bg-dark-one dark:bg-dark-bg p-:1">
             <HabilityItem 
               hability="Força" 
               modifier={character.strengthModifier} 

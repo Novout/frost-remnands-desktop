@@ -4,11 +4,11 @@
 
 @layer components {
   .character-hability {
-    @apply flex flex-col justify-between items-center h-full w-full my-:1 py-:2 bg-dark-one dark:bg-white-one hover:bg-dark-oneHover dark:hover:bg-white-oneHover rounded-xl border-b-2 border-default-white dark:border-default-black;
+    @apply flex flex-col justify-between items-center h-full w-full my-:1 py-:2 rounded-xl border-b-2 border-default-white dark:border-default-black dark:hover:bg-dark-bgHover;
   }
 
   .character-proficiency {
-    @apply flex justify-around items-center w-full h-16 overflow-x-hidden bg-dark-one dark:bg-white-one hover:bg-dark-oneHover dark:hover:bg-white-oneHover;
+    @apply flex justify-around items-center w-full h-16 overflow-x-hidden bg-dark-one dark:bg-dark-bg hover:bg-dark-oneHover dark:hover:bg-dark-bgHover;
   }
 
   .modal-background { 
