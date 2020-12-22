@@ -1,12 +1,24 @@
-import { defineComponent, ref, reactive, onMounted, withModifiers } from "vue";
+import { defineComponent, ref, reactive, onMounted } from "vue";
 import { useCharacterStore } from "-/character";
 import { JsonFileSync } from "_/services/fs";
 import { useToast } from "vue-toastification";
 import { validateNumber } from "@/utils/validate";
+import Inventory from "@/lib/Inventory.jsx";
 
 const GenericsBox = defineComponent({
   setup() {
     const character = useCharacterStore();
+    const toggleHeader = ref(false);
+
+    const toggleHeaderModal = () => toggleHeader.value = !toggleHeader.value;
+
+    const openHeaderModal = () => {
+      toggleHeader.value = true;
+    }
+
+    const closeHeaderModal = () => {
+      toggleHeader.value = false;
+    }
 
     onMounted(() => {
       const { TOAST } = JsonFileSync("localisation/pt_BR.json");
@@ -16,13 +28,40 @@ const GenericsBox = defineComponent({
 
     return () => (
       <>
+        <section 
+          class="modal-background" 
+          v-show={toggleHeader.value}
+        >
+          <section class="flex flex-col justify-around items-center bg-default-white dark:bg-default-black text-default-black w-2/4 h-fully">
+            <h2 class="text-default-blueTertiary">Nome:</h2>
+            <input 
+              vModel={character.name} 
+              type="text"
+              class="bg-dark-oneHover text-default-white dark:bg-default-white dark:text-default-black"
+            />
+            <h2 class="text-default-blueTertiary">Nível:</h2>
+            <input 
+              vModel={[character.level, ['number']]} 
+              type="number"
+              class="bg-dark-oneHover text-default-white dark:bg-default-white dark:text-default-black"
+            />
+            <button 
+              onClick={closeHeaderModal}
+              class="px-:2 py-1 bg-default-white text-default-black rounded-full focus:outline-none"
+            >Salvar</button>
+          </section>
+        </section>
         <header class="flex flex-col flex-nowrap">
           <section class="flex flex-row flex-nowrap justify-around items-center h-profile-header">
-            <h1 class="text-3vw cursor-pointer text-default-black dark:text-default-white">{character.name}</h1>
+            <h1 
+              class="text-3vw cursor-pointer text-default-black dark:text-default-white"
+              onClick={openHeaderModal}
+            >{character.name}</h1>
             <section class="flex flex-row flex-nowrap">
               <section class="py-:1 px-:2">
                 <h2 
-                  class="text-default-black dark:text-default-white font-ralewayMedium text-3vh border-b-2 border-default-black dark:border-default-white mb-1"
+                  class="text-default-black dark:text-default-white font-ralewayMedium text-3vh border-b-2 border-default-black dark:border-default-white mb-1 cursor-pointer"
+                  onClick={openHeaderModal}
                 >{character.getCharacterClass} / {character.level}</h2>
                 <p 
                   class="text-default-black dark:text-default-white text font-ralewayMedium text-3vh"
@@ -518,7 +557,7 @@ const ItemsBox = defineComponent({
               />
             </section>
             <section class="flex flex-row flex-wrap items-center justify-center my-:1 w-2/4">
-              <h2 class="text-default-white bg-default-black dark:text-default-black dark:bg-default-white px-:1">Carisma:</h2>
+              <h2 class="text-default-blueTertiary">Carisma:</h2>
               <input 
                 vModel={[character.hability.charisma, ['number']]}
                 class="text-default-white bg-default-black dark:text-default-black dark:bg-default-white px-:1"
