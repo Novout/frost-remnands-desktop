@@ -485,7 +485,7 @@ const InventoryItem = defineComponent({
               onClick={toggleButton}
             >{toggleInventoryItem.value ? ">": ">"}</button>
           </section>
-          {toggleInventoryItem.value && <Inventory />}
+          {toggleInventoryItem.value && <Inventory toggle={toggleInventoryItem} />}
         </section>
       </>
     )
