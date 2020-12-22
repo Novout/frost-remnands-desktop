@@ -292,6 +292,7 @@ module.exports = {
 			'almost-full': '95%',
       full: '100%',
       medium: '50vh',
+      fully: '75vh',
       bar: '30px',
       screen: '100vh',
       'profile-header': '10vh'

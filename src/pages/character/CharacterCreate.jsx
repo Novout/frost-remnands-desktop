@@ -14,7 +14,16 @@ const ItemBox = defineComponent({
       knowledge: false,
       faith: false,
       rage: false,
-      unity: false
+      unity: false,
+      modal: false
+    });
+    const modal = ref({
+      "id": "template",
+      "title": "Template",
+      "code": "unknown",
+      "description": "",
+      "requirements": "",
+      "bonus": ""
     });
     const talentList = ref([]);
 
@@ -52,6 +61,21 @@ const ItemBox = defineComponent({
       character.talents = talentList.value;
     }
 
+    const modalTalents = (event) => {
+      const id = event.target.id;
+
+      console.log(id);
+
+      let filtered = talents.value.filter(talent => talent.id === id);
+      modal.value = filtered[0];
+
+      toggle.modal = true;
+    }
+
+    const closeTalentModal = () => {
+      toggle.modal = false;
+    }
+
     const toggleKnowledge = () => { toggle.knowledge = !toggle.knowledge; }
     const toggleFaith = () => { toggle.faith = !toggle.faith; }
     const toggleRage = () => { toggle.rage = !toggle.rage; }
@@ -61,8 +85,11 @@ const ItemBox = defineComponent({
       toggle, 
       talents, 
       talentList,
+      modal,
       pushTalent,
       removeTalent,
+      modalTalents,
+      closeTalentModal,
       toggleKnowledge,
       toggleFaith,
       toggleRage,
@@ -72,17 +99,31 @@ const ItemBox = defineComponent({
   render() {
     return (
       <>
+        <section class="modal-background" v-show={this.toggle.modal}>
+          <article class="dark:bg-dark-one bg-default-white flex flex-col items-start justify-between w-2/4 h-fully p-:2 overflow-y-auto">
+            <h1 class="dark:text-default-blueTertiary text-default-blueDark font-poppinsBold text-xl">{this.modal.title}</h1>
+            <section class="flex flex-col">
+              <p class="font-poppinsLight text-sm text-default-black dark:text-default-white">Requisitos: {this.modal.requirements}.</p>
+              <p class="font-poppinsLight text-sm text-default-black dark:text-default-white">Descrição: {this.modal.description}</p>
+            </section>
+            <span class="font-poppinsLight mt-:1 text-default-black dark:text-default-white">Bônus: {this.modal.bonus}</span>
+            <button 
+              class="focus:outline-none text-default-black dark:text-default-white mt-:2 px-:2 py-:1 rounded-full bg-white-oneHover dark:bg-dark-oneHover"
+              onClick={this.closeTalentModal}
+            >Fechar</button>
+          </article>
+        </section>
         <section class="py-:2 bg-white-one dark:bg-dark-one">
           <section class="flex flex-col flex-wrap justify-start items-center w-full">
             {/* Conhecimento */}
             <section class="w-full h-auto">
-              <h2 class="font-poppinsBold text-default-dark dark:text-default-blueLight text-xl mr-auto ml-:2">Talentos Escolhidos:</h2>
+              <h2 class="font-poppinsBold text-default-blueDark dark:text-default-blueLight text-xl mr-auto ml-:2">Talentos Escolhidos:</h2>
             </section>
             <section class="flex flex-row flex-wrap items-center justify-start w-full p-:2">
               {this.talentList.map(talent => <p class="bg-default-blueDark p-:1 mr-:1 rounded-full my-:1 pointer-events-none">{talent.title}</p>)}
             </section>
             <section class="flex flex-row justify-between items-center w-full p-:2">
-              <h2 class="font-poppinsBold text-default-dark dark:text-default-blueLight text-xl">Conhecimento</h2>
+              <h2 class="font-poppinsBold text-default-blueDark dark:text-default-blueLight text-xl">Conhecimento</h2>
               <button
                 onClick={this.toggleKnowledge}
                 class="cursor-pointer focus:outline-none text-default-black dark:text-default-white"
@@ -97,7 +138,11 @@ const ItemBox = defineComponent({
                   class="flex flex-row flex-nowrap justify-between items-center w-full px-:2 mt-2" 
                   v-show={talent.code === 'knowledge'}
                 >
-                  <h3 class="flex-1 text-default-black dark:text-default-white">{talent.title}</h3>
+                  <h3 
+                    class="flex-1 text-default-black dark:text-default-white hover:text-dark-oneHover dark:hover:text-white-oneHover cursor-pointer"
+                    id={talent.id}
+                    onClick={this.modalTalents}
+                  >{talent.title}</h3>
                   <button 
                     onClick={this.pushTalent}
                     id={talent.id}
@@ -113,7 +158,7 @@ const ItemBox = defineComponent({
             </section>
             {/* Crença */}
             <section class="flex flex-row justify-between items-center w-full p-:2">
-              <h2 class="font-poppinsBold text-default-dark dark:text-default-blueLight text-xl">Crença</h2>
+              <h2 class="font-poppinsBold text-default-blueDark dark:text-default-blueLight text-xl">Crença</h2>
               <button
                 onClick={this.toggleFaith}
                 class="cursor-pointer focus:outline-none text-default-black dark:text-default-white"
@@ -128,7 +173,11 @@ const ItemBox = defineComponent({
                   class="flex flex-row flex-nowrap justify-between items-center w-full px-:2 mt-2" 
                   v-show={talent.code === 'faith'}
                 >
-                  <h3 class="flex-1 text-default-black dark:text-default-white">{talent.title}</h3>
+                  <h3 
+                    class="flex-1 text-default-black dark:text-default-white  hover:text-dark-one dark:hover:text-white-oneHover cursor-pointer"
+                    id={talent.id}
+                    onClick={this.modalTalents}
+                  >{talent.title}</h3>
                   <button 
                     onClick={this.pushTalent}
                     id={talent.id}
@@ -144,7 +193,7 @@ const ItemBox = defineComponent({
             </section>
             {/* Fúria */}
             <section class="flex flex-row justify-between items-center w-full p-:2">
-              <h2 class="font-poppinsBold text-default-dark dark:text-default-blueLight text-xl">Fúria</h2>
+              <h2 class="font-poppinsBold text-default-blueDark dark:text-default-blueLight text-xl">Fúria</h2>
               <button
                 onClick={this.toggleRage}
                 class="cursor-pointer focus:outline-none text-default-black dark:text-default-white"
@@ -159,7 +208,11 @@ const ItemBox = defineComponent({
                   class="flex flex-row flex-nowrap justify-between items-center w-full px-:2 mt-2" 
                   v-show={talent.code === 'rage'}
                 >
-                  <h3 class="flex-1 text-default-black dark:text-default-white">{talent.title}</h3>
+                  <h3 
+                    class="flex-1 text-default-black dark:text-default-white  hover:text-dark-one dark:hover:text-white-oneHover cursor-pointer"
+                    id={talent.id}
+                    onClick={this.modalTalents}
+                  >{talent.title}</h3>
                   <button 
                     onClick={this.pushTalent}
                     id={talent.id}
@@ -175,7 +228,7 @@ const ItemBox = defineComponent({
             </section>
             {/* União */}
             <section class="flex flex-row justify-between items-center w-full p-:2">
-              <h2 class="font-poppinsBold text-default-dark dark:text-default-blueLight text-xl">União</h2>
+              <h2 class="font-poppinsBold text-default-blueDark dark:text-default-blueLight text-xl">União</h2>
               <button
                 onClick={this.toggleUnity}
                 class="cursor-pointer focus:outline-none text-default-black dark:text-default-white"
@@ -190,7 +243,11 @@ const ItemBox = defineComponent({
                   class="flex flex-row flex-nowrap justify-between items-center w-full px-:2 mt-2" 
                   v-show={talent.code === 'unity'}
                 >
-                  <h3 class="flex-1 text-default-black dark:text-default-white">{talent.title}</h3>
+                  <h3 
+                    class="flex-1 text-default-black dark:text-default-white hover:text-dark-one dark:hover:text-white-oneHover cursor-pointer"
+                    id={talent.id}
+                    onClick={this.modalTalents}
+                  >{talent.title}</h3>
                   <button 
                     onClick={this.pushTalent}
                     id={talent.id}

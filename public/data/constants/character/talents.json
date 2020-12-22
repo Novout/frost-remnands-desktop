@@ -11,8 +11,8 @@
     "id": "bestiary",
     "title": "Bestiário",
     "code": "knowledge" ,
-    "description": "Nenhum",
-    "requirements": "Anotações pode entender muitos padrões que normalmente são descartáveis.",
+    "description": "Anotações pode entender muitos padrões que normalmente são descartáveis.",
+    "requirements": "Nenhum",
     "bonus": "Sempre que derrotar um Irracional ou Monstro, ganha +1 na rolagem de Ataque e Atirar contra esta criatura em encontros futuros. Acumulável de no máximo +3. Mesmo se derrotar mais de um mesmo Irracional ou Monstro em uma mesma cena, ganha apenas +1 na contagem."
   },
   {
@@ -153,7 +153,7 @@
   },
   {
     "id": "saving-greed",
-    "title": "Sensação de Vitória",
+    "title": "Ganância Salvadora",
     "code": "rage",
     "description": "A tentativa pra mudar de vida.",
     "requirements": "Nenhum",
