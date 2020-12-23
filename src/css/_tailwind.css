@@ -16,7 +16,7 @@
   }
 
   .full-background { 
-    @apply fixed h-screen pt-:3 top-0 left-0 w-screen bg-dark-oneHover hover:bg-default-black transition duration-200 ease-in-out select-none;
+    @apply fixed h-screen pt-:3 top-0 left-0 w-screen bg-opacity-90 bg-default-black hover:bg-default-black transition duration-200 ease-in-out select-none;
   }
 
   .outline-solid-white {
@@ -27,6 +27,42 @@
   .outline-solid-black {
     outline: 2px solid theme("colors.default.black");
     outline-offset: 2px;
+  }
+
+  .rarity-common {
+    box-shadow: inset 0 0 15px 2px theme("colors.rarity.common");
+    transition: box-shadow 0.1s ease-in;
+  }
+
+  .rarity-uncommon {
+    box-shadow: inset 0 0 15px 2px theme("colors.rarity.uncommon");
+    transition: box-shadow 0.1s ease-in;
+  }
+
+  .rarity-epic {
+    box-shadow: inset 0 0 15px 2px theme("colors.rarity.epic");
+    transition: box-shadow 0.1s ease-in;
+  }
+
+  .rarity-legendary {
+    box-shadow: inset 0 0 15px 2px theme("colors.rarity.legendary");
+    transition: box-shadow 0.1s ease-in;
+  }
+
+  .rarity-common:hover {
+    box-shadow: inset 0 0 25px 2px theme("colors.rarity.common");
+  }
+
+  .rarity-uncommon:hover {
+    box-shadow: inset 0 0 25px 2px theme("colors.rarity.uncommon");
+  }
+
+  .rarity-epic:hover {
+    box-shadow: inset 0 0 25px 2px theme("colors.rarity.epic");
+  }
+
+  .rarity-legendary:hover {
+    box-shadow: inset 0 0 25px 2px theme("colors.rarity.legendary");
   }
 
   :root::-webkit-scrollbar {
@@ -59,5 +95,9 @@
   
   .dark::-webkit-scrollbar-thumb:hover {
     background: theme("colors.default.blueLight");
+  }
+
+  .min-w-40 {
+    min-width: 10rem;
   }
 }

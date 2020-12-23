@@ -36,6 +36,12 @@ module.exports = {
         oneHover: '#bbb',
         input: '#DDD',
         inputHover: '#CCC'
+      },
+      rarity: {
+        common: '#474747',
+        uncommon: '#7DCEFF',
+        epic: '#985FFE',
+        legendary: '#FF7000'
       }
     },
     spacing: {
@@ -381,7 +387,7 @@ module.exports = {
 			0: '0',
 			full: '100%',
 			min: 'min-content',
-			max: 'max-content',
+      max: 'max-content',
 		},
 		objectPosition: {
 			bottom: 'bottom',
