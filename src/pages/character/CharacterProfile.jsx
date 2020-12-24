@@ -291,6 +291,60 @@ const DataItem = defineComponent({
   }
 })
 
+const ExaustList = defineComponent({
+  setup() {
+    const character = useCharacterStore();
+
+    const subTime = () => {
+      character.exhaustionTime = character.exhaustionTime - 1;
+      character.exhaustion = false;
+      if(character.exhaustionTime === 0) {
+        character.exhaustion = true;
+        character.exhaustionTime = 3;
+      }
+    }
+
+    return () => (
+      <section class="flex justify-between xl:justify-around lg:justify-between md:justify-between sm:justify-between p-:2 w-full h-full">
+        <section class="flex flex-col p-:1 justify-center items-center">
+          <h2 class="font-ralewayMedium">Exaustão Atual</h2>
+          <p>{character.exhaustion ? "Disponível" : "Não-Disponível"}</p>
+        </section>
+        <section
+          class="flex flex-col p-:1 justify-center items-center cursor-pointer"
+          onClick={subTime}
+        >
+          <h2 class="font-ralewayMedium">Tempo de Exaustão</h2>
+          <p>{character.exhaustionTime}</p>
+        </section>
+      </section>
+    )
+  }
+})
+
+const ExaustItem = defineComponent({
+  setup() {
+    const { toggle, toggleButton } = useToggle();
+
+    return () => (
+      <>
+        <section class="item-right-aside">
+          <section class="flex justify-between w-full">
+            <h2 
+              class="font-ralewayMedium text-default-white dark:text-default-white"
+            >Exaustão:</h2>
+            <button 
+              class="h-6 rounded-full px-:1 border-2 focus:outline-none border-white-input hover:bg-dark-inputHover dark:bg-white-input dark:hover:bg-white-oneHover bg-none cursor-pointer  text-default-white dark:text-default-black" 
+              onClick={toggleButton}
+            >{toggle.value ? "-": ">"}</button>
+          </section>
+          {toggle.value && <ExaustList />}
+        </section>
+      </>
+    )
+  }
+})
+
 const HitItemModal = defineComponent({
   setup() {
     const { TOAST } = JsonFileSync("localisation/pt_BR.json");
@@ -637,6 +691,7 @@ const ItemsBox = defineComponent({
           </section>
           <section class="flex flex-col flex-nowrap justify-start items-center h-auto w-profile-general ml-:1">
             <DataItem />
+            <ExaustItem />
             <HitItem />
             <TextItem />
             <BreakItem />

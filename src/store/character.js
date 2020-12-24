@@ -47,6 +47,8 @@ export const useCharacterStore = defineStore({
     CA: 10,
     speed: 30,
     initiative: 0,
+    exhaustion: true,
+    exhaustionTime: 3,
     talents: [
       {
         "id": "iluminated",
