@@ -18,7 +18,4 @@ module.exports = {
    *  actually website redirect
    */
   website: "https://novout.github.io/frost-remnands/",
-  /*
-   * extra bar with utils vue-router
-   */
 }
