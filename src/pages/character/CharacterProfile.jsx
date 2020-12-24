@@ -230,7 +230,7 @@ const DataItem = defineComponent({
           class="modal-background"
           v-show={modal.isOpen}
         >
-          <article class="flex flex-col justify-between h-40 items-start dark:bg-dark-one bg-dark-input p-:3">
+          <article class="flex flex-col justify-between h-40 items-start dark:bg-dark-one bg-dark-input dark:hover:bg-dark-bgHover hover:bg-dark-inputHover p-:3">
             <h1 class="text-default-white dark:text-default-white font-poppinsMedium text-xl">{modal.title}</h1>
             <input 
               class="text-default-black dark:text-default-black"
@@ -376,7 +376,7 @@ const HitItem = defineComponent({
 
     return () => (
       <>
-        <section class="flex flex-col justify-start items-center w-full bg-dark-one dark:bg-dark-bg p-:1 ml-:2 mt-:2">
+        <section class="flex flex-col justify-start items-center w-full bg-dark-one dark:bg-dark-bg dark:hover:bg-dark-bgHover hover:bg-dark-inputHover p-:1 ml-:2 mt-:2">
           <section class="flex justify-between w-full">
             <h2 
               class="font-ralewayMedium text-default-white dark:text-default-white"
@@ -413,7 +413,7 @@ const TextItem = defineComponent({
 
     return () => (
       <>
-        <section class="flex flex-col justify-start items-center w-full bg-dark-one dark:bg-dark-bg p-:1 ml-:2 mt-:2">
+        <section class="flex flex-col justify-start items-center w-full bg-dark-one dark:bg-dark-bg dark:hover:bg-dark-bgHover hover:bg-dark-inputHover p-:1 ml-:2 mt-:2">
           <section class="flex justify-between w-full">
             <h2 
               class="font-ralewayMedium text-default-white dark:text-default-white"
@@ -450,7 +450,7 @@ const BreakItem = defineComponent({
 
     return () => (
       <>
-        <section class="flex flex-col justify-start items-center w-full bg-dark-one dark:bg-dark-bg p-:1 ml-:2 mt-:2">
+        <section class="flex flex-col justify-start items-center w-full bg-dark-one dark:bg-dark-bg dark:hover:bg-dark-bgHover hover:bg-dark-inputHover p-:1 ml-:2 mt-:2">
           <section class="flex justify-between w-full">
             <h2 
               class="font-ralewayMedium text-default-white dark:text-default-white"
@@ -475,7 +475,7 @@ const InventoryItem = defineComponent({
 
     return () => (
       <>
-        <section class="flex flex-col justify-start items-center w-full bg-dark-one dark:bg-dark-bg p-:1 ml-:2 mt-:2">
+        <section class="flex flex-col justify-start items-center w-full bg-dark-one dark:bg-dark-bg dark:hover:bg-dark-bgHover hover:bg-dark-inputHover p-:1 ml-:2 mt-:2">
           <section class="flex justify-between w-full">
             <h2 
               class="font-ralewayMedium text-default-white dark:text-default-white"

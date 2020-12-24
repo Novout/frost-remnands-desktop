@@ -22,5 +22,21 @@
   opacity: 0;
 }
 
+/* Tailwind */
+
+@layer components {
+  .form-basic {
+    @apply flex justify-between items-center w-full p-1; 
+  }
+
+  .form-basic > label {
+    @apply text-lg text-default-blueDark dark:text-default-blueTertiary;
+  }
+
+  .form_basic > input {
+    @apply bg-default-black px-:2 w-20;
+  }
+}
+
 
 

@@ -13,4 +13,3 @@
 - Save itens in .json or .toml
 - Player options
 - Load Character
-- Fix Corrupt in Neutral Create Character
