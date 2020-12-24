@@ -64,7 +64,7 @@ app.on('activate', () => {
 })
 
 app.on('ready', async () => {
-  if (isDevelopment && !process.env.IS_TEST) {
+  if (isDevelopment) {
     try {
       await installExtension(VUEJS_DEVTOOLS)
     } catch (e) {
