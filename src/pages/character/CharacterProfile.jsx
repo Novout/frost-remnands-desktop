@@ -108,8 +108,8 @@ const HabilityItem = defineComponent({
     return () => (
       <>
         <article class="character-hability">
-          <p class="text-sm dark:text-default-white font-ralewayMedium">{props.hability}</p>
-          <p class="text-2xl dark:text-default-white font-ralewayMedium">{props.modifier}</p>
+          <p class="text-sm text-default-white font-ralewayMedium">{props.hability}</p>
+          <p class="text-2xl text-default-white font-ralewayMedium">{props.modifier}</p>
           <p 
             class="bg-default-white text-lg dark:bg-dark-one dark:text-default-white py-1 px-:3 rounded-full text-default-black cursor-pointer hover:bg-default-blueLight dark:hover:bg-default-blueDark font-ralewayMedium"
           >{props.total}</p>

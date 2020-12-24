@@ -21,18 +21,25 @@ export default defineComponent({
 
       toast.success(`Tema ${msg} selecionado!`);
 
-      // router reload page in write file, remove with vue-router fix.
-      setTimeout(() => {
-        JsonWriteFile("config/base.json", store.base);
-      }, 1000);
+      JsonWriteFile("config/base.json", store.base);
     });
 
     return () => (
-      <section class="pt-8 bg-default-white dark:bg-default-black h-screen">
-        <select vModel={theme.value} class="bg-dark-one dark:bg-default-white dark:text-default-black rounded-lg p-1">
-          <option value="light" class="text-default-white dark:text-default-black">Claro</option>
-          <option value="dark" class="text-default-white dark:text-default-black">Escuro</option>
-        </select>
+      <section class="pt-bar px-:5 bg-default-white dark:bg-default-black h-screen">
+        <h1 class="text-3xl my-:2 py-:1 border-b border-default-black dark:border-default-blueLight dark:text-default-blueTertiary text-default-blueDark">Opções</h1>
+        <section class="flex items-center">
+          <router-link 
+            class="border-2 rounded-md border-default-black dark:border-default-white p-:1"
+            to="/"
+          >Menu Inicial</router-link>
+        </section>
+        <section class="flex items-center my-:2">
+          <h2 class="mr-:2">Tema</h2>
+          <select vModel={theme.value} class="rounded-lg p-1">
+            <option value="light">Claro</option>
+            <option value="dark">Escuro</option>
+          </select>
+        </section>
       </section>
     )
   }

@@ -1,6 +1,8 @@
-import { defineComponent, onMounted } from "vue";
+import { defineComponent, onBeforeUnmount, onMounted } from "vue";
 import { remote } from "electron";
 import { useDefaultStore } from "-/config";
+import { useCharacterStore } from "-/character";
+import { JsonFileSync, JsonWriteFile } from "_/services/fs";
 import fr from "../frostremnands.config";
 
 export default defineComponent({
@@ -13,6 +15,17 @@ export default defineComponent({
         ? document.querySelector("html").classList.add("dark")
         : document.querySelector("html").classList.remove("dark");
     });
+
+    onBeforeUnmount(() => {
+      const character = useCharacterStore();
+      let register = JsonFileSync("register/characters.json");
+      register.forEach(save => {
+        if(save.name === character.name) {
+          save = character;
+        }
+      });
+      JsonWriteFile("register/characters.json", register);
+    })
 
     const win = remote.getCurrentWindow();
     
