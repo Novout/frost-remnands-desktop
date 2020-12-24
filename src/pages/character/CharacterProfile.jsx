@@ -1,24 +1,22 @@
-import { defineComponent, ref, reactive, onMounted } from "vue";
+import { 
+  defineComponent, 
+  ref, 
+  reactive, 
+  onMounted, 
+  watch 
+} from "vue";
 import { useCharacterStore } from "-/character";
 import { JsonFileSync } from "_/services/fs";
 import { useToast } from "vue-toastification";
 import { validateNumber } from "@/utils/validate";
+import { useToggle } from "@/use/toggle";
 import Inventory from "@/lib/Inventory.jsx";
 
 const GenericsBox = defineComponent({
   setup() {
     const character = useCharacterStore();
+    const { toggle, open, close } = useToggle();
     const toggleHeader = ref(false);
-
-    const toggleHeaderModal = () => toggleHeader.value = !toggleHeader.value;
-
-    const openHeaderModal = () => {
-      toggleHeader.value = true;
-    }
-
-    const closeHeaderModal = () => {
-      toggleHeader.value = false;
-    }
 
     onMounted(() => {
       const { TOAST } = JsonFileSync("localisation/pt_BR.json");
@@ -30,7 +28,7 @@ const GenericsBox = defineComponent({
       <>
         <section 
           class="modal-background" 
-          v-show={toggleHeader.value}
+          v-show={toggle.value}
         >
           <section class="flex flex-col justify-around items-center bg-default-white dark:bg-default-black text-default-black w-2/4 h-fully">
             <h2 class="text-default-blueTertiary">Nome:</h2>
@@ -46,7 +44,7 @@ const GenericsBox = defineComponent({
               class="bg-dark-oneHover text-default-white dark:bg-default-white dark:text-default-black"
             />
             <button 
-              onClick={closeHeaderModal}
+              onClick={close}
               class="px-:2 py-1 bg-default-white text-default-black rounded-full focus:outline-none"
             >Salvar</button>
           </section>
@@ -55,13 +53,13 @@ const GenericsBox = defineComponent({
           <section class="flex flex-row flex-nowrap justify-around items-center h-profile-header">
             <h1 
               class="text-3vw cursor-pointer text-default-black dark:text-default-white"
-              onClick={openHeaderModal}
+              onClick={open}
             >{character.name}</h1>
             <section class="flex flex-row flex-nowrap">
               <section class="py-:1 px-:2">
                 <h2 
                   class="text-default-black dark:text-default-white font-ralewayMedium text-3vh border-b-2 border-default-black dark:border-default-white mb-1 cursor-pointer"
-                  onClick={openHeaderModal}
+                  onClick={open}
                 >{character.getCharacterClass} / {character.level}</h2>
                 <p 
                   class="text-default-black dark:text-default-white text font-ralewayMedium text-3vh"
@@ -298,22 +296,17 @@ const HitItemModal = defineComponent({
     const { TOAST } = JsonFileSync("localisation/pt_BR.json");
     const toast = useToast();
     const character = useCharacterStore();
-    const toggleHitModal = ref(false);
+    const { toggle, open, close } = useToggle();
 
-    const hitModal = () => {
-      toggleHitModal.value = true;
-    }
-
-    const closeHitModal = () => {
-      toggleHitModal.value = false;
-      toast.success(TOAST.PROFILE_ITEMS_SUCCESS);
-    }
+    watch(toggle, (toggle) => {
+      if(!toggle) toast.success(TOAST.PROFILE_ITEMS_SUCCESS);
+    })
 
     return () => (
       <>
         <section 
           class="modal-background" 
-          v-show={toggleHitModal.value}
+          v-show={toggle.value}
         >
           <section class="flex flex-col justify-around items-center h-fully w-2/4 bg-default-white dark:bg-dark-one">
             <section class="flex flex-col items-center justify-center my-:1 w-2/4">
@@ -339,14 +332,14 @@ const HitItemModal = defineComponent({
               />
             </section>
             <button 
-              onClick={closeHitModal}
+              onClick={close}
               class="px-:2 py-:1 mb-:1 bg-default-black dark:bg-default-white text-default-white dark:text-default-black rounded-full cursor-pointer focus:outline-none"
             >Salvar</button>
           </section>
         </section>
         <section 
-          onClick={hitModal}
-          class="flex flex-row w-full py-:2 px-:1 justify-between items-center bg-default-black dark:bg-dark-bg"
+          onClick={open}
+          class="flex flex-row w-full py-:2 px-:1 justify-between items-center"
         >
           <section 
             id="hit-dice"
@@ -370,9 +363,7 @@ const HitItemModal = defineComponent({
 
 const HitItem = defineComponent({
   setup() {
-    let toggleTextItem = ref(false);
-
-    const toggleButton = () => toggleTextItem.value = !toggleTextItem.value;
+    const { toggle, toggleButton } = useToggle();
 
     return () => (
       <>
@@ -384,9 +375,9 @@ const HitItem = defineComponent({
             <button 
               class="h-6 rounded-full px-:1 border-2 focus:outline-none border-white-input dark:hover:bg-white-oneHover hover:bg-dark-inputHover dark:bg-white-input bg-none cursor-pointer text-default-white dark:text-default-black" 
               onClick={toggleButton}
-            >{toggleTextItem.value ? "-": ">"}</button>
+            >{toggle.value ? "-": ">"}</button>
           </section>
-          {toggleTextItem.value && <HitItemModal />}
+          {toggle.value && <HitItemModal />}
         </section>
       </>
     )
@@ -407,9 +398,7 @@ const TextItemDescription = defineComponent({
 
 const TextItem = defineComponent({
   setup() {
-    let toggleTextItem = ref(false);
-
-    const toggleButton = () => toggleTextItem.value = !toggleTextItem.value;
+    const { toggle, toggleButton } = useToggle();
 
     return () => (
       <>
@@ -421,9 +410,9 @@ const TextItem = defineComponent({
             <button 
               class="h-6 rounded-full px-:1 border-2 focus:outline-none border-white-input hover:bg-dark-inputHover dark:bg-white-input dark:hover:bg-white-oneHover bg-none cursor-pointer text-default-white dark:text-default-black" 
               onClick={toggleButton}
-            >{toggleTextItem.value ? "-": ">"}</button>
+            >{toggle.value ? "-": ">"}</button>
           </section>
-          {toggleTextItem.value && <TextItemDescription />}
+          {toggle.value && <TextItemDescription />}
         </section>
       </>
     )
@@ -444,9 +433,7 @@ const BreakItemDescription = defineComponent({
 
 const BreakItem = defineComponent({
   setup() {
-    let toggleBreakItem = ref(false);
-
-    const toggleButton = () => toggleBreakItem.value = !toggleBreakItem.value;
+    const { toggle, toggleButton } = useToggle();
 
     return () => (
       <>
@@ -458,9 +445,9 @@ const BreakItem = defineComponent({
             <button 
               class="h-6 rounded-full px-:1 border-2 focus:outline-none border-white-input hover:bg-dark-inputHover dark:bg-white-input dark:hover:bg-white-oneHover bg-none cursor-pointer  text-default-white dark:text-default-black" 
               onClick={toggleButton}
-            >{toggleBreakItem.value ? "-": ">"}</button>
+            >{toggle.value ? "-": ">"}</button>
           </section>
-          {toggleBreakItem.value && <BreakItemDescription />}
+          {toggle.value && <BreakItemDescription />}
         </section>
       </>
     )
@@ -469,9 +456,7 @@ const BreakItem = defineComponent({
 
 const InventoryItem = defineComponent({
   setup() {
-    let toggleInventoryItem = ref(false);
-
-    const toggleButton = () => toggleInventoryItem.value = !toggleInventoryItem.value;
+    const { toggle, toggleButton } = useToggle();
 
     return () => (
       <>
@@ -483,9 +468,50 @@ const InventoryItem = defineComponent({
             <button 
               class="h-6 rounded-full px-:1 border-2 focus:outline-none border-white-input hover:bg-dark-inputHover dark:bg-white-input dark:hover:bg-white-oneHover bg-none cursor-pointer  text-default-white dark:text-default-black" 
               onClick={toggleButton}
-            >{toggleInventoryItem.value ? ">": ">"}</button>
+            >{toggle.value ? ">": ">"}</button>
           </section>
-          {toggleInventoryItem.value && <Inventory toggle={toggleInventoryItem} />}
+          {toggle.value && <Inventory toggle={toggle} />}
+        </section>
+      </>
+    )
+  }
+})
+
+const TalentsList = defineComponent({
+  setup() {
+    const character = useCharacterStore();
+
+    return () => (
+      <section class="flex flex-col items-center w-full max-h-60 overflow-y-auto py-:2">
+        {character.talents.map(talent => 
+          <article class="border-2 rounded-sm my-:1 border-default-blueLight dark:border-default-blueTertiary p-:1">
+            <h2 class="text-lg mb-:1 border-b dark:text-default-white text-default-black">{talent.title}</h2>
+            <p class="font-ralewayMedium mb-:1 dark:text-default-white text-default-black">{talent.description}</p>
+            <p class="font-ralewayMedium mb-:1 dark:text-default-white text-default-black">{talent.bonus}</p>
+          </article>
+        )}
+      </section>
+    )
+  }
+})
+
+const TalentsItem = defineComponent({
+  setup() {
+    const { toggle, toggleButton } = useToggle();
+
+    return () => (
+      <>
+        <section class="item-right-aside">
+          <section class="flex justify-between w-full">
+            <h2 
+              class="font-ralewayMedium text-default-white dark:text-default-white"
+            >Talentos:</h2>
+            <button 
+              class="h-6 rounded-full px-:1 border-2 focus:outline-none border-white-input hover:bg-dark-inputHover dark:bg-white-input dark:hover:bg-white-oneHover bg-none cursor-pointer  text-default-white dark:text-default-black" 
+              onClick={toggleButton}
+            >{toggle.value ? "-": ">"}</button>
+          </section>
+          {toggle.value && <TalentsList />}
         </section>
       </>
     )
@@ -494,26 +520,22 @@ const InventoryItem = defineComponent({
 
 const ItemsBox = defineComponent({
   setup() {
+    const { toggle, open, close } = useToggle();
+
     const { TOAST } = JsonFileSync("localisation/pt_BR.json");
     const toast = useToast();
+
+    watch(toggle, (toggle) => {
+      if(!toggle) toast.success(TOAST.PROFILE_ITEMS_SUCCESS);
+    })
+
     const character = useCharacterStore();
-
-    const toggleHitModal = ref(false);
-
-    const openHabilityModal = () => {
-      toggleHitModal.value = true;
-    }
-
-    const closeHabilityModal = () => {
-      toggleHitModal.value = false;
-      toast.success(TOAST.PROFILE_ITEMS_SUCCESS);
-    }
 
     return () => (
       <>
         <section 
           class="modal-background" 
-          v-show={toggleHitModal.value}
+          v-show={toggle.value}
         >
           <section class="flex flex-col justify-start items-center h-fully w-2/4 bg-default-white dark:bg-dark-one">
             <section class="flex flex-row flex-wrap items-center justify-center mt-:1 w-2/4">
@@ -565,7 +587,7 @@ const ItemsBox = defineComponent({
               />
             </section>
             <button 
-              onClick={closeHabilityModal}
+              onClick={close}
               class="px-:2 py-:1 mb-:1 bg-default-black dark:bg-default-white text-default-white dark:text-default-black rounded-full cursor-pointer focus:outline-none"
             >Salvar</button>
           </section>
@@ -576,37 +598,37 @@ const ItemsBox = defineComponent({
               hability="Força" 
               modifier={character.strengthModifier} 
               total={character.hability.strength}
-              onClick={openHabilityModal} 
+              onClick={open} 
             />
             <HabilityItem 
               hability="Destreza" 
               modifier={character.dexterityModifier} 
               total={character.hability.dexterity} 
-              onClick={openHabilityModal} 
+              onClick={open} 
             />
             <HabilityItem 
               hability="Constituição" 
               modifier={character.constitutionModifier}  
               total={character.hability.constitution} 
-              onClick={openHabilityModal}
+              onClick={open}
             />
             <HabilityItem 
               hability="Inteligência" 
               modifier={character.intelligenceModifier} 
               total={character.hability.intelligence} 
-              onClick={openHabilityModal}
+              onClick={open}
             />
             <HabilityItem 
               hability="Sabedoria" 
               modifier={character.wisdomModifier} 
               total={character.hability.wisdom}
-              onClick={openHabilityModal}  
+              onClick={open}  
             />
             <HabilityItem 
               hability="Carisma" 
               modifier={character.charismaModifier} 
               total={character.hability.charisma}
-              onClick={openHabilityModal} 
+              onClick={open} 
             />
           </aside>
           <section class="flex flex-col flex-nowrap justify-between items-center rounded-lg h-auto w-profile-main ml-:2 dark:bg-default-black">
@@ -619,6 +641,7 @@ const ItemsBox = defineComponent({
             <TextItem />
             <BreakItem />
             <InventoryItem />
+            <TalentsItem />
           </section>
         </section>
       </>

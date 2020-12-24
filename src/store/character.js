@@ -47,7 +47,24 @@ export const useCharacterStore = defineStore({
     CA: 10,
     speed: 30,
     initiative: 0,
-    talents: [],
+    talents: [
+      {
+        "id": "iluminated",
+        "title": "Iluminado",
+        "code": "unity",
+        "description": "A percepção da realidade é apenas uma pura questão de sorte.",
+        "requirements": "Nenhum",
+        "bonus": "Ganha +1 de Sabedoria e +1 de Inteligência."
+      },
+      {
+        "id": "crooked-talk",
+        "title": "Papo Torto",
+        "code": "unity",
+        "description": "Lábia de certa forma duvidosa.",
+        "requirements": "Nenhum",
+        "bonus": "Ganha a perícia Persuasão. O bônus de proficiência é dobrado para Persuasão."
+      },
+    ],
     equipment: [],
     anotations: []
   }),

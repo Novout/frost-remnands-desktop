@@ -36,6 +36,10 @@
   .form_basic > input {
     @apply bg-default-black px-:2 w-20;
   }
+
+  .item-right-aside {
+    @apply flex flex-col justify-start items-center w-full bg-dark-one dark:bg-dark-bg dark:hover:bg-dark-bgHover hover:bg-dark-inputHover p-:1 ml-:2 mt-:2;
+  }
 }
 
 

@@ -10,6 +10,6 @@ export const useToggle = () => {
     toggle,
     open,
     close,
-    toggleButton 
+    toggleButton
   };
 }
