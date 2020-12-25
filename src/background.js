@@ -42,8 +42,12 @@ const createWindow = () => {
 }
 
 app.on("ready", () => {
-  if(!fr.reload) globalShortcut.register("CmdOrCtrl+R", () => {});
+  if(!fr.reload) {
+    globalShortcut.register("CmdOrCtrl+R", () => {});
+    globalShortcut.register("Alt+F4", () => {});
+  } 
   
+    
   if(fr.console) {
     globalShortcut.register("CmdOrCtrl+D", () => {
       win.webContents.openDevTools();

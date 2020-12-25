@@ -1,8 +1,8 @@
-import { defineComponent, onBeforeUnmount, onMounted } from "vue";
+import { defineComponent, onMounted } from "vue";
 import { remote } from "electron";
 import { useDefaultStore } from "-/config";
 import { useCharacterStore } from "-/character";
-import { JsonFileSync, JsonWriteFile } from "_/services/fs";
+import { useSave } from "@/use/save";
 import fr from "../frostremnands.config";
 
 export default defineComponent({
@@ -16,26 +16,23 @@ export default defineComponent({
         : document.querySelector("html").classList.remove("dark");
     });
 
-    onBeforeUnmount(() => {
-      const character = useCharacterStore();
-      let register = JsonFileSync("register/characters.json");
-      register.forEach(save => {
-        if(save.name === character.name) {
-          save = character;
-        }
-      });
-      JsonWriteFile("register/characters.json", register);
-    })
-
     const win = remote.getCurrentWindow();
+    const character = useCharacterStore();
     
     const windowMinimize = () => {
       win.minimize();
     }
 
     const windowClose = () => {
+      const { saveAll } = useSave();
       const close = window.confirm("Deseja realmente fechar o aplicativo?");
-      if(close) win.close();
+      if(close) {
+        if(!character.name === "_template") {
+          saveAll();
+        }
+        
+        win.close();
+      }
     }
 
     return { windowClose, windowMinimize }

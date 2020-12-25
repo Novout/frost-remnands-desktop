@@ -21,6 +21,7 @@ module.exports = {
         blueLight: '#b5d6fa',
         blueDark: '#35495e',
         blueTertiary: '#7dbbf5',
+        blueTertiaryHover: '#3B9BF3',
         red: '#FF5252'
       },
       dark: {
@@ -456,7 +457,11 @@ module.exports = {
       ':3': '1.5rem',
       ':4': '2rem',
       ':5': '2.5rem',
+      ':10': '5rem',
       ':20': '10rem',
+      ':30': '15rem',
+      ':40': '20rem',
+      ':50': '25rem',
       'bar': '30px',
       ...theme('spacing')
     }),

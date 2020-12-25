@@ -2,6 +2,7 @@ import { defineComponent, ref, watch } from "vue";
 import { useDefaultStore } from "-/config";
 import { JsonWriteFile } from "_/services/fs";
 import { useToast } from "vue-toastification";
+import { useSave } from "@/use/save";
 
 export default defineComponent({
   name: "Config",
@@ -9,6 +10,7 @@ export default defineComponent({
     const toast = useToast();
     const store = useDefaultStore();
     const theme = ref(store.base.theme);
+    const { saveAll } = useSave();
 
     watch(theme, (theme) => {
       theme === "dark" 
@@ -29,7 +31,7 @@ export default defineComponent({
         <h1 class="text-3xl my-:2 py-:1 border-b border-default-black dark:border-default-blueLight dark:text-default-blueTertiary text-default-blueDark">Opções</h1>
         <section class="flex items-center">
           <router-link 
-            class="border-2 rounded-md border-default-black dark:border-default-white p-:1"
+            class="border-2 focus:outline-none rounded-md border-default-black dark:border-default-white p-:1"
             to="/"
           >Menu Inicial</router-link>
         </section>
@@ -39,6 +41,12 @@ export default defineComponent({
             <option value="light">Claro</option>
             <option value="dark">Escuro</option>
           </select>
+        </section>
+        <section class="flex items-center my-:2">
+          <button 
+            class="border-2 focus:outline-none rounded-md border-default-black dark:border-default-white p-:1 cursor-pointer" 
+            onClick={saveAll}
+          >Salvar Tudo</button>
         </section>
       </section>
     )

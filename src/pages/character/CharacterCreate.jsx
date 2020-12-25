@@ -1,7 +1,7 @@
 import { defineComponent, reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useCharacterStore } from "-/character";
-import { JsonFileSync, JsonWriteFile } from "_/services/fs";
+import { JsonFileSync, PathRead, PathWrite } from "_/services/fs";
 import { useToast } from "vue-toastification";
 
 const ItemBox = defineComponent({
@@ -274,6 +274,7 @@ export default defineComponent({
     const toast = useToast();
     const router = useRouter();
     const character = useCharacterStore();
+    character.$patch({ talents: []});
 
     const state = reactive({
       race: "",
@@ -306,7 +307,44 @@ export default defineComponent({
         breakPoint: state.breakPoint,
         level: state.level,
         classLevel: 1,
-        talents: [],
+        classDetails: [],
+        availableLevelPoints: 27,
+        hability: {
+          strength: 8,
+          dexterity: 8,
+          constitution: 8,
+          intelligence: 8,
+          wisdom: 8,
+          charisma: 8
+        },
+        expertises: {
+          athletics: false,
+          reaction: false,
+          acrobatics: false,
+          resilience: false,
+          oldworld: false,
+          newworld: false,
+          investigation: false,
+          nature: false,
+          faith: false,
+          strategy: false,
+          misticism: false,
+          perception: false,
+          piloting: false,
+          deception: false,
+          intimidation: false,
+          performance: false,
+          persuasion: false
+        },
+        proficiencyBonus: 2,
+        hitPoints: 0,
+        hitDice: 6,
+        lastChance: true,
+        CA: 10,
+        speed: 30,
+        initiative: 0,
+        exhaustion: true,
+        exhaustionTime: 3,
         equipment: [],
         anotations: []
       };
@@ -314,11 +352,12 @@ export default defineComponent({
       character.$patch(item);
 
       try {
-        const save = JsonFileSync("register/characters.json");
-        save.push(item);
-        JsonWriteFile("register/characters.json", [...save, item]);
+        const save = PathRead("characters");
+        console.log(save);
+        PathWrite("characters", [...save, character.$state]);
         router.push("/profile");
       } catch(error) {
+        console.log(error);
         toast.error("Ocorreu um erro ao salvar o personagem :(");
       }
     }
@@ -341,7 +380,7 @@ export default defineComponent({
 
     return () => (
       <>
-        <main class=" bg-default-white h-full overflow-y-auto overflow-x-hidden px-:20 pt-bar dark:bg-default-black">
+        <main class=" bg-default-white h-full overflow-y-auto overflow-x-hidden sm:px-:20 md:px-:20 lg:px-:30 xl:px-:50 pt-bar dark:bg-default-black">
           <h1 class="pt-:2 pb-:1 border-b-2 border-default-black dark:border-default-white py-16 text-3xl pointer-events-none text-default-black dark:text-default-white">Ficha de Personagem</h1>
           <span class="font-ralewayMedium text-xl my-:5 pointer-events-none text-default-black dark:text-default-white">Crie seu personagem seguindo a ordem recomendada do cenário. Seu personagem irá ficar salvo no sistema para utilização futura.</span>
           <h2 class="py-:1 mt-5 border-default-black dark:border-default-white border-b-2 text-xl pointer-events-none text-default-black dark:text-default-white">Raça</h2>

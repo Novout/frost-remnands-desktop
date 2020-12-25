@@ -8,7 +8,7 @@
   { "name": "Investigação", "code": "investigation", "type": "intelligence" },
   { "name": "Natureza", "code": "nature", "type": "intelligence" },
   { "name": "Crença", "code": "faith", "type": "intelligence" },
-  { "name": "Estrategismo", "code": "strategy", "type": "intelligence" },
+  { "name": "Liderança", "code": "strategy", "type": "intelligence" },
   { "name": "Misticismo", "code": "misticism", "type": "wisdom" },
   { "name": "Percepção", "code": "perception", "type": "wisdom" },
   { "name": "Pilotagem", "code": "piloting", "type": "wisdom" },

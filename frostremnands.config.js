@@ -13,7 +13,7 @@ module.exports = {
    *  false = disabled dev console
    *  true = console in dev mode
    */
-  console: process.env.NODE_ENV !== "production",
+  console: true,
   /*
    *  actually website redirect
    */

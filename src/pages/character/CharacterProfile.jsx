@@ -1,5 +1,5 @@
 import { 
-  defineComponent, 
+  defineComponent,
   ref, 
   reactive, 
   onMounted, 
@@ -7,16 +7,17 @@ import {
 } from "vue";
 import { useCharacterStore } from "-/character";
 import { JsonFileSync } from "_/services/fs";
+import { useRouter } from "vue-router";
 import { useToast } from "vue-toastification";
-import { validateNumber } from "@/utils/validate";
 import { useToggle } from "@/use/toggle";
+import { useSave } from "@/use/save";
+import { validateNumber } from "@/utils/validate";
 import Inventory from "@/lib/Inventory.jsx";
 
 const GenericsBox = defineComponent({
   setup() {
     const character = useCharacterStore();
     const { toggle, open, close } = useToggle();
-    const toggleHeader = ref(false);
 
     onMounted(() => {
       const { TOAST } = JsonFileSync("localisation/pt_BR.json");
@@ -102,6 +103,10 @@ const HabilityItem = defineComponent({
     total: {
       type: Number,
       required: true
+    },
+    open: {
+      type: Function,
+      required: true
     }
   },
   setup(props) {
@@ -112,6 +117,7 @@ const HabilityItem = defineComponent({
           <p class="text-2xl text-default-white font-ralewayMedium">{props.modifier}</p>
           <p 
             class="bg-default-white text-lg dark:bg-dark-one dark:text-default-white py-1 px-:3 rounded-full text-default-black cursor-pointer hover:bg-default-blueLight dark:hover:bg-default-blueDark font-ralewayMedium"
+            onClick={props.total}
           >{props.total}</p>
         </article>
       </>
@@ -287,6 +293,32 @@ const DataItem = defineComponent({
           </article>
         </section>
       </>
+    )
+  }
+})
+
+const GenericsItem = defineComponent({
+  setup() {
+    const { saveCharacter } = useSave();
+    const router = useRouter();
+
+    const initialMenu = () => {
+      router.push("/");
+    }
+
+    return () => (
+      <section
+        class="flex flex-row sm:justify-between md:justify-between lg:justify-around xl:justify-around items-center w-full bg-dark-one dark:bg-dark-bg dark:hover:bg-dark-bgHover hover:bg-dark-inputHover p-:1 ml-:2 mb-:2"
+      >
+        <button
+          class="p-:1 border rounded-md dark:border-default-white border-default-black"
+          onClick={initialMenu}
+        >Menu Inicial</button>
+        <button
+          class="p-:1 border rounded-md dark:border-default-white border-default-black"
+          onClick={saveCharacter}
+        >Salvar Personagem</button>
+      </section>
     )
   }
 })
@@ -574,14 +606,9 @@ const TalentsItem = defineComponent({
 
 const ItemsBox = defineComponent({
   setup() {
-    const { toggle, open, close } = useToggle();
-
-    const { TOAST } = JsonFileSync("localisation/pt_BR.json");
-    const toast = useToast();
-
-    watch(toggle, (toggle) => {
-      if(!toggle) toast.success(TOAST.PROFILE_ITEMS_SUCCESS);
-    })
+    const toggle = ref(false);
+    const open = () => toggle.value = true;
+    const close = () => toggle.value = false;
 
     const character = useCharacterStore();
 
@@ -652,37 +679,37 @@ const ItemsBox = defineComponent({
               hability="Força" 
               modifier={character.strengthModifier} 
               total={character.hability.strength}
-              onClick={open} 
+              open={open} 
             />
             <HabilityItem 
               hability="Destreza" 
               modifier={character.dexterityModifier} 
               total={character.hability.dexterity} 
-              onClick={open} 
+              open={open} 
             />
             <HabilityItem 
               hability="Constituição" 
               modifier={character.constitutionModifier}  
               total={character.hability.constitution} 
-              onClick={open}
+              open={open}
             />
             <HabilityItem 
               hability="Inteligência" 
               modifier={character.intelligenceModifier} 
               total={character.hability.intelligence} 
-              onClick={open}
+              open={open}
             />
             <HabilityItem 
               hability="Sabedoria" 
               modifier={character.wisdomModifier} 
               total={character.hability.wisdom}
-              onClick={open}  
+              open={open}  
             />
             <HabilityItem 
               hability="Carisma" 
               modifier={character.charismaModifier} 
               total={character.hability.charisma}
-              onClick={open} 
+              open={open} 
             />
           </aside>
           <section class="flex flex-col flex-nowrap justify-between items-center rounded-lg h-auto w-profile-main ml-:2 dark:bg-default-black">
@@ -690,6 +717,7 @@ const ItemsBox = defineComponent({
             <ExpertiseItem />
           </section>
           <section class="flex flex-col flex-nowrap justify-start items-center h-auto w-profile-general ml-:1">
+            <GenericsItem />
             <DataItem />
             <ExaustItem />
             <HitItem />
