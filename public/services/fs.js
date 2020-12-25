@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { app } = require("electron").remote;
 
 module.exports = {
   JsonFileSync: file => JSON.parse(fs.readFileSync(path.join(__static, `./data/${file}`)), 'utf8'),
@@ -16,16 +17,30 @@ module.exports = {
     });
   },
   PathWrite: (file, object) => {
-    storage.set(file, object);
+    const path_item = path.resolve(app.getPath("userData") + `/register/${file}.json`);
+    const path_full = path.resolve(app.getPath("userData") + `/register`);
+
+    if(!fs.existsSync(path_full)) {
+      fs.mkdir(path_full, (err) => { 
+        if (err) { return console.error(err); } 
+        console.log('Directory created successfully!'); 
+      }); 
+    }
+    fs.writeFileSync(path_item, JSON.stringify(object), { encoding: 'utf8' });
   },
-  PathRead: (file) => {
-    const data = storage.get(file, (error, data) => {
-      if (error) throw error;
-      console.log(data);
+  PathRead: (file, initialize = []) => {
+    const path_item = path.resolve(app.getPath("userData") + `/register/${file}.json`);
+    const path_full = path.resolve(app.getPath("userData") + `/register`);
+    console.log(initialize);
 
-      return data;
-    });
+    if(!fs.existsSync(path_full)) {
+      fs.mkdir(path_full, (err) => { if (err) { return console.error(err);}}); 
+    }
 
-    return data;
+    if(!fs.existsSync(path_item)) {
+      fs.writeFileSync(path_item, JSON.stringify(initialize), { encoding: 'utf8' });
+    }
+    
+    return JSON.parse(fs.readFileSync(path_item, 'utf8'));
   }
 }

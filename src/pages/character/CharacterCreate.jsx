@@ -353,7 +353,7 @@ export default defineComponent({
 
       try {
         const save = PathRead("characters");
-        console.log(save);
+        console.log({ path_read: save });
         PathWrite("characters", [...save, character.$state]);
         router.push("/profile");
       } catch(error) {

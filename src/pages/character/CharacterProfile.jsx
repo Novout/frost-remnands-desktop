@@ -103,10 +103,6 @@ const HabilityItem = defineComponent({
     total: {
       type: Number,
       required: true
-    },
-    open: {
-      type: Function,
-      required: true
     }
   },
   setup(props) {
@@ -116,8 +112,7 @@ const HabilityItem = defineComponent({
           <p class="text-sm text-default-white font-ralewayMedium">{props.hability}</p>
           <p class="text-2xl text-default-white font-ralewayMedium">{props.modifier}</p>
           <p 
-            class="bg-default-white text-lg dark:bg-dark-one dark:text-default-white py-1 px-:3 rounded-full text-default-black cursor-pointer hover:bg-default-blueLight dark:hover:bg-default-blueDark font-ralewayMedium"
-            onClick={props.total}
+            class="bg-default-white text-lg dark:bg-dark-one dark:text-default-white py-1 px-:3 rounded-full text-default-black hover:bg-default-blueLight dark:hover:bg-default-blueDark font-ralewayMedium"
           >{props.total}</p>
         </article>
       </>
@@ -674,42 +669,39 @@ const ItemsBox = defineComponent({
           </section>
         </section>
         <section class="flex h-auto p-:2">
-          <aside class="flex flex-col flex-nowrap justify-between items-center rounded-lg h-auto w-profile-aside shadow-lg bg-dark-one dark:bg-dark-bg p-:1">
+          <aside 
+            class="flex flex-col cursor-pointer flex-nowrap justify-between items-center rounded-lg h-auto w-profile-aside shadow-lg bg-dark-one dark:bg-dark-bg p-:1"
+            onClick={open}
+          >
             <HabilityItem 
               hability="Força" 
               modifier={character.strengthModifier} 
               total={character.hability.strength}
-              open={open} 
             />
             <HabilityItem 
               hability="Destreza" 
               modifier={character.dexterityModifier} 
               total={character.hability.dexterity} 
-              open={open} 
             />
             <HabilityItem 
               hability="Constituição" 
               modifier={character.constitutionModifier}  
               total={character.hability.constitution} 
-              open={open}
             />
             <HabilityItem 
               hability="Inteligência" 
               modifier={character.intelligenceModifier} 
               total={character.hability.intelligence} 
-              open={open}
             />
             <HabilityItem 
               hability="Sabedoria" 
               modifier={character.wisdomModifier} 
-              total={character.hability.wisdom}
-              open={open}  
+              total={character.hability.wisdom} 
             />
             <HabilityItem 
               hability="Carisma" 
               modifier={character.charismaModifier} 
               total={character.hability.charisma}
-              open={open} 
             />
           </aside>
           <section class="flex flex-col flex-nowrap justify-between items-center rounded-lg h-auto w-profile-main ml-:2 dark:bg-default-black">

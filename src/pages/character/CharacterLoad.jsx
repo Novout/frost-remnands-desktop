@@ -1,6 +1,6 @@
 import { defineComponent, ref, withModifiers } from "vue";
 import { useCharacterStore } from "-/character";
-import { PathWrite } from "_/services/fs";
+import { PathWrite, PathRead, JsonFileSync } from "_/services/fs";
 import { useToggle } from "@/use/toggle";
 import { useRouter } from "vue-router";
 
@@ -16,7 +16,7 @@ const ListLoad = defineComponent({
     }
   },
   setup(props) {
-    const list = ref([]);
+    const list = ref(PathRead(props.load));
     const router = useRouter();
 
     const remove = (event) => {
@@ -96,6 +96,9 @@ const ListLoad = defineComponent({
 export default defineComponent({
   name: "CharacterLoad",
   setup() {
+    const define = JsonFileSync("register/canon.json");
+    PathWrite("canon", define);
+
     return () => (
       <main class="bg-default-white h-screen w-full overflow-y-auto overflow-x-hidden px-:20 pt-bar dark:bg-default-black">
         <h1 class="text-3xl py-:1 my-:1 border-b border-default-black dark:border-default-blueTertiary dark:text-default-blueTertiary">Carregar</h1>
