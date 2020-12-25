@@ -1,6 +1,6 @@
 import { defineComponent, ref, watch } from "vue";
 import { useDefaultStore } from "-/config";
-import { JsonWriteFile } from "_/services/fs";
+import { PathWrite } from "_/services/fs";
 import { useToast } from "vue-toastification";
 import { useSave } from "@/use/save";
 
@@ -23,7 +23,7 @@ export default defineComponent({
 
       toast.success(`Tema ${msg} selecionado!`);
 
-      JsonWriteFile("config/base.json", store.base);
+      PathWrite("base", store.base);
     });
 
     return () => (

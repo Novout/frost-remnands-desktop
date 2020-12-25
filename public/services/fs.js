@@ -23,7 +23,6 @@ module.exports = {
     if(!fs.existsSync(path_full)) {
       fs.mkdir(path_full, (err) => { 
         if (err) { return console.error(err); } 
-        console.log('Directory created successfully!'); 
       }); 
     }
     fs.writeFileSync(path_item, JSON.stringify(object), { encoding: 'utf8' });
@@ -31,8 +30,7 @@ module.exports = {
   PathRead: (file, initialize = []) => {
     const path_item = path.resolve(app.getPath("userData") + `/register/${file}.json`);
     const path_full = path.resolve(app.getPath("userData") + `/register`);
-    console.log(initialize);
-
+    
     if(!fs.existsSync(path_full)) {
       fs.mkdir(path_full, (err) => { if (err) { return console.error(err);}}); 
     }
