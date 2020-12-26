@@ -1,12 +1,10 @@
 import { defineStore } from "pinia";
-import { PathRead } from "_/services/fs";
+import { PathRead, JsonFileSync } from "_/services/fs";
 
 export const useDefaultStore = defineStore({
   id: "config",
   state: () => ({
-    base: PathRead("base", {
-      theme: "dark"
-    }),
+    base: PathRead("base", JsonFileSync("config/base.json")),
     save: {
       characters: []
     }

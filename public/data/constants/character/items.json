@@ -196,5 +196,38 @@
     "additional":"Nenhum",
     "type":"Versátil (1d8)",
     "quantity":1
+  },
+  {
+    "id":"generic-leather",
+    "idType": "light-armor",
+    "title":"Couro",
+    "description":"",
+    "rarity":"common",
+    "bonus":"12 CA + mod de Destreza",
+    "additional":"Nenhum",
+    "type":"Vestimenta Leve",
+    "quantity":1
+  },
+  {
+    "id":"generic-breastplate",
+    "idType": "medium-armor",
+    "title":"Couro",
+    "description":"",
+    "rarity":"common",
+    "bonus":"14 CA + mod de Destreza(max 2)",
+    "additional":"Nenhum",
+    "type":"Vestimenta Mediana",
+    "quantity":1
+  },
+  {
+    "id":"generic-ring-mail",
+    "idType": "medium-armor",
+    "title":"Metálico",
+    "description":"",
+    "rarity":"common",
+    "bonus":"16 CA",
+    "additional":"Desvantagem em Furtividade e exige Força mínima de 13",
+    "type":"Vestimenta Pesada",
+    "quantity":1
   }
 ]

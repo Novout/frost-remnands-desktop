@@ -16,7 +16,7 @@
   }
 
   .full-background { 
-    @apply fixed h-screen pt-:3 top-0 left-0 w-screen bg-opacity-90 bg-default-black hover:bg-default-black transition duration-200 ease-in-out select-none;
+    @apply fixed h-screen pt-:3 top-0 left-0 w-screen bg-default-black hover:bg-default-black transition duration-200 ease-in-out select-none;
   }
 
   .outline-solid-white {

@@ -17,7 +17,7 @@ Folder that will contain items that need nodeIntegration and the `__static` vari
   ├── data                         # Data manipulation for only offline specification
   |   └── config                   # General presettings
   |   └── constants                # Readonly data, based on RPG content specification
-  |   └── register                 # User save data
+  |   └── register                 # User save data (already in roaming)
   |   └── localisation             # Localisation static data
   ├── services                     # Utils with data implementation
   |   └── fs.js                    # Read/Write Json/TOML data

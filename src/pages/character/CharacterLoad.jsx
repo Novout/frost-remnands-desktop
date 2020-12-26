@@ -96,8 +96,7 @@ const ListLoad = defineComponent({
 export default defineComponent({
   name: "CharacterLoad",
   setup() {
-    const define = JsonFileSync("register/canon.json");
-    PathWrite("canon", define);
+    PathWrite("canon", JsonFileSync("register/canon.json"));
 
     return () => (
       <main class="bg-default-white h-screen w-full overflow-y-auto overflow-x-hidden px-:20 pt-bar dark:bg-default-black">

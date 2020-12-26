@@ -297,6 +297,11 @@ const GenericsItem = defineComponent({
     const { saveCharacter } = useSave();
     const router = useRouter();
 
+    const save = () => {
+      saveCharacter();
+      toast.success("Personagem salvo com sucesso!");
+    }
+
     const initialMenu = () => {
       router.push("/");
     }
@@ -311,7 +316,7 @@ const GenericsItem = defineComponent({
         >Menu Inicial</button>
         <button
           class="p-:1 border rounded-md dark:border-default-white border-default-black"
-          onClick={saveCharacter}
+          onClick={save}
         >Salvar Personagem</button>
       </section>
     )

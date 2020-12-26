@@ -7,8 +7,10 @@ import {
   withModifiers,
   watch 
 } from "vue";
+import { useToast } from "vue-toastification";
 import { useCharacterStore } from "-/character";
-import { JsonFileSync, JsonWriteFile } from "_/services/fs";
+import { useToggle } from "@/use/toggle";
+import { JsonFileSync, PathRead, PathWrite } from "_/services/fs";
 
 export const InventoryItemEquipped = defineComponent({
   props: {
@@ -46,9 +48,12 @@ export const InventoryItemEquipped = defineComponent({
     }
   },
   setup(props) {
-    const toggle = ref(false);
+    const { toggle, close } = useToggle();
     const idDefine = ref("");
+    
     const character = useCharacterStore();
+    const toast = useToast();
+
     const rarityBackground = computed(() => {
       return ({
         "common": "rarity-common",
@@ -60,25 +65,23 @@ export const InventoryItemEquipped = defineComponent({
 
     const openItem = (event) => {
       idDefine.value = event.target.id;
+      console.log(idDefine.value);
       toggle.value = true;
     }
 
-    const closeItem = () => {
-      toggle.value = false;
-    }
-
     const removeItem = () => {
-      const items = JsonFileSync("constants/character/items.json");
+      const items = [...JsonFileSync("constants/character/items.json"), ...PathRead("items")];
       const item = items.filter(item => item.id === idDefine.value);
       character.equipment = character.equipment.filter(equip => item[0].id !== equip.id);
+      toast.success("Item removido com sucesso!");
     }
 
     return { 
       props, 
       openItem, 
-      closeItem, 
       removeItem, 
       toggle, 
+      close,
       rarityBackground 
     }
   },
@@ -92,7 +95,7 @@ export const InventoryItemEquipped = defineComponent({
           <section class="w-2/5 h-medium">
             <button
               class="px-:2 py-:1 bg-default-black dark:bg-default-white text-default-white dark:text-default-black"
-              onClick={this.closeItem}
+              onClick={this.close}
             >Fechar</button>
             <button
               class="px-:2 py-:1 bg-default-black dark:bg-default-white text-default-white dark:text-default-black"
@@ -153,7 +156,10 @@ export const InventoryItem = defineComponent({
   setup(props) {
     const toggle = ref(false);
     const idDefine = ref("");
+
     const character = useCharacterStore();
+    const toast = useToast();
+
     const rarityBackground = computed(() => {
       return ({
         "common": "rarity-common",
@@ -173,12 +179,16 @@ export const InventoryItem = defineComponent({
     }
 
     const addItem = () => {
-      const items = JsonFileSync("constants/character/items.json");
+      const items = [...JsonFileSync("constants/character/items.json"), ...PathRead("items")];
       const item = items.filter(item => item.id === idDefine.value);
+
       const def = item[0];
       def.quantity = props.quantity;
       
       character.equipment = [...character.equipment, def];
+
+      toast.success("Item adicionado com sucesso!");
+      
       toggle.value = false;
     }
 
@@ -231,11 +241,13 @@ export default defineComponent({
   },
   setup(props) {
     const { toggle } = toRefs(props);
-    const items = JsonFileSync("constants/character/items.json");
+    const items = [...JsonFileSync("constants/character/items.json"), ...PathRead("items")];
     const added = ref(true);
     const itemsFiltered = ref(items);
     const search = ref("");
+
     const character = useCharacterStore();
+    const toast = useToast();
     
     const create = reactive({
       id: "",
@@ -249,8 +261,9 @@ export default defineComponent({
       quantity: 1
     });
     const createItem = () => {
-      const items = JsonFileSync("constants/character/items.json");
-      JsonWriteFile("constants/character/items.json", [...items, create]);
+      const items = PathRead("items");
+      PathWrite("items", [...items, create]);
+      toast.success("Item criado com sucesso!");
     }
 
     const closeInventory = () => toggle.value = false;
@@ -283,10 +296,10 @@ export default defineComponent({
       added.value = (id === "search");
     }
 
-    watch(search, (search) => {
+    watch(search, (_search) => {
       const filtered = items.filter(item => { 
-        if(!search) return true;
-        return item.title.includes(search); 
+        if(!_search) return true;
+        return item.title.includes(_search); 
       })
       itemsFiltered.value = filtered;
     })

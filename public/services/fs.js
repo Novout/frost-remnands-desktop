@@ -21,10 +21,9 @@ module.exports = {
     const path_full = path.resolve(app.getPath("userData") + `/register`);
 
     if(!fs.existsSync(path_full)) {
-      fs.mkdir(path_full, (err) => { 
-        if (err) { return console.error(err); } 
-      }); 
+      fs.mkdir(path_full, (err) => { if (err) { return console.error(err);}}); 
     }
+    
     fs.writeFileSync(path_item, JSON.stringify(object), { encoding: 'utf8' });
   },
   PathRead: (file, initialize = []) => {
