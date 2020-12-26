@@ -381,8 +381,8 @@ export default defineComponent({
     return () => (
       <>
         <main class=" bg-default-white h-full overflow-y-auto overflow-x-hidden sm:px-:20 md:px-:20 lg:px-:30 xl:px-:50 pt-bar dark:bg-default-black">
-          <h1 class="pt-:2 pb-:1 border-b-2 border-default-black dark:border-default-white py-16 text-3xl pointer-events-none text-default-black dark:text-default-white">Ficha de Personagem</h1>
-          <span class="font-ralewayMedium text-xl my-:5 pointer-events-none text-default-black dark:text-default-white">Crie seu personagem seguindo a ordem recomendada do cenário. Seu personagem irá ficar salvo no sistema para utilização futura.</span>
+          <h1 class="pt-:2 mb-:1 pb-:1 border-b-2 border-default-blueDark dark:border-default-blueTertiary py-16 text-3xl pointer-events-none text-default-blueDark dark:text-default-blueTertiary">Ficha de Personagem</h1>
+          <span class="text-xl font-ralewayTiny my-:5 pointer-events-none text-default-black dark:text-default-white">Crie seu personagem seguindo a ordem recomendada do cenário. Seu personagem irá ficar salvo no sistema para utilização futura.</span>
           <h2 class="py-:1 mt-5 border-default-black dark:border-default-white border-b-2 text-xl pointer-events-none text-default-black dark:text-default-white">Raça</h2>
           <select vModel={state.race} class="dark:bg-dark-input bg-white-input hover:bg-white-inputHover p-:1 border-none rounded-lg my-:2 w-full cursor-pointer dark:hover:bg-dark-oneHover text-default-black dark:text-default-white">
             {races.map((race) => 

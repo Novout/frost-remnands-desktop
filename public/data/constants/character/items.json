@@ -1,1 +1,211 @@
-[{"id":"a","title":"Title eeeeeeeeeee eeeeeeeeee","description":"A really test","rarity":"common","bonus":"1d6 Cortante","additional":"Nenhum","type":"Versátil","idType":["versatile"],"quantity":1},{"id":"b","title":"Title","description":"A really test","rarity":"epic","bonus":"1d6 Cortante","additional":"Nenhum","type":"Versátil","idType":["versatile"],"quantity":1},{"id":"c","title":"Title","description":"A really test","rarity":"rare","bonus":"1d6 Cortante","additional":"Nenhum","type":"Versátil","idType":["versatile"],"quantity":1},{"id":"d","title":"Title","description":"A really test","rarity":"common","bonus":"1d6 Cortante","additional":"Nenhum","type":"Versátil","idType":["versatile"],"quantity":1},{"id":"e","title":"Title","description":"A really test","rarity":"common","bonus":"1d6 Cortante","additional":"Nenhum","type":"Versátil","idType":["versatile"],"quantity":1},{"id":"f","title":"Title","description":"A really test","rarity":"common","bonus":"1d6 Cortante","additional":"Nenhum","type":"Versátil","idType":["versatile"],"quantity":1},{"id":"g","title":"Title","description":"A really test","rarity":"common","bonus":"1d6 Cortante","additional":"Nenhum","type":"Versátil","idType":["versatile"],"quantity":1},{"id":"h","title":"Title","description":"A really test","rarity":"common","bonus":"1d6 Cortante","additional":"Nenhum","type":"Versátil","idType":["versatile"],"quantity":1},{"id":"i","title":"Title","description":"A really test","rarity":"common","bonus":"1d6 Cortante","additional":"Nenhum","type":"Versátil","idType":["versatile"],"quantity":1},{"id":"j","title":"j","description":"A really test","rarity":"common","bonus":"1d6 Cortante","additional":"Nenhum","type":"Versátil","idType":["versatile"]},{"id":"DSADASW","title":"ASDSADSA","description":"","rarity":"legendary","bonus":"","additional":"","type":"","idType":[],"quantity":1},{"id":"fsdf","title":"dsf","description":"fds","rarity":"sdf","bonus":"sdf","additional":"sdf","type":"sdf","idType":[],"quantity":3}]
+[
+  {
+    "id":"template",
+    "idType": "simple-melee-weapon",
+    "title":"Title eeeeeeeeeee eeeeeeeeee",
+    "description":"A really test",
+    "rarity":"common",
+    "bonus":"1d6 Cortante",
+    "additional":"Nenhum",
+    "type":"Versátil",
+    "quantity":1
+  },
+  {
+    "id":"generic-club",
+    "idType": "simple-melee-weapon",
+    "title":"Taco",
+    "description":"Um taco comum para toda obra.",
+    "rarity":"common",
+    "bonus":"1d4 Espancamento",
+    "additional":"Nenhum",
+    "type":"Leve",
+    "quantity":1
+  },
+  {
+    "id":"generic-dagger",
+    "idType": "simple-melee-weapon",
+    "title":"Adaga",
+    "description":"Um taco comum para toda obra.",
+    "rarity":"common",
+    "bonus":"1d4 Perfurante",
+    "additional":"Nenhum",
+    "type":"Finesse, Leve, Arremesável(20/60)",
+    "quantity":1
+  },
+  {
+    "id":"generic-greatclub",
+    "idType": "simple-melee-weapon",
+    "title":"Taco Grando",
+    "description":"Um taco maior do que o esperado.",
+    "rarity":"common",
+    "bonus":"1d8 Espancamento",
+    "additional":"Nenhum",
+    "type":"Duas Mãos",
+    "quantity":1
+  },
+  {
+    "id":"generic-handaxe",
+    "idType": "simple-melee-weapon",
+    "title":"Machado de Mão",
+    "description":"",
+    "rarity":"common",
+    "bonus":"1d6 Cortante",
+    "additional":"Nenhum",
+    "type":"Leve, Aremessável(20/60)",
+    "quantity":1
+  },
+  {
+    "id":"generic-light-hammer",
+    "idType": "simple-melee-weapon",
+    "title":"Martelo Leve",
+    "description":"",
+    "rarity":"common",
+    "bonus":"1d4 Espancamento",
+    "additional":"Nenhum",
+    "type":"Leve, Aremessável(20/60)",
+    "quantity":1
+  },
+  {
+    "id":"generic-mace",
+    "idType": "simple-melee-weapon",
+    "title":"Bastão",
+    "description":"",
+    "rarity":"common",
+    "bonus":"1d6 Espancamento",
+    "additional":"Nenhum",
+    "type":"Duas Mãos",
+    "quantity":1
+  },
+  {
+    "id":"generic-sickle",
+    "idType": "simple-melee-weapon",
+    "title":"Bastão",
+    "description":"",
+    "rarity":"common",
+    "bonus":"1d6 Espancamento",
+    "additional":"Nenhum",
+    "type":"Duas Mãos",
+    "quantity":1
+  },
+  {
+    "id":"generic-sickle",
+    "idType": "simple-melee-weapon",
+    "title":"Bastão",
+    "description":"",
+    "rarity":"common",
+    "bonus":"1d4 Cortante",
+    "additional":"Nenhum",
+    "type":"Leve",
+    "quantity":1
+  },
+  {
+    "id":"generic-spear",
+    "idType": "simple-melee-weapon",
+    "title":"Lança",
+    "description":"",
+    "rarity":"common",
+    "bonus":"1d6 Cortante",
+    "additional":"Nenhum",
+    "type":"Arremesável(20/60), Versátil(1d8)",
+    "quantity":1
+  },
+  {
+    "id":"generic-battleaxe",
+    "idType": "martial-melee-weapon",
+    "title":"Machado de Guerra",
+    "description":"",
+    "rarity":"common",
+    "bonus":"1d8 Cortante",
+    "additional":"Nenhum",
+    "type":"Versátil(1d10)",
+    "quantity":1
+  },
+  {
+    "id":"generic-greataxe",
+    "idType": "martial-melee-weapon",
+    "title":"Machado Grande",
+    "description":"",
+    "rarity":"common",
+    "bonus":"1d12 Cortante",
+    "additional":"Nenhum",
+    "type":"Pesado, Duas-Mãos",
+    "quantity":1
+  },
+  {
+    "id":"generic-greatsword",
+    "idType": "martial-melee-weapon",
+    "title":"Espada Grande",
+    "description":"",
+    "rarity":"common",
+    "bonus":"2d6 Cortante",
+    "additional":"Nenhum",
+    "type":"Pesado, Duas-Mãos",
+    "quantity":1
+  },
+  {
+    "id":"generic-longsword",
+    "idType": "martial-melee-weapon",
+    "title":"Espada Longa",
+    "description":"",
+    "rarity":"common",
+    "bonus":"1d8 Cortante",
+    "additional":"Nenhum",
+    "type":"Versátil (1d10)",
+    "quantity":1
+  },
+  {
+    "id":"generic-pike",
+    "idType": "martial-melee-weapon",
+    "title":"Piqueiro",
+    "description":"",
+    "rarity":"common",
+    "bonus":"1d6 Perfurante",
+    "additional":"Nenhum",
+    "type":"Pesado, Duas Mãos",
+    "quantity":1
+  },
+  {
+    "id":"generic-rapier",
+    "idType": "martial-melee-weapon",
+    "title":"Rapieira",
+    "description":"",
+    "rarity":"common",
+    "bonus":"1d6 Perfurante",
+    "additional":"Nenhum",
+    "type":"Finesse",
+    "quantity":1
+  },
+  {
+    "id":"generic-shortsword",
+    "idType": "martial-melee-weapon",
+    "title":"Espada Curta",
+    "description":"",
+    "rarity":"common",
+    "bonus":"1d4 Perfurante",
+    "additional":"Nenhum",
+    "type":"Finesse, Leve",
+    "quantity":1
+  },
+  {
+    "id":"generic-trident",
+    "idType": "martial-melee-weapon",
+    "title":"Tridente",
+    "description":"",
+    "rarity":"common",
+    "bonus":"1d8 Perfurante",
+    "additional":"Nenhum",
+    "type":"Arremesável(20/60), Versátil(1d8)",
+    "quantity":1
+  },
+  {
+    "id":"generic-warhammer",
+    "idType": "martial-melee-weapon",
+    "title":"Martelo de Guerra",
+    "description":"",
+    "rarity":"common",
+    "bonus":"1d8 Espancamento",
+    "additional":"Nenhum",
+    "type":"Versátil (1d8)",
+    "quantity":1
+  }
+]
