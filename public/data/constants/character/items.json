@@ -1,16 +1,5 @@
 [
   {
-    "id":"template",
-    "idType": "simple-melee-weapon",
-    "title":"Title eeeeeeeeeee eeeeeeeeee",
-    "description":"A really test",
-    "rarity":"common",
-    "bonus":"1d6 Cortante",
-    "additional":"Nenhum",
-    "type":"Versátil",
-    "quantity":1
-  },
-  {
     "id":"generic-club",
     "idType": "simple-melee-weapon",
     "title":"Taco",
