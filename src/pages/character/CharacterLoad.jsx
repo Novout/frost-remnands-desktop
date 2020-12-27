@@ -59,7 +59,7 @@ const ListLoad = defineComponent({
         <section class="flex justify-between w-full p-:1">
           <h2 class="text-2xl">{this.title}</h2>
           <button 
-            class="relative right-0 focus:outline-none text-xl"
+            class="relative right-0 focus:outline-none text-xl border-none"
             onClick={this.toggleButton}
           >{this.toggle ? "v" : ">"}</button>
         </section>
@@ -75,12 +75,12 @@ const ListLoad = defineComponent({
                 <p class="pointer-events-none">Nível {char.level}</p>
                 <button
                   id={char.name}
-                  class="mx-:1 dark:hover:text-white-oneHover"
+                  class="mx-:1 dark:hover:text-white-oneHover border-none"
                   onClick={withModifiers(this.remove, ['prevent'])}
                 >Excluir</button>
                 <button
                   id={char.name}
-                  class="dark:hover:text-white-oneHover"
+                  class="dark:hover:text-white-oneHover border-none"
                   onClick={withModifiers(this.load, ['prevent'])}
                 >Carregar</button>
               </article>

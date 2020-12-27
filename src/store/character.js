@@ -21,6 +21,14 @@ export const useCharacterStore = defineStore({
       wisdom: 8,
       charisma: 8
     },
+    habilityModifier: {
+      strength: -1,
+      dexterity: -1,
+      constitution: -1,
+      intelligence: -1,
+      wisdom: -1,
+      charisma: -1
+    },
     expertises: {
       athletics: false,
       reaction: false,
@@ -49,6 +57,8 @@ export const useCharacterStore = defineStore({
     initiative: 0,
     exhaustion: true,
     exhaustionTime: 3,
+    efrium: 20,
+    baseResource: 50,
     talents: [],
     equipment: [],
     anotations: []

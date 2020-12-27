@@ -27,7 +27,7 @@ export default defineComponent({
       const { saveAll } = useSave();
       const close = window.confirm("Deseja realmente fechar o aplicativo?");
       if(close) {
-        if(!character.name === "_template") {
+        if(character.name !== "_template") {
           saveAll();
         }
         
