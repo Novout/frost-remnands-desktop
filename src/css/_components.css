@@ -40,6 +40,153 @@
   .item-right-aside {
     @apply flex flex-col justify-start items-center w-full bg-dark-one dark:bg-dark-bg dark:hover:bg-dark-bgHover hover:bg-dark-inputHover p-:1 ml-:2 mt-:2;
   }
+
+  .item-right-button {
+    @apply h-6 rounded px-:1 text-default-black dark:text-default-white hover:bg-default-blueDark dark:hover:bg-default-blueTertiaryHover;
+  }
+
+  .toggle{
+    --uiToggleSize: var(--toggleSize, 1.3rem);
+    --uiToggleBorderWidth: var(--toggleBorderWidth, 2px);
+    --uiToggleColor: var(--toggleColor, theme("colors.default.black"));
+  
+    display: var(--toggleDisplay, inline-flex);
+    position: relative;
+  }
+
+  .dark .toggle{
+    --uiToggleSize: var(--toggleSize, 1.3rem);
+    --uiToggleBorderWidth: var(--toggleBorderWidth, 2px);
+    --uiToggleColor: var(--toggleColor, theme("colors.default.white"));
+  
+    display: var(--toggleDisplay, inline-flex);
+    position: relative;
+  }
+  
+  .input-custom{
+    /*
+    The pattern by Sara Soueidan https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/
+    */
+    width: var(--uiToggleSize);
+    height: var(--uiToggleSize);
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+  }
+  
+  .label-custom{
+    display: inline-flex;
+    min-height: var(--uiToggleSize);
+    padding-left: calc(var(--uiToggleSize) + var(--toggleIndent, .4em));
+  }
+  
+  .input-custom:not(:disabled) ~ .label-custom{
+    cursor: pointer;
+  }
+
+  .label-custom::after{
+    content: "";
+    box-sizing: border-box;  
+    width: 1em;
+    height: 1em;
+    font-size: var(--uiToggleSize);
+    background-color: transparent;
+    border: 1px solid var(--uiToggleColor);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+  }
+  
+  .input-custom:checked ~ .label-custom::after{
+    background-color: theme("colors.default.white");
+  }
+
+  .dark .input-custom:checked ~ .label-custom::after{
+    background-color: theme("colors.default.black");
+  }
+  
+  .toggle__text{
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  
+  /*
+  The arrow size and position depends from sizes of square because I needed an arrow correct positioning from the top left corner of the element toggle
+  
+  1. Ems helps to calculate size and position of the arrow
+  */
+  
+  .label-custom::before{
+    content: "";
+    width: 0;
+    height: 0;
+    font-size: var(--uiToggleSize); /* 1 */
+    border-left-width: 0;
+    border-bottom-width: 0;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    border-color: var(--toggleArrowColor, theme("colors.default.blueDark"));
+    position: absolute;
+    top: .5428em;
+    left: .25em;
+    z-index: 3;
+    transform-origin: left top;
+    transform: rotate(-40deg) skew(10deg);
+  }
+
+  .dark .label-custom::before{
+    content: "";
+    width: 0;
+    height: 0;
+    font-size: var(--uiToggleSize);
+    border-left-width: 0;
+    border-bottom-width: 0;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    border-color: var(--toggleArrowColor, theme("colors.default.blueTertiary"));
+    position: absolute;
+    top: .5428em;
+    left: .25em;
+    z-index: 3;
+    transform-origin: left top;
+    transform: rotate(-40deg) skew(10deg);
+  }
+  
+  .input-custom:checked ~ .label-custom::before{
+    --uiToggleArrowWidth: var(--toggleArrowWidth, 2px);
+    width: .4em;
+    height: .2em;
+    border-left-width: var(--uiToggleArrowWidth);
+    border-bottom-width: var(--uiToggleArrowWidth);
+  }
+  
+  .label-custom::after{
+    border-radius: var(--toggleBorderRadius, 2px);
+  }
+  
+  .input-custom:not(:disabled) ~ .label-custom::before{
+    will-change: width, height;
+    opacity: 0;
+  }
+  
+  .input-custom:not(:disabled):checked ~ .label-custom::before{
+    opacity: 1;
+    transition: opacity .1s ease-out .25s, width .1s ease-out .5s, height .2s ease-out .3s;
+  }
+  
+  .input-custom:not(:disabled) ~ .label-custom::after{
+    will-change: background-color;
+    transition: background-color .2s ease-out;
+  }   
+
+  .input-text-custom {
+    @apply font-ralewayMedium;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
 }
 
 

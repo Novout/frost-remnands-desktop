@@ -12,11 +12,11 @@
   }
 
   .modal-background { 
-    @apply fixed h-full top-0 left-0 w-screen flex justify-center items-center bg-opacity-90 hover:bg-opacity-90 bg-dark-oneHover hover:bg-default-black transition duration-200 ease-in-out select-none;
+    @apply fixed h-full top-0 left-0 w-screen flex justify-center items-center bg-opacity-90 hover:bg-opacity-90 bg-dark-oneHover hover:bg-default-black transition duration-200 ease-in-out select-none z-max;
   }
 
   .full-background { 
-    @apply fixed h-screen pt-:3 top-0 left-0 w-screen bg-default-black hover:bg-default-black transition duration-200 ease-in-out select-none;
+    @apply fixed h-screen pt-:3 top-0 left-0 w-screen bg-default-black hover:bg-default-black transition duration-200 ease-in-out select-none z-max;
   }
 
   .outline-solid-white {
@@ -123,5 +123,9 @@
 
   select > option {
     @apply text-default-white dark:text-default-black;
+  }
+
+  button {
+    @apply focus:outline-none text-default-black dark:text-default-white border border-default-black dark:border-default-white;
   }
 }

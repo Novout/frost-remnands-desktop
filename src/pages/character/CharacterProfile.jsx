@@ -150,14 +150,16 @@ const ExpertiseItem = defineComponent({
         {expertises.map((expertise) => {
           return (
             <article class="flex justify-between items-center mt-:1 bg-dark-one dark:bg-dark-bg hover:bg-dark-oneHover dark:hover:bg-dark-bgHover w-full p-:1">
-              <input 
-                class="text-default-white dark:text-default-white" 
-                type="checkbox" 
-                vModel={character.expertises[expertise.code]} 
-              />
-              <p 
-                class="text-default-white dark:text-default-white font-ralewayMedium"
-              >{expertise.name}</p>
+              <label class="toggle">
+                <input 
+                  class="input-custom" 
+                  type="checkbox"
+                  vModel={character.expertises[expertise.code]} 
+                />
+                <span class="label-custom">
+                  <span class="input-text-custom">{expertise.name}</span>
+                </span>
+              </label>
             </article>
           )
         })}
@@ -363,10 +365,10 @@ const ExaustItem = defineComponent({
         <section class="item-right-aside">
           <section class="flex justify-between w-full">
             <h2 
-              class="font-ralewayMedium text-default-white dark:text-default-white"
+              class="font-ralewayMedium text-default-black dark:text-default-white"
             >Exaustão:</h2>
             <button 
-              class="h-6 rounded-full px-:1 border-2 focus:outline-none border-white-input hover:bg-dark-inputHover dark:bg-white-input dark:hover:bg-white-oneHover bg-none cursor-pointer  text-default-white dark:text-default-black" 
+              class="item-right-button" 
               onClick={toggleButton}
             >{toggle.value ? "-": ">"}</button>
           </section>
@@ -459,7 +461,7 @@ const HitItem = defineComponent({
               class="font-ralewayMedium text-default-white dark:text-default-white"
             >Vida:</h2>
             <button 
-              class="h-6 rounded-full px-:1 border-2 focus:outline-none border-white-input dark:hover:bg-white-oneHover hover:bg-dark-inputHover dark:bg-white-input bg-none cursor-pointer text-default-white dark:text-default-black" 
+              class="item-right-button" 
               onClick={toggleButton}
             >{toggle.value ? "-": ">"}</button>
           </section>
@@ -494,7 +496,7 @@ const TextItem = defineComponent({
               class="font-ralewayMedium text-default-white dark:text-default-white"
             >Descrição:</h2>
             <button 
-              class="h-6 rounded-full px-:1 border-2 focus:outline-none border-white-input hover:bg-dark-inputHover dark:bg-white-input dark:hover:bg-white-oneHover bg-none cursor-pointer text-default-white dark:text-default-black" 
+              class="item-right-button"
               onClick={toggleButton}
             >{toggle.value ? "-": ">"}</button>
           </section>
@@ -511,11 +513,11 @@ const AnotationItemDescription = defineComponent({
 
     return () => (
       <>
-        <section class="flex flex-col p-:2 justify-center">
+        <section class="flex flex-col w-full p-:2 justify-center">
           {character.anotations.map(item => (
             <article 
-              class="flex flex-col p-:1 justify-between h-full w-full"
-            >
+              class="flex my-:1 border-2 border-default-blueDark dark:border-default-blueTertiary flex-col p-:1 justify-between w-full"
+            >   
               <h2 
                 class="font-ralewayMedium text-default-blueDark dark:text-default-blueTertiary text-lg"
               >{item.title}</h2>
@@ -531,15 +533,77 @@ const AnotationItemDescription = defineComponent({
 })
 
 const AnotationItemModal = defineComponent({
-  setup() {
+  props: ["toggle"],
+  setup(props) {
     const character = useCharacterStore();
+    const toast = useToast();
+
+    const state = reactive({
+      title: "",
+      description: ""
+    });
+
+    const add = () => {
+      const item = {
+        title: state.title,
+        description: state.description
+      }
+
+      character.anotations.push(item);
+
+      state.title = "";
+      state.description = "";
+
+      toast.success("Anotação criada com sucesso!");
+    }
+
+    const remove = (event) => {
+      const id = event.target.id;
+
+      const filtered = character.anotations.filter(item => item.title !== id);
+      character.anotations = filtered;
+
+      toast.success("Anotação excluida com sucesso!");
+    }
 
     return () => (
-      <>
-        <section class="full-background">
-          <p>test</p>
+      <section class="flex items-center justify-center full-background">
+        <section class="h-fully overflow-y-auto p-:2 w-4/5 bg-white-one dark:bg-dark-bg">
+          <form class="flex rounded-l-full w-full items-center justify-between h-10">
+            <input
+              class="flex-1 h-full mr-:1 text-sm rounded-l-full p-:1 bg-white-oneHover dark:bg-dark-bgHover"
+              vModel={state.title}
+              placeholder="Digite o título..."
+            />
+            <input 
+              class="flex-1 h-full font-ralewayMedium text-sm w-2/5 p-:1 bg-white-oneHover dark:bg-dark-bgHover"
+              vModel={state.description}
+              placeholder="Digite a descrição..."
+            />
+            <button
+              class="p-:1 text-lg focus:outline-none bg-default-white hover:bg-white-one dark:bg-default-black dark:hover:bg-dark-oneHover"
+              onClick={add}
+            >+</button>
+          </form>
+          <section class="flex flex-col rounded-l-full w-full items-start">
+            {character.anotations.map(item => (
+              <article class="flex flex-col flex-wrap border border-default-blueDark dark:border-default-blueTertiary p-:2 my-:2 w-full">
+                <h2 class="text-xl text-default-blueDark dark:text-default-blueTertiary">{item.title}</h2>
+                <p class="font-ralewayMedium">{item.description}</p>
+                <button
+                  id={item.title}
+                  class="w-10 mt-:2 hover:bg-default-red"
+                  onClick={remove}
+                >-</button>
+              </article>
+            ))}
+          </section>
+          <button 
+            class="font-ralewayMedium p-:1 mt-:3 text-default-black dark:text-default-white"
+            onClick={props.toggle}
+          >Fechar</button>
         </section>
-      </>
+      </section>
     )
   }
 })
@@ -558,17 +622,17 @@ const AnotationItem = defineComponent({
               class="flex-1 font-ralewayMedium text-default-white dark:text-default-white"
             >Anotações:</h2>
             <button 
-              class="h-6 rounded-full px-:1 border-2 focus:outline-none border-white-input hover:bg-dark-inputHover dark:bg-white-input dark:hover:bg-white-oneHover bg-none cursor-pointer  text-default-white dark:text-default-black" 
+              class="item-right-button mr-:1" 
               onClick={toggleModalButton}
             >+</button>
             <button 
-              class="ml-:1 h-6 rounded-full px-:1 border-2 focus:outline-none border-white-input hover:bg-dark-inputHover dark:bg-white-input dark:hover:bg-white-oneHover bg-none cursor-pointer  text-default-white dark:text-default-black" 
+              class="item-right-button"
               onClick={toggleButton}
             >{toggle.value ? "-": ">"}</button>
           </section>
           {toggle.value && <AnotationItemDescription />}
         </section>
-        {toggleModal.value && <AnotationItemModal />}
+        {toggleModal.value && <AnotationItemModal toggle={toggleModalButton} />}
       </>
     )
   }
@@ -598,7 +662,7 @@ const BreakItem = defineComponent({
               class="font-ralewayMedium text-default-white dark:text-default-white"
             >Ponto de Quebra:</h2>
             <button 
-              class="h-6 rounded-full px-:1 border-2 focus:outline-none border-white-input hover:bg-dark-inputHover dark:bg-white-input dark:hover:bg-white-oneHover bg-none cursor-pointer  text-default-white dark:text-default-black" 
+              class="item-right-button"
               onClick={toggleButton}
             >{toggle.value ? "-": ">"}</button>
           </section>
@@ -621,7 +685,7 @@ const InventoryItem = defineComponent({
               class="font-ralewayMedium text-default-white dark:text-default-white"
             >Inventário:</h2>
             <button 
-              class="h-6 rounded-full px-:1 border-2 focus:outline-none border-white-input hover:bg-dark-inputHover dark:bg-white-input dark:hover:bg-white-oneHover bg-none cursor-pointer  text-default-white dark:text-default-black" 
+              class="item-right-button"
               onClick={toggleButton}
             >{toggle.value ? ">": ">"}</button>
           </section>
@@ -662,7 +726,7 @@ const TalentsItem = defineComponent({
               class="font-ralewayMedium text-default-white dark:text-default-white"
             >Talentos:</h2>
             <button 
-              class="h-6 rounded-full px-:1 border-2 focus:outline-none border-white-input hover:bg-dark-inputHover dark:bg-white-input dark:hover:bg-white-oneHover bg-none cursor-pointer  text-default-white dark:text-default-black" 
+              class="item-right-button"
               onClick={toggleButton}
             >{toggle.value ? "-": ">"}</button>
           </section>

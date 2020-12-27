@@ -3,6 +3,8 @@
   "rules": {
     "at-rule-no-unknown": null,
     "font-family-no-missing-generic-family-keyword": null,
-    "no-descending-specificity": null
+    "no-descending-specificity": null,
+    "declaration-empty-line-before": null,
+    "no-duplicate-selectors": null
   }
 }
