@@ -505,6 +505,75 @@ const TextItem = defineComponent({
   }
 })
 
+const AnotationItemDescription = defineComponent({
+  setup() {
+    const character = useCharacterStore();
+
+    return () => (
+      <>
+        <section class="flex flex-col p-:2 justify-center">
+          {character.anotations.map(item => (
+            <article 
+              class="flex flex-col p-:1 justify-between h-full w-full"
+            >
+              <h2 
+                class="font-ralewayMedium text-default-blueDark dark:text-default-blueTertiary text-lg"
+              >{item.title}</h2>
+              <span 
+                class="font-ralewayMedium text-base"
+              >{item.description}</span>
+            </article>
+          ))}
+        </section>
+      </>
+    )
+  }
+})
+
+const AnotationItemModal = defineComponent({
+  setup() {
+    const character = useCharacterStore();
+
+    return () => (
+      <>
+        <section class="full-background">
+          <p>test</p>
+        </section>
+      </>
+    )
+  }
+})
+
+const AnotationItem = defineComponent({
+  setup() {
+    const { toggle, toggleButton } = useToggle();
+    const toggleModal = ref(false);
+    const toggleModalButton = () => toggleModal.value = !toggleModal.value;
+
+    return () => (
+      <>
+        <section class="flex flex-col justify-start items-center w-full bg-dark-one dark:bg-dark-bg dark:hover:bg-dark-bgHover hover:bg-dark-inputHover p-:1 ml-:2 mt-:2">
+          <section class="flex justify-between w-full">
+            <h2 
+              class="flex-1 font-ralewayMedium text-default-white dark:text-default-white"
+            >Anotações:</h2>
+            <button 
+              class="h-6 rounded-full px-:1 border-2 focus:outline-none border-white-input hover:bg-dark-inputHover dark:bg-white-input dark:hover:bg-white-oneHover bg-none cursor-pointer  text-default-white dark:text-default-black" 
+              onClick={toggleModalButton}
+            >+</button>
+            <button 
+              class="ml-:1 h-6 rounded-full px-:1 border-2 focus:outline-none border-white-input hover:bg-dark-inputHover dark:bg-white-input dark:hover:bg-white-oneHover bg-none cursor-pointer  text-default-white dark:text-default-black" 
+              onClick={toggleButton}
+            >{toggle.value ? "-": ">"}</button>
+          </section>
+          {toggle.value && <AnotationItemDescription />}
+        </section>
+        {toggleModal.value && <AnotationItemModal />}
+      </>
+    )
+  }
+})
+
 const BreakItemDescription = defineComponent({
   setup() {
     const character = useCharacterStore();
@@ -717,6 +786,7 @@ const ItemsBox = defineComponent({
             <GenericsItem />
             <DataItem />
             <ExaustItem />
+            <AnotationItem />
             <HitItem />
             <TextItem />
             <BreakItem />

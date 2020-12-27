@@ -284,6 +284,7 @@ export default defineComponent({
       description: "",
       breakPoint: "",
       level: 1,
+      anotations: []
     });
 
     const error = reactive({
@@ -346,7 +347,7 @@ export default defineComponent({
         exhaustion: true,
         exhaustionTime: 3,
         equipment: [],
-        anotations: []
+        anotations: state.anotations
       };
 
       character.$patch(item);
