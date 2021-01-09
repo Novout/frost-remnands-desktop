@@ -65,7 +65,6 @@ export const InventoryItemEquipped = defineComponent({
 
     const openItem = (event) => {
       idDefine.value = event.target.id;
-      console.log(idDefine.value);
       toggle.value = true;
     }
 

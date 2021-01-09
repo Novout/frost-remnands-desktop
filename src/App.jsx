@@ -8,10 +8,10 @@ import fr from "../frostremnands.config";
 export default defineComponent({
   name: "App",
   setup() {
-    onMounted(() => {
-      const store = useDefaultStore();
+    const config = useDefaultStore();
 
-      store.base.theme === "dark" 
+    onMounted(() => {
+      config.base.theme === "dark" 
         ? document.querySelector("html").classList.add("dark")
         : document.querySelector("html").classList.remove("dark");
     });
@@ -40,7 +40,9 @@ export default defineComponent({
   render() {
     return (
       <>
-        <nav id="bar" class="flex justify-end items-center fixed bg-default-white dark:bg-default-black text-default-black dark:text-default-white w-full h-bar drag z-max rounded-xl">
+        <nav id="bar" 
+          class="flex justify-end items-center fixed text-default-black dark:text-default-white w-full h-bar drag z-max"
+        >
           {fr.console && 
           <>
             <router-link to="/" class="font-ralewayMedium text-sm mr-auto ml-10 no-underline appearance-none cursor-pointer no-drag hover:text-white-oneHover">Menu Inicial</router-link>

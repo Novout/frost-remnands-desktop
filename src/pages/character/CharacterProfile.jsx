@@ -5,8 +5,8 @@ import {
   onMounted, 
   watch 
 } from "vue";
-import { useCharacterStore } from "-/character";
 import { JsonFileSync } from "_/services/fs";
+import { useCharacterStore } from "-/character";
 import { useRouter } from "vue-router";
 import { useToast } from "vue-toastification";
 import { useToggle } from "@/use/toggle";
