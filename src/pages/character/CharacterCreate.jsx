@@ -64,8 +64,6 @@ const ItemBox = defineComponent({
     const modalTalents = (event) => {
       const id = event.target.id;
 
-      console.log(id);
-
       let filtered = talents.value.filter(talent => talent.id === id);
       modal.value = filtered[0];
 
@@ -320,7 +318,6 @@ export default defineComponent({
         },
         expertises: {
           athletics: false,
-          reaction: false,
           acrobatics: false,
           resilience: false,
           oldworld: false,

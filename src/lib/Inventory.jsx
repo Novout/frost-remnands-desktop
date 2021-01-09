@@ -259,6 +259,7 @@ export default defineComponent({
       idType: [],
       quantity: 1
     });
+    
     const createItem = () => {
       const items = PathRead("items");
       PathWrite("items", [...items, create]);

@@ -1,6 +1,5 @@
 [
   { "name": "Atletismo", "code": "athletics", "type": "strength" },
-  { "name": "Reflexos", "code": "reaction", "type": "dexterity" },
   { "name": "Acrobacias", "code": "acrobatics", "type": "dexterity" },
   { "name": "Resiliência", "code": "resilience", "type": "constitution" },
   { "name": "Velho Mundo", "code": "oldworld", "type": "intelligence" },
