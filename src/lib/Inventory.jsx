@@ -300,7 +300,8 @@ export default defineComponent({
       const filtered = items.filter(item => { 
         if(!_search) return true;
         return item.title.includes(_search); 
-      })
+      });
+
       itemsFiltered.value = filtered;
     })
 
