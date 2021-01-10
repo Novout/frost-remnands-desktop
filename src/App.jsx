@@ -3,6 +3,7 @@ import { remote } from "electron";
 import { useDefaultStore } from "-/config";
 import { useCharacterStore } from "-/character";
 import { useSave } from "@/use/save";
+import { JsonFileSync } from "_/services/fs";
 import fr from "../frostremnands.config";
 
 export default defineComponent({
@@ -27,7 +28,9 @@ export default defineComponent({
       const { saveAll } = useSave();
       const close = window.confirm("Deseja realmente fechar o aplicativo?");
       if(close) {
-        if(character.name !== "_template") {
+        const canon = JsonFileSync("constants/character/canon.json");
+
+        if(!canon.includes(character.name)) {
           saveAll();
         }
         

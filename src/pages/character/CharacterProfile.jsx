@@ -298,10 +298,18 @@ const GenericsItem = defineComponent({
   setup() {
     const { saveCharacter } = useSave();
     const router = useRouter();
+    const toast = useToast();
 
     const save = () => {
-      saveCharacter();
-      toast.success("Personagem salvo com sucesso!");
+      const canon = JsonFileSync("constants/character/canon.json");
+      const character = useCharacterStore();
+        
+      if(!canon.includes(character.name)) {
+        saveCharacter();
+        toast.success("Personagem salvo com sucesso!");
+      } else {
+        toast.error("Não é possível salvar um Personagem Relevante.");
+      }
     }
 
     const initialMenu = () => {
