@@ -383,7 +383,7 @@ const ExaustItem = defineComponent({
             <button 
               class="item-right-button" 
               onClick={toggleButton}
-            >{toggle.value ? "-": ">"}</button>
+            ><font-awesome-icon icon={['fas', 'angle-double-right']} size="sm" /></button>
           </section>
           {toggle.value && <ExaustList />}
         </section>
@@ -476,7 +476,7 @@ const HitItem = defineComponent({
             <button 
               class="item-right-button" 
               onClick={toggleButton}
-            >{toggle.value ? "-": ">"}</button>
+            ><font-awesome-icon icon={['fas', 'angle-double-right']} size="sm" /></button>
           </section>
           {toggle.value && <HitItemModal />}
         </section>
@@ -511,7 +511,7 @@ const TextItem = defineComponent({
             <button 
               class="item-right-button"
               onClick={toggleButton}
-            >{toggle.value ? "-": ">"}</button>
+            ><font-awesome-icon icon={['fas', 'angle-double-right']} size="sm" /></button>
           </section>
           {toggle.value && <TextItemDescription />}
         </section>
@@ -642,7 +642,7 @@ const AnotationItem = defineComponent({
             <button 
               class="item-right-button"
               onClick={toggleButton}
-            >{toggle.value ? "-": ">"}</button>
+            ><font-awesome-icon icon={['fas', 'angle-double-right']} size="sm" /></button>
           </section>
           {toggle.value && <AnotationItemDescription />}
         </section>
@@ -678,7 +678,7 @@ const BreakItem = defineComponent({
             <button 
               class="item-right-button"
               onClick={toggleButton}
-            >{toggle.value ? "-": ">"}</button>
+            ><font-awesome-icon icon={['fas', 'angle-double-right']} size="sm" /></button>
           </section>
           {toggle.value && <BreakItemDescription />}
         </section>
@@ -701,7 +701,7 @@ const InventoryItem = defineComponent({
             <button 
               class="item-right-button"
               onClick={toggleButton}
-            >{toggle.value ? ">": ">"}</button>
+            ><font-awesome-icon icon={['fas', 'angle-double-right']} size="sm" /></button>
           </section>
           {toggle.value && <Inventory toggle={toggle} />}
         </section>
@@ -798,7 +798,7 @@ const TalentsItem = defineComponent({
             <button 
               class="item-right-button"
               onClick={toggleButton}
-            >{toggle.value ? "-": ">"}</button>
+            ><font-awesome-icon icon={['fas', 'angle-double-right']} size="sm" /></button>
           </section>
           {toggle.value && <TalentsList />}
         </section>
@@ -821,7 +821,7 @@ const ResourceItem = defineComponent({
             <button 
               class="item-right-button"
               onClick={toggleButton}
-            >{toggle.value ? "-": ">"}</button>
+            ><font-awesome-icon icon={['fas', 'angle-double-right']} size="sm" /></button>
           </section>
           {toggle.value && <ResourceList />}
         </section>

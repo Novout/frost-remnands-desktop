@@ -14,3 +14,4 @@
 ### Features
 
 - Proficiency value in expertises list
+- Implement vue-fontawesome-icons

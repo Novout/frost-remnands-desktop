@@ -61,7 +61,10 @@ const ListLoad = defineComponent({
           <button 
             class="relative right-0 focus:outline-none text-xl border-none"
             onClick={this.toggleButton}
-          >{this.toggle ? "v" : ">"}</button>
+          >
+            {this.toggle && <font-awesome-icon icon={['fas', 'angle-double-down']} size="sm" />}
+            {!this.toggle && <font-awesome-icon icon={['fas', 'angle-double-right']} size="lg" />}
+          </button>
         </section>
         <section 
           v-show={this.toggle}
