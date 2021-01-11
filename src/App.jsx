@@ -1,4 +1,4 @@
-import { defineComponent, onMounted } from "vue";
+import { defineComponent } from "vue";
 import { remote } from "electron";
 import { useDefaultStore } from "-/config";
 import { useCharacterStore } from "-/character";
@@ -11,11 +11,9 @@ export default defineComponent({
   setup() {
     const config = useDefaultStore();
 
-    onMounted(() => {
-      config.base.theme === "dark" 
-        ? document.querySelector("html").classList.add("dark")
-        : document.querySelector("html").classList.remove("dark");
-    });
+    config.base.theme === "dark" 
+      ? document.querySelector("html").classList.add("dark")
+      : document.querySelector("html").classList.remove("dark");
 
     const win = remote.getCurrentWindow();
     const character = useCharacterStore();
