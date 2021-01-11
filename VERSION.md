@@ -6,4 +6,10 @@
 
 ## v.1.0.1
 
-- Fix duplicate character with Relevant Character
+### Fixs
+
+- Duplicate character with Relevant Character
+
+### Features
+
+- Proficiency value in expertises list
