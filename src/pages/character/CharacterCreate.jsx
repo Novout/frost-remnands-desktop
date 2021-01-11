@@ -118,7 +118,7 @@ const ItemBox = defineComponent({
               <h2 class="font-poppinsBold text-default-blueDark dark:text-default-blueLight text-xl mr-auto ml-:2">Talentos Escolhidos:</h2>
             </section>
             <section class="flex flex-row flex-wrap items-center justify-start w-full p-:2">
-              {this.talentList.map(talent => <p class="bg-default-blueDark p-:1 mr-:1 rounded-full my-:1 pointer-events-none">{talent.title}</p>)}
+              {this.talentList.map(talent => <p class="p-:1 bg-white-input hover:bg-white-inputHover dark:bg-dark-input dark:hover:bg-dark-inputHover mr-:1 rounded-full my-:1 pointer-events-none">{talent.title}</p>)}
             </section>
             <section class="flex flex-row justify-between items-center w-full p-:2">
               <h2 class="font-poppinsBold text-default-blueDark dark:text-default-blueLight text-xl">Conhecimento</h2>
@@ -363,7 +363,7 @@ export default defineComponent({
       state.name.length >= 20 || state.name.length <= 0 ? error.name = true : error.name = false
       state.origin === "" ? error.origin = true : error.origin = false
       state.class === "" ? error.class = true : error.class = false
-      character.talents.length !== 2 ? error.talents = true : error.talents = false
+      character.talents.length < 2 ? error.talents = true : error.talents = false
 
       if(!error.class && !error.origin && !error.class) {
         goToProfile();
