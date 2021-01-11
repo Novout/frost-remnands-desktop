@@ -187,6 +187,10 @@
     margin-top: auto;
     margin-bottom: auto;
   }
+
+  .bg-white {
+    @apply bg-white-one hover:bg-white-oneHover focus:bg-white-oneHover dark:bg-dark-one dark:hover:bg-dark-oneHover dark:focus:bg-dark-oneHover;
+  }
 }
 
 
