@@ -42,7 +42,7 @@
   }
 
   .item-right-button {
-    @apply h-6 rounded px-:1 text-default-black dark:text-default-white hover:bg-default-blueDark dark:hover:bg-default-blueTertiaryHover;
+    @apply h-6 rounded px-:1 hover:bg-default-blueDark dark:hover:bg-default-blueTertiaryHover;
   }
 
   .toggle{
@@ -188,8 +188,8 @@
     margin-bottom: auto;
   }
 
-  .bg-white {
-    @apply bg-white-one hover:bg-white-oneHover focus:bg-white-oneHover dark:bg-dark-one dark:hover:bg-dark-oneHover dark:focus:bg-dark-oneHover;
+  .bg-profile {
+    @apply bg-white-one hover:bg-white-oneHover focus:bg-white-oneHover dark:bg-dark-bg dark:hover:bg-dark-bgHover dark:focus:bg-dark-bgHover;
   }
 }
 

@@ -109,8 +109,8 @@ const HabilityItem = defineComponent({
     return () => (
       <>
         <article class="character-hability">
-          <p class="text-sm text-default-white font-ralewayMedium">{props.hability}</p>
-          <p class="text-2xl text-default-white font-ralewayMedium">{props.modifier}</p>
+          <p class="text-sm font-ralewayMedium">{props.hability}</p>
+          <p class="text-2xl font-ralewayMedium">{props.modifier}</p>
           <p 
             class="bg-default-white text-lg dark:bg-dark-one dark:text-default-white py-1 px-:3 rounded-full text-default-black hover:bg-default-blueLight dark:hover:bg-default-blueDark font-ralewayMedium"
           >{props.total}</p>
@@ -126,12 +126,12 @@ const ProficiencyItem = defineComponent({
 
     return () => (
       <>
-        <article class="character-proficiency">
+        <article class="character-proficiency bg-profile">
           <p 
-            class="bg-default-white py-:1 px-:2 dark:text-default-white text-default-black rounded-full dark:bg-default-black ml-:2"
+            class="bg-default-white pointer-events-none py-:1 px-:2 dark:text-default-white text-default-black rounded-full dark:bg-default-black ml-:2"
           >{character.getProficiencyBonus}</p>
           <p 
-          class="text-default-white dark:text-default-white flex justify-around items-center font-ralewayMedium"
+          class="flex pointer-events-none justify-around items-center font-ralewayMedium"
           >Proficiência</p>
         </article>
       </>
@@ -249,17 +249,17 @@ const DataItem = defineComponent({
             >{modal.save}</button>
           </article>
         </section>
-        <section class="flex justify-around items-center w-full bg-dark-one dark:bg-dark-bg p-:1 ml-:2">
+        <section class="flex justify-around items-center w-full bg-profile p-:1 ml-:2">
           <article 
             class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer flex-1 dark:hover:bg-dark-bgHover"
             id="initiative"
             onClick={modalOpen}
           >
             <h2 
-              class="text-default-white dark:text-default-white pointer-events-none font-ralewayMedium"
+              class="pointer-events-none font-ralewayMedium"
             >Iniciativa</h2>
             <p 
-              class="text-default-white dark:text-default-white pointer-events-none"
+              class="pointer-events-none"
             >{character.initiative}</p>
           </article>
           <article 
@@ -268,10 +268,10 @@ const DataItem = defineComponent({
             onClick={modalOpen}
           >
             <h2 
-              class="text-default-white dark:text-default-white pointer-events-none font-ralewayMedium"
+              class="pointer-events-none font-ralewayMedium"
             >CA</h2>
             <p 
-              class="text-default-white dark:text-default-white pointer-events-none"
+              class="pointer-events-none"
             >{character.CA}</p>
           </article>
           <article 
@@ -280,18 +280,18 @@ const DataItem = defineComponent({
             onClick={modalOpen}
           >
             <h2 
-              class="text-default-white dark:text-default-white pointer-events-none font-ralewayMedium"
+              class="pointer-events-none font-ralewayMedium"
             >Velocidade</h2>
             <p 
-              class="text-default-white dark:text-default-white pointer-events-none"
-            >{character.speed}</p>
+              class="pointer-events-none"
+            >{character.speed} pés</p>
           </article>
           <article 
             class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer flex-1 dark:hover:bg-dark-bgHover" 
             onClick={toggleChance}
           >
-            <h2 class="text-default-white dark:text-default-white font-ralewayMedium">UC</h2>
-            {character.lastChance ? <p class="text-default-white dark:text-default-white">Sim</p> : <p class="text-default-white dark:text-default-white">Não</p>}
+            <h2 class="font-ralewayMedium">UC</h2>
+            {character.lastChance ? <p>Sim</p> : <p>Não</p>}
           </article>
         </section>
       </>
@@ -323,7 +323,7 @@ const GenericsItem = defineComponent({
 
     return () => (
       <section
-        class="flex flex-row sm:justify-between md:justify-between lg:justify-around xl:justify-around items-center w-full bg-dark-one dark:bg-dark-bg dark:hover:bg-dark-bgHover hover:bg-dark-inputHover p-:1 ml-:2 mb-:2"
+        class="flex flex-row sm:justify-between md:justify-between lg:justify-around xl:justify-around items-center w-full bg-profile p-:1 ml-:2 mb-:2"
       >
         <button
           class="p-:1 border rounded-md dark:border-default-white border-default-black"
@@ -365,29 +365,6 @@ const ExaustList = defineComponent({
           <p>{character.exhaustionTime}</p>
         </section>
       </section>
-    )
-  }
-})
-
-const ExaustItem = defineComponent({
-  setup() {
-    const { toggle, toggleButton } = useToggle();
-
-    return () => (
-      <>
-        <section class="item-right-aside">
-          <section class="flex justify-between w-full">
-            <h2 
-              class="font-ralewayMedium text-default-black dark:text-default-white"
-            >Exaustão:</h2>
-            <button 
-              class="item-right-button" 
-              onClick={toggleButton}
-            ><font-awesome-icon icon={['fas', 'angle-double-right']} size="sm" /></button>
-          </section>
-          {toggle.value && <ExaustList />}
-        </section>
-      </>
     )
   }
 })
@@ -456,29 +433,6 @@ const HitItemModal = defineComponent({
             <h2 class="font-ralewayMedium text-default-white hover:text-white-one">Pontos de Vida</h2>
             <p class="text-default-white hover:text-white-oneHover">{character.hitPoints}</p>
           </section>
-        </section>
-      </>
-    )
-  }
-})
-
-const HitItem = defineComponent({
-  setup() {
-    const { toggle, toggleButton } = useToggle();
-
-    return () => (
-      <>
-        <section class="flex flex-col justify-start items-center w-full bg-dark-one dark:bg-dark-bg dark:hover:bg-dark-bgHover hover:bg-dark-inputHover p-:1 ml-:2 mt-:2">
-          <section class="flex justify-between w-full">
-            <h2 
-              class="font-ralewayMedium text-default-white dark:text-default-white"
-            >Vida:</h2>
-            <button 
-              class="item-right-button" 
-              onClick={toggleButton}
-            ><font-awesome-icon icon={['fas', 'angle-double-right']} size="sm" /></button>
-          </section>
-          {toggle.value && <HitItemModal />}
         </section>
       </>
     )
@@ -630,13 +584,13 @@ const AnotationItem = defineComponent({
 
     return () => (
       <>
-        <section class="flex flex-col justify-start items-center w-full bg-dark-one dark:bg-dark-bg dark:hover:bg-dark-bgHover hover:bg-dark-inputHover p-:1 ml-:2 mt-:2">
+        <section class="flex flex-col justify-start items-center w-full bg-profile p-:1 ml-:2 mt-:2">
           <section class="flex justify-between w-full">
             <h2 
-              class="flex-1 font-ralewayMedium text-default-white dark:text-default-white"
+              class="flex-1 font-ralewayMedium"
             >Anotações:</h2>
             <button 
-              class="item-right-button mr-:1" 
+              class="item-right-button text-default-white mr-:1" 
               onClick={toggleModalButton}
             >+</button>
             <button 
@@ -664,39 +618,16 @@ const BreakItemDescription = defineComponent({
   }
 })
 
-const BreakItem = defineComponent({
-  setup() {
-    const { toggle, toggleButton } = useToggle();
-
-    return () => (
-      <>
-        <section class="flex flex-col justify-start items-center w-full bg-dark-one dark:bg-dark-bg dark:hover:bg-dark-bgHover hover:bg-dark-inputHover p-:1 ml-:2 mt-:2">
-          <section class="flex justify-between w-full">
-            <h2 
-              class="font-ralewayMedium text-default-white dark:text-default-white"
-            >Ponto de Quebra:</h2>
-            <button 
-              class="item-right-button"
-              onClick={toggleButton}
-            ><font-awesome-icon icon={['fas', 'angle-double-right']} size="sm" /></button>
-          </section>
-          {toggle.value && <BreakItemDescription />}
-        </section>
-      </>
-    )
-  }
-})
-
 const InventoryItem = defineComponent({
   setup() {
     const { toggle, toggleButton } = useToggle();
 
     return () => (
       <>
-        <section class="flex flex-col justify-start items-center w-full bg-dark-one dark:bg-dark-bg dark:hover:bg-dark-bgHover hover:bg-dark-inputHover p-:1 ml-:2 mt-:2">
+        <section class="flex flex-col justify-start items-center bg-profile w-full p-:1 ml-:2 mt-:2">
           <section class="flex justify-between w-full">
             <h2 
-              class="font-ralewayMedium text-default-white dark:text-default-white"
+              class="font-ralewayMedium"
             >Inventário:</h2>
             <button 
               class="item-right-button"
@@ -784,46 +715,34 @@ const ResourceList = defineComponent({
   }
 })
 
-const TalentsItem = defineComponent({
-  setup() {
+const AsideTemplate = defineComponent({
+  props: {
+    title: {
+      required: true,
+      type: String
+    },
+    component: {
+      required: true
+    }
+  },
+  setup(props) {
     const { toggle, toggleButton } = useToggle();
 
     return () => (
       <>
-        <section class="item-right-aside">
+        <section class="flex flex-col justify-start items-center bg-profile w-full p-:1 ml-:2 mt-:2">
           <section class="flex justify-between w-full">
             <h2 
-              class="font-ralewayMedium text-default-white dark:text-default-white"
-            >Talentos:</h2>
+              class="font-ralewayMedium"
+            >{props.title}</h2>
             <button 
-              class="item-right-button"
+              class="item-right-button" 
               onClick={toggleButton}
-            ><font-awesome-icon icon={['fas', 'angle-double-right']} size="sm" /></button>
+            ><font-awesome-icon 
+              icon={['fas', 'angle-double-right']} size="sm"
+            /></button>
           </section>
-          {toggle.value && <TalentsList />}
-        </section>
-      </>
-    )
-  }
-})
-
-const ResourceItem = defineComponent({
-  setup() {
-    const { toggle, toggleButton } = useToggle();
-
-    return () => (
-      <>
-        <section class="item-right-aside">
-          <section class="flex justify-between w-full">
-            <h2 
-              class="font-ralewayMedium text-default-white dark:text-default-white"
-            >Recursos:</h2>
-            <button 
-              class="item-right-button"
-              onClick={toggleButton}
-            ><font-awesome-icon icon={['fas', 'angle-double-right']} size="sm" /></button>
-          </section>
-          {toggle.value && <ResourceList />}
+          {toggle.value && <props.component />}
         </section>
       </>
     )
@@ -832,9 +751,7 @@ const ResourceItem = defineComponent({
 
 const ItemsBox = defineComponent({
   setup() {
-    const toggle = ref(false);
-    const open = () => toggle.value = true;
-    const close = () => toggle.value = false;
+    const { toggle, open, close } = useToggle();
 
     const character = useCharacterStore();
 
@@ -901,7 +818,7 @@ const ItemsBox = defineComponent({
         </section>
         <section class="flex h-auto p-:2">
           <aside 
-            class="flex flex-col cursor-pointer flex-nowrap justify-between items-center rounded-lg h-auto w-profile-aside shadow-lg bg-dark-one dark:bg-dark-bg p-:1"
+            class="flex flex-col cursor-pointer flex-nowrap justify-between items-center rounded-lg h-auto w-profile-aside shadow-lg bg-profile p-:1"
             onClick={open}
           >
             <HabilityItem 
@@ -942,14 +859,32 @@ const ItemsBox = defineComponent({
           <section class="flex flex-col flex-nowrap justify-start items-center h-auto w-profile-general ml-:1">
             <GenericsItem />
             <DataItem />
-            <ExaustItem />
-            <ResourceItem />
+            <AsideTemplate 
+              title="Exaustão" 
+              component={ExaustList}
+            />
+            <AsideTemplate 
+              title="Recursos" 
+              component={ResourceList}
+            />
             <AnotationItem />
-            <HitItem />
-            <TextItem />
-            <BreakItem />
+            <AsideTemplate 
+              title="Vida" 
+              component={HitItemModal}
+            />
+            <AsideTemplate 
+              title="Descrição" 
+              component={TextItemDescription}
+            />
+            <AsideTemplate 
+              title="Ponto de Quebra" 
+              component={BreakItemDescription}
+            />
             <InventoryItem />
-            <TalentsItem />
+            <AsideTemplate 
+              title="Talentos" 
+              component={TalentsList}
+            />
           </section>
         </section>
       </>
