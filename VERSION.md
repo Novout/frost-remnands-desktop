@@ -1,10 +1,10 @@
 # Version
 
-## v.1.0.0
+## v1.0.0
 
 - Release
 
-## v.1.0.1
+## v1.0.1
 
 ### Fixs
 
@@ -15,3 +15,5 @@
 
 - Proficiency value in expertises list
 - Implement vue-fontawesome-icons
+- New expertises for Player's Handbook v1.0.1
+
