@@ -154,7 +154,7 @@ const ExpertiseItem = defineComponent({
                 <input 
                   class="input-custom" 
                   type="checkbox"
-                  vModel={character.expertises[expertise.code]} 
+                  vModel={[character.expertises[expertise.code], ['number']]} 
                 />
                 <span class="label-custom">
                   <span class="input-text-custom">{expertise.name}</span>
