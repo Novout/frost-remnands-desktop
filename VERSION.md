@@ -9,6 +9,7 @@
 ### Fixs
 
 - Duplicate character with Relevant Character
+- Background reload for store hook problem
 
 ### Features
 

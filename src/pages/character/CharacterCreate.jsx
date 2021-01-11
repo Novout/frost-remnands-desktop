@@ -124,7 +124,7 @@ const ItemBox = defineComponent({
               <h2 class="font-poppinsBold text-default-blueDark dark:text-default-blueLight text-xl">Conhecimento</h2>
               <button
                 onClick={this.toggleKnowledge}
-                class="cursor-pointer focus:outline-none text-default-black dark:text-default-white"
+                class="cursor-pointer border-none focus:outline-none text-default-black dark:text-default-white"
               >||</button>
             </section>
             <section 
@@ -144,12 +144,12 @@ const ItemBox = defineComponent({
                   <button 
                     onClick={this.pushTalent}
                     id={talent.id}
-                    class="dark:bg-white-one bg-default-black hover:bg-default-blueDark dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
+                    class="border-none bg-white-input hover:bg-white-inputHover ml-:1 dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
                   >+</button>
                   <button 
                     onClick={this.removeTalent}
                     id={talent.id}
-                    class="ml-:1 dark:bg-white-one bg-default-black hover:bg-default-blueDark dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
+                    class="border-none bg-white-input hover:bg-white-inputHover ml-:1 dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
                   >-</button>
                 </article>
               )}
@@ -159,7 +159,7 @@ const ItemBox = defineComponent({
               <h2 class="font-poppinsBold text-default-blueDark dark:text-default-blueLight text-xl">Crença</h2>
               <button
                 onClick={this.toggleFaith}
-                class="cursor-pointer focus:outline-none text-default-black dark:text-default-white"
+                class="cursor-pointer border-none focus:outline-none text-default-black dark:text-default-white"
               >||</button>
             </section>
             <section 
@@ -179,12 +179,12 @@ const ItemBox = defineComponent({
                   <button 
                     onClick={this.pushTalent}
                     id={talent.id}
-                    class="bg-default-black hover:bg-default-blueDark dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
+                    class="border-none bg-white-input hover:bg-white-inputHover ml-:1 dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
                   >+</button>
                   <button 
                     onClick={this.removeTalent}
                     id={talent.id}
-                    class="bg-default-black hover:bg-default-blueDark ml-:1 dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
+                    class="border-none bg-white-input hover:bg-white-inputHover ml-:1 dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
                   >-</button>
                 </article>
               )}
@@ -194,7 +194,7 @@ const ItemBox = defineComponent({
               <h2 class="font-poppinsBold text-default-blueDark dark:text-default-blueLight text-xl">Fúria</h2>
               <button
                 onClick={this.toggleRage}
-                class="cursor-pointer focus:outline-none text-default-black dark:text-default-white"
+                class="cursor-pointer border-none focus:outline-none text-default-black dark:text-default-white"
               >||</button>
             </section>
             <section 
@@ -214,12 +214,12 @@ const ItemBox = defineComponent({
                   <button 
                     onClick={this.pushTalent}
                     id={talent.id}
-                    class="bg-default-black hover:bg-default-blueDark dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
+                    class="border-none bg-white-input hover:bg-white-inputHover ml-:1 dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
                   >+</button>
                   <button 
                     onClick={this.removeTalent}
                     id={talent.id}
-                    class="bg-default-black hover:bg-default-blueDark ml-:1 dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
+                    class="border-none bg-white-input hover:bg-white-inputHover ml-:1 dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
                   >-</button>
                 </article>
               )}
@@ -229,7 +229,7 @@ const ItemBox = defineComponent({
               <h2 class="font-poppinsBold text-default-blueDark dark:text-default-blueLight text-xl">União</h2>
               <button
                 onClick={this.toggleUnity}
-                class="cursor-pointer focus:outline-none text-default-black dark:text-default-white"
+                class="cursor-pointer border-none focus:outline-none text-default-black dark:text-default-white"
               >||</button>
             </section>
             <section 
@@ -249,12 +249,12 @@ const ItemBox = defineComponent({
                   <button 
                     onClick={this.pushTalent}
                     id={talent.id}
-                    class="bg-default-black hover:bg-default-blueDark dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
+                    class="border-none bg-white-input hover:bg-white-inputHover ml-:1 dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
                   >+</button>
                   <button 
                     onClick={this.removeTalent}
                     id={talent.id}
-                    class="bg-default-black hover:bg-default-blueDark ml-:1 dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
+                    class="border-none bg-white-input hover:bg-white-inputHover ml-:1 dark:bg-white-one dark:hover:bg-white-oneHover dark:text-default-black px-3 py-1 rounded-full focus:outline-none"
                   >-</button>
                 </article>
               )}
@@ -288,8 +288,8 @@ export default defineComponent({
     const error = reactive({
       class: true,
       name: true,
-      description: true,
-      breakPoint: true,
+      origin: true,
+      talents: true
     });
 
     const initialMenu = () => {
@@ -360,13 +360,30 @@ export default defineComponent({
     }
 
     const validateFormulary = () => {
+      state.name.length >= 20 || state.name.length <= 0 ? error.name = true : error.name = false
+      state.origin === "" ? error.origin = true : error.origin = false
       state.class === "" ? error.class = true : error.class = false
-      state.name === "" ? error.name = true : error.name = false
-      state.description === "" ? error.description = true : error.description = false
-      state.breakPoint === "" ? error.breakPoint = true : error.breakPoint = false
+      character.talents.length !== 2 ? error.talents = true : error.talents = false
 
-      if(!error.class && !error.name && !error.description && !error.breakPoint) {
-        goToProfile()
+      if(!error.class && !error.origin && !error.class) {
+        goToProfile();
+        return;
+      }
+
+      if(error.talents) {
+        toast.error("Você precisa escolher pelo menos dois talentos!");
+      }
+
+      if(error.origin) {
+        toast.error("Você precisa escolher uma origem");
+      }
+
+      if(error.class) {
+        toast.error("Você precisa escolher uma classe");
+      }
+
+      if(error.name) {
+        toast.error("Você precisa colocar um nome entre 1 e 20 caracteres!");
       }
     }
 
@@ -409,19 +426,19 @@ export default defineComponent({
           <textarea 
             vModel={state.description} 
             rows = "8"
-            class="font-ralewayMedium bg-white-one hover:bg-white-oneHover dark:bg-dark-one dark:hover:bg-dark-oneHover text-base border-none w-full my-:2 text-default-black dark:text-default-white"
+            class="font-ralewayMedium bg-white-one hover:bg-white-oneHover focus:bg-white-oneHover dark:bg-dark-one dark:hover:bg-dark-oneHover dark:focus:bg-dark-oneHover text-base border-none w-full my-:2 text-default-black dark:text-default-white"
           />
           <h2 class="py-:1 mt-5 border-default-black dark:border-default-white border-b-2 text-xl pointer-events-none text-default-black dark:text-default-white">Ponto de Quebra</h2>
           <textarea 
             vModel={state.breakPoint} 
             rows = "8"
-            class="font-ralewayMedium bg-white-one hover:bg-white-oneHover dark:bg-dark-one dark:hover:bg-dark-oneHover text-base border-none w-full my-:2 text-default-black dark:text-default-white"
+            class="font-ralewayMedium bg-white-one hover:bg-white-oneHover focus:bg-white-oneHover dark:bg-dark-one dark:hover:bg-dark-oneHover dark:focus:bg-dark-oneHover text-base border-none w-full my-:2 text-default-black dark:text-default-white"
           />
           <h2 class="py-:1 mt-5 border-default-black dark:border-default-white border-b-2 text-xl pointer-events-none text-default-black dark:text-default-white">Talentos</h2>
           <ItemBox />
           <article class="flex flex-row w-full justify-end">
-            <button onClick={initialMenu} class="focus:outline-none dark:bg-default-white bg-default-black py-:1 px-:2 my-:2 mx-:2 dark:text-default-black text-default-white border-none cursor-pointer">Menu Inicial</button>
-            <button onClick={validateFormulary} class="focus:outline-none dark:bg-default-white bg-default-black py-:1 px-:2 my-:2 dark:text-default-black text-default-white border-none cursor-pointer">Finalizar</button>
+            <button onClick={initialMenu} class="rounded-xl bg-white-one hover:bg-white-oneHover dark:bg-dark-input dark:hover:bg-dark-inputHover py-:1 px-:2 my-:2 mx-:2 border-none cursor-pointer">Menu Inicial</button>
+            <button onClick={validateFormulary} class="rounded-xl bg-white-one hover:bg-white-oneHover dark:bg-dark-input dark:hover:bg-dark-inputHover py-:1 px-:2 my-:2 ml-:2 border-none cursor-pointer">Finalizar</button>
           </article>
         </main>
       </>
