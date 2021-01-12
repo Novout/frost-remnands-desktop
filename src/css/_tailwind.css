@@ -130,7 +130,7 @@
   }
 
   select {
-    @apply bg-dark-one text-default-white dark:bg-default-white dark:text-default-black;
+    @apply bg-dark-one text-default-white dark:bg-default-white dark:text-default-black cursor-pointer;
   }
 
   select > option {

@@ -57,6 +57,7 @@ export default defineComponent({
             <section class="flex flex-col justify-between items-center">
               <h2 class="h2-title">Foto</h2>
               <img 
+                id="img"
                 v-show={character.image}
                 class="border-2 border-default-black dark:border-default-white"
                 src={character.image}

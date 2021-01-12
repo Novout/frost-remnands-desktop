@@ -14,9 +14,11 @@
 - Toggle Component aside bar in profile route
 - Profile generics menu
 - Anotation size break
+- Hit Points logic
 
 ### Features
 
 - Proficiency value in expertises list
 - Implement vue-fontawesome-icons
 - New expertises for Player's Handbook v1.0.1
+- Image insert
