@@ -1,5 +1,6 @@
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import { useCharacterStore } from "-/character";
+import { useToast } from "vue-toastification";
 
 export default defineComponent({
   props: {
@@ -13,6 +14,26 @@ export default defineComponent({
   },
   setup(props) {
     const character = useCharacterStore();
+    const toast = useToast();
+
+    const multiclass = ref([
+      {
+        name: "Bárbaro",
+        code: "barbarian"
+      },
+      {
+        name: "Conjurador",
+        code: "conjurer"
+      },
+      {
+        name: "Inventor",
+        code: "inventor"
+      },
+      {
+        name: "Lutador",
+        code: "fighter"
+      },
+    ])
 
     const uploadImage = (event) => {
       const [image] = event.target.files;
@@ -22,6 +43,7 @@ export default defineComponent({
       reader.onload = event =>{
         character.image = event.target.result;
       };
+      toast.success("Imagem adicionada com sucesso!");
     }
 
     return () => (
@@ -93,6 +115,26 @@ export default defineComponent({
                 </option>
               </select>
             </section>
+            {character.class === "taught" && (
+              <>
+                <section class="m-:2 w-full">
+                  <h2 class="dark:text-default-blueTertiary text-default-black">Classe Secundária</h2>
+                  <select vModel={character.subrace} class="font-ralewayMedium text-sm w-full p-:1 bg-white-one dark:bg-dark-bgHover text-default-black dark:text-default-white">
+                    {multiclass.value.map((cl) => 
+                      <option value={cl.code} class="bg-none text-default-black dark:text-default-white">{cl.name}</option>
+                    )}
+                  </select>
+                </section>
+                <section class="m-:2 w-full">
+                  <h2 class="dark:text-default-blueTertiary text-default-black">Nível da Classe Secundária</h2>
+                  <input 
+                    vModel={[character.subClassLevel, ['number']]} 
+                    type="text"
+                    class="font-ralewayMedium text-sm w-full p-:1 bg-white-one dark:bg-dark-bgHover text-default-black dark:text-default-white"
+                  />
+                </section>
+              </>
+            )}
             <section class="m-:2 w-full">
               <h2 class="dark:text-default-blueTertiary text-default-black">Pontos de Vida</h2>
               <input 

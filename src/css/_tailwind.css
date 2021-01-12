@@ -20,7 +20,7 @@
   }
 
   .generics-background { 
-    @apply fixed overflow-y-auto h-screen px-:5 pt-:3 top-0 left-0 w-screen bg-default-white dark:bg-dark-bg transition duration-200 ease-in-out select-none z-max;
+    @apply fixed overflow-y-auto h-screen px-:5 pt-:3 top-0 left-0 w-screen bg-default-white dark:bg-dark-bg transition duration-200 ease-in-out select-none z-50;
   }
 
   .h1-title {
