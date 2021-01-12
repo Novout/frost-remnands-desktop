@@ -13,6 +13,7 @@
 - White theme
 - Toggle Component aside bar in profile route
 - Profile generics menu
+- Anotation size break
 
 ### Features
 

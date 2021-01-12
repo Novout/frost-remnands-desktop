@@ -472,7 +472,7 @@ const AnotationItemDescription = defineComponent({
                 class="font-ralewayMedium text-default-blueDark dark:text-default-blueTertiary text-lg"
               >{item.title}</h2>
               <span 
-                class="font-ralewayMedium text-base"
+                class="font-ralewayMedium text-base w-full"
               >{item.description}</span>
             </article>
           ))}
@@ -538,7 +538,7 @@ const AnotationItemModal = defineComponent({
           </form>
           <section class="flex flex-col rounded-l-full w-full items-start">
             {character.anotations.map(item => (
-              <article class="border border-default-blueDark dark:border-default-blueTertiary p-:2 my-:2 w-full">
+              <article class="border border-default-blueDark dark:border-default-blueTertiary p-:2 my-:2 min-h-full">
                 <h2 class="text-xl text-default-blueDark dark:text-default-blueTertiary">{item.title}</h2>
                 <p class="font-ralewayMedium py-:1">{item.description}</p>
                 <button
