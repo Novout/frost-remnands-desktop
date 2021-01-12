@@ -59,7 +59,7 @@ export default defineComponent({
               <img 
                 id="img"
                 v-show={character.image}
-                class="border-2 border-default-black dark:border-default-white"
+                class="border-2 border-default-blueDark dark:border-default-blueLight"
                 src={character.image}
                 alt="Imagem do personagem" 
                 width="200" 
@@ -82,7 +82,7 @@ export default defineComponent({
             </section>
             <button 
               onClick={props.close}
-              class="p-:1 mt-:3 w-2/4 rounded-full"
+              class="p-:1 mt-:3 w-2/4 rounded-full border-2 border-default-blueDark dark:border-default-blueLight"
             >Salvar</button>
           </section>
           <section class="flex p-:2 h-2/4 w-2/4 justify-between items-center flex-row flex-wrap">
@@ -91,6 +91,14 @@ export default defineComponent({
               <input 
                 vModel={character.name} 
                 type="text"
+                class="font-ralewayMedium text-sm w-full p-:1 bg-white-one dark:bg-dark-bgHover text-default-black dark:text-default-white"
+              />
+            </section>
+            <section class="m-:2 w-full">
+              <h2 class="dark:text-default-blueTertiary text-default-black">Nível</h2>
+              <input 
+                vModel={[character.level, ['number']]} 
+                type="number"
                 class="font-ralewayMedium text-sm w-full p-:1 bg-white-one dark:bg-dark-bgHover text-default-black dark:text-default-white"
               />
             </section>
