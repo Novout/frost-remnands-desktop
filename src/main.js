@@ -3,7 +3,7 @@ import { createPinia } from "pinia";
 import { router } from "./router";
 import Toast, { POSITION } from "vue-toastification";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faAngleDoubleDown, faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDoubleDown, faAngleDoubleRight, faFileImage } from "@fortawesome/free-solid-svg-icons";
 //import { faComment } from "@fortawesome/free-regular-svg-icons";
 //import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -16,7 +16,8 @@ import "vue-toastification/dist/index.css";
 
 library.add(
   faAngleDoubleDown,
-  faAngleDoubleRight
+  faAngleDoubleRight,
+  faFileImage
 );
 
 const app = createApp(App);

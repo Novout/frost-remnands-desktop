@@ -20,11 +20,15 @@
   }
 
   .generics-background { 
-    @apply fixed h-screen px-:5 pt-:3 top-0 left-0 w-screen bg-default-white dark:bg-dark-bg transition duration-200 ease-in-out select-none z-max;
+    @apply fixed overflow-y-auto h-screen px-:5 pt-:3 top-0 left-0 w-screen bg-default-white dark:bg-dark-bg transition duration-200 ease-in-out select-none z-max;
   }
 
   .h1-title {
-    @apply text-default-blueDark dark:text-default-blueTertiary text-2xl py-:2;
+    @apply text-default-blueDark dark:text-default-blueTertiary text-3xl py-:2 border-b border-default-blueDark dark:border-default-blueTertiary;
+  }
+
+  .h2-title {
+    @apply text-default-blueDark dark:text-default-blueTertiary text-xl py-:2;
   }
 
   .outline-solid-white {
