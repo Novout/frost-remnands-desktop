@@ -335,6 +335,7 @@ export default defineComponent({
           persuasion: false
         },
         proficiencyBonus: 2,
+        maxHitPoints: 0,
         hitPoints: 0,
         hitDice: 6,
         lastChance: true,

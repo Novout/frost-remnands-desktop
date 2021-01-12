@@ -7,6 +7,9 @@ export const useDefaultStore = defineStore({
     base: PathRead("base", JsonFileSync("config/base.json")),
     save: {
       characters: []
+    },
+    aux: {
+      scroll: false
     }
   }),
   getters: {},

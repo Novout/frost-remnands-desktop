@@ -13,6 +13,7 @@ import { useToggle } from "@/use/toggle";
 import { useSave } from "@/use/save";
 import { validateNumber } from "@/utils/validate";
 import Inventory from "@/lib/Inventory.jsx";
+import GenericsView from "@/lib/profile/GenericsView.jsx";
 
 const GenericsBox = defineComponent({
   setup() {
@@ -27,40 +28,22 @@ const GenericsBox = defineComponent({
 
     return () => (
       <>
-        <section 
-          class="modal-background" 
-          v-show={toggle.value}
+        <GenericsView 
+          toggle={toggle.value} 
+          close={close} 
+        />
+        <header 
+          class="flex flex-col flex-nowrap cursor-pointer"
+          onClick={open}
         >
-          <section class="flex flex-col justify-around items-center bg-default-white dark:bg-default-black text-default-black w-2/4 h-fully">
-            <h2 class="text-default-blueTertiary">Nome:</h2>
-            <input 
-              vModel={character.name} 
-              type="text"
-              class="bg-dark-oneHover text-default-white dark:bg-default-white dark:text-default-black"
-            />
-            <h2 class="text-default-blueTertiary">Nível:</h2>
-            <input 
-              vModel={[character.level, ['number']]} 
-              type="number"
-              class="bg-dark-oneHover text-default-white dark:bg-default-white dark:text-default-black"
-            />
-            <button 
-              onClick={close}
-              class="px-:2 py-1 bg-default-white text-default-black rounded-full focus:outline-none"
-            >Salvar</button>
-          </section>
-        </section>
-        <header class="flex flex-col flex-nowrap">
           <section class="flex flex-row flex-nowrap justify-around items-center h-profile-header">
             <h1 
-              class="text-3vw cursor-pointer text-default-black dark:text-default-white"
-              onClick={open}
+              class="text-3vw text-default-black dark:text-default-white"
             >{character.name}</h1>
             <section class="flex flex-row flex-nowrap">
               <section class="py-:1 px-:2">
                 <h2 
-                  class="text-default-black dark:text-default-white font-ralewayMedium text-3vh border-b-2 border-default-black dark:border-default-white mb-1 cursor-pointer"
-                  onClick={open}
+                  class="text-default-black dark:text-default-white font-ralewayMedium text-3vh border-b-2 border-default-black dark:border-default-white mb-1"
                 >{character.getCharacterClass} / {character.level}</h2>
                 <p 
                   class="text-default-black dark:text-default-white text font-ralewayMedium text-3vh"

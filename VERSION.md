@@ -12,6 +12,7 @@
 - Background reload for store hook problem
 - White theme
 - Toggle Component aside bar in profile route
+- Profile generics menu
 
 ### Features
 
