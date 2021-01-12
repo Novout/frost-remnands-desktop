@@ -5,6 +5,7 @@ import CharacterProfile from "@/pages/character/CharacterProfile.jsx";
 import CharacterLoad from "@/pages/character/CharacterLoad.jsx";
 import Config from "@/pages/config/Config.jsx";
 import FAQ from "@/pages/faq/FAQ.jsx";
+import Playground from "@/pages/playground/Playground";
 
 export const router = createRouter({
   history: process.env.IS_ELECTRON ? createWebHashHistory() : createWebHistory(),
@@ -38,6 +39,11 @@ export const router = createRouter({
       path: "/faq",
       name: "FAQ",
       component: FAQ
+    },
+    {
+      path: "/playground",
+      name: "Playground",
+      component: Playground
     }
   ]
 });

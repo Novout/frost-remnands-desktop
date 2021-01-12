@@ -304,6 +304,10 @@ const GenericsItem = defineComponent({
       router.push("/");
     }
 
+    const playground = () => {
+      router.push("/playground");
+    }
+
     return () => (
       <section
         class="flex flex-row sm:justify-between md:justify-between lg:justify-around xl:justify-around items-center w-full bg-profile p-:1 ml-:2 mb-:2"
@@ -312,6 +316,10 @@ const GenericsItem = defineComponent({
           class="p-:1 border rounded-md dark:border-default-white border-default-black"
           onClick={initialMenu}
         >Menu Inicial</button>
+        <button
+          class="p-:1 border rounded-md dark:border-default-white border-default-black"
+          onClick={playground}
+        >Playground</button>
         <button
           class="p-:1 border rounded-md dark:border-default-white border-default-black"
           onClick={save}
