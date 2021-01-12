@@ -7,7 +7,7 @@ export default defineComponent({
     const test = ref(0);
 
     const roll = () => {
-      test.value = RollDice(12, 2, 0);
+      test.value = RollDice(20, 1, 0);
     }
     
     return () => (
