@@ -219,15 +219,15 @@ const DataItem = defineComponent({
           class="modal-background"
           v-show={modal.isOpen}
         >
-          <article class="flex flex-col justify-between h-40 items-start dark:bg-dark-one bg-dark-input dark:hover:bg-dark-bgHover hover:bg-dark-inputHover p-:3">
-            <h1 class="text-default-white dark:text-default-white font-poppinsMedium text-xl">{modal.title}</h1>
+          <article class="flex flex-col justify-between min-h-60 items-start dark:bg-dark-bg bg-white-one p-:3">
+            <h1 class="font-poppinsMedium text-xl text-default-blueDark dark:text-default-blueTertiary">{modal.title}</h1>
             <input 
-              class="text-default-black dark:text-default-black"
+              class="flex-1 h-full mr-:1 mt-:1 text-sm rounded-full p-:1 text-default-black dark:text-default-white bg-white-oneHover dark:bg-dark-bgHover"
               type="text"
               vModel={modal.payload} 
             />
             <button 
-              class="text-default-white dark:text-default-black bg-default-black dark:bg-default-white rounded-full cursor-pointer mt-:2 px-:2 py-:1 focus:outline-none"
+              class="p-:1 mt-:4 text-default-black dark:text-default-white hover:bg-white-oneHover dark:hover:bg-dark-bgHover"
               onClick={closeModal}
             >{modal.save}</button>
           </article>
