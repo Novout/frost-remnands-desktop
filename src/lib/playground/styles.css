@@ -8,7 +8,7 @@
   }
 
   .h1-title {
-    @apply text-default-blueDark dark:text-default-blueTertiary text-2xl pb-:2 border-b border-default-blueDark dark:border-default-blueTertiary;
+    @apply text-default-blueDark dark:text-default-blueTertiary text-xl pb-:2 border-b border-default-blueDark dark:border-default-blueTertiary;
   }
 
   .h2-title {

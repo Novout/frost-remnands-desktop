@@ -125,7 +125,7 @@
     background: theme("colors.default.blueLight");
   }
 
-  h1, h2, h3, h4, h5, h6, p, a, span {
+  h1, h2, h3, h4, h5, h6, p, a, span, label {
     @apply text-default-black dark:text-default-white;
   }
 

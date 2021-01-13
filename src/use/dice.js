@@ -1,5 +1,7 @@
 const Random = (min, max) => {
-  return Math.floor(Math.random() * max + min);
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 const DiceD4 = () => Random(1, 4); 

@@ -29,3 +29,8 @@
 
 - Anotation min width
 - Hability item modal
+- Inventory items and components
+
+### Features
+
+- Playground route

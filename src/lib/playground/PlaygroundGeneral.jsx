@@ -78,61 +78,59 @@ export default defineComponent({
 
     return () => (
       <>
-        <section class="flex flex-col justify-start items-center w-full h-screen overflow-y-auto pt-bar p-:5 bg-white-one dark:bg-dark-bg">
-          <h1 class="h1-title mb-:3">Rolagem Geral</h1>
-          <section class="w-3/4 border rounded p-:1">
-            <section class="flex justify-between items-center py-:1 border-b dark:border-default-blueLight border-default-blueDark">
-              <h2 class="p-title">Dado</h2>
-              <p>Quantidade</p>
-              <p class="mr-:5">Modificador</p>
-            </section>
-            <section class="flex justify-between items-center py-:1">
-              <h2 class="p-title flex-1">D4</h2>
-              <input type="text" class="input-modal" vModel={[auxState.d4, ['number']]} />
-              <input type="text" class="input-modal" vModel={[auxModifier.d4, ['number']]} />
-            </section>
-            <section class="flex justify-between items-center py-:1">
-              <h2 class="p-title flex-1">D6</h2>
-              <input type="text" class="input-modal" vModel={[auxState.d6, ['number']]} />
-              <input type="text" class="input-modal" vModel={[auxModifier.d6, ['number']]} />
-            </section>
-            <section class="flex justify-between items-center py-:1">
-              <h2 class="p-title flex-1">D8</h2>
-              <input type="text" class="input-modal" vModel={[auxState.d8, ['number']]} />
-              <input type="text" class="input-modal" vModel={[auxModifier.d8, ['number']]} />
-            </section>
-            <section class="flex justify-between items-center py-:1">
-              <h2 class="p-title flex-1">D10</h2>
-              <input type="text" class="input-modal" vModel={[auxState.d10, ['number']]} />
-              <input type="text" class="input-modal" vModel={[auxModifier.d10, ['number']]} />
-            </section>
-            <section class="flex justify-between items-center py-:1">
-              <h2 class="p-title flex-1">D12</h2>
-              <input type="text" class="input-modal" vModel={[auxState.d12, ['number']]} />
-              <input type="text" class="input-modal" vModel={[auxModifier.d12, ['number']]} />
-            </section>
-            <section class="flex justify-between items-center py-:1">
-              <h2 class="p-title flex-1">D20</h2>
-              <input type="text" class="input-modal" vModel={[auxState.d20, ['number']]} />
-              <input type="text" class="input-modal" vModel={[auxModifier.d20, ['number']]} />
-            </section>
-            <section class="flex justify-between items-center py-:1">
-              <h2 class="p-title flex-1">D50</h2>
-              <input type="text" class="input-modal" vModel={[auxState.d50, ['number']]} />
-              <input type="text" class="input-modal" vModel={[auxModifier.d50, ['number']]} />
-            </section>
-            <section class="flex justify-between items-center py-:1">
-              <h2 class="p-title flex-1">D100</h2>
-              <input type="text" class="input-modal" vModel={[auxState.d100, ['number']]} />
-              <input type="text" class="input-modal" vModel={[auxModifier.d100, ['number']]} />
-            </section>
-            <section class="flex justify-between h-20 items-end">
-              <button 
-                class="btn-playground" 
-                onClick={resultButton}
-              >Rolar</button>
-              <p class="text-lg">Resultado Final: {result.value}</p>
-            </section>
+        <h1 class="h1-title mb-:3">Rolagem Geral</h1>
+        <section class="w-3/4 border rounded p-:1">
+          <section class="flex justify-between items-center py-:1 border-b dark:border-default-blueLight border-default-blueDark">
+            <h2 class="p-title">Dado</h2>
+            <p>Quantidade</p>
+            <p class="mr-:5">Modificador</p>
+          </section>
+          <section class="flex justify-between items-center py-:1">
+            <h2 class="p-title flex-1">D4</h2>
+            <input type="text" class="input-modal" vModel={[auxState.d4, ['number']]} />
+            <input type="text" class="input-modal" vModel={[auxModifier.d4, ['number']]} />
+          </section>
+          <section class="flex justify-between items-center py-:1">
+            <h2 class="p-title flex-1">D6</h2>
+            <input type="text" class="input-modal" vModel={[auxState.d6, ['number']]} />
+            <input type="text" class="input-modal" vModel={[auxModifier.d6, ['number']]} />
+          </section>
+          <section class="flex justify-between items-center py-:1">
+            <h2 class="p-title flex-1">D8</h2>
+            <input type="text" class="input-modal" vModel={[auxState.d8, ['number']]} />
+            <input type="text" class="input-modal" vModel={[auxModifier.d8, ['number']]} />
+          </section>
+          <section class="flex justify-between items-center py-:1">
+            <h2 class="p-title flex-1">D10</h2>
+            <input type="text" class="input-modal" vModel={[auxState.d10, ['number']]} />
+            <input type="text" class="input-modal" vModel={[auxModifier.d10, ['number']]} />
+          </section>
+          <section class="flex justify-between items-center py-:1">
+            <h2 class="p-title flex-1">D12</h2>
+            <input type="text" class="input-modal" vModel={[auxState.d12, ['number']]} />
+            <input type="text" class="input-modal" vModel={[auxModifier.d12, ['number']]} />
+          </section>
+          <section class="flex justify-between items-center py-:1">
+            <h2 class="p-title flex-1">D20</h2>
+            <input type="text" class="input-modal" vModel={[auxState.d20, ['number']]} />
+            <input type="text" class="input-modal" vModel={[auxModifier.d20, ['number']]} />
+          </section>
+          <section class="flex justify-between items-center py-:1">
+            <h2 class="p-title flex-1">D50</h2>
+            <input type="text" class="input-modal" vModel={[auxState.d50, ['number']]} />
+            <input type="text" class="input-modal" vModel={[auxModifier.d50, ['number']]} />
+          </section>
+          <section class="flex justify-between items-center py-:1">
+            <h2 class="p-title flex-1">D100</h2>
+            <input type="text" class="input-modal" vModel={[auxState.d100, ['number']]} />
+            <input type="text" class="input-modal" vModel={[auxModifier.d100, ['number']]} />
+          </section>
+          <section class="flex justify-between h-20 items-end">
+            <button 
+              class="btn-playground" 
+              onClick={resultButton}
+            >Rolar</button>
+            <p class="text-lg">Resultado Final: {result.value}</p>
           </section>
         </section>
       </>

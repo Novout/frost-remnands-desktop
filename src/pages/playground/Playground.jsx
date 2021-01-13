@@ -1,19 +1,26 @@
-import { defineComponent, ref } from "vue";
-import { useDice } from "@/use/dice";
-import PlaygroundGeneral from "@/lib/playground/PlaygroundGeneral";
+import { defineComponent } from "vue";
+import { useRouter } from "vue-router";
+import PlaygroundGeneral from "@/lib/playground/PlaygroundGeneral.jsx";
+import PlaygroundSystem from "@/lib/playground/PlaygroundSystem.jsx";
 
 export default defineComponent({
   setup() {
-    const { RollDice } = useDice();
-    const test = ref(0);
+    const router = useRouter();
 
-    const roll = () => {
-      test.value = RollDice(20, 1, 0);
+    const route = () => {
+      router.back();
     }
-    
+
     return () => (
       <>
-        <PlaygroundGeneral />
+        <section class="flex flex-col justify-start items-center w-full h-screen overflow-y-auto pt-bar p-:5 bg-white-one dark:bg-dark-bg">
+          <PlaygroundGeneral />
+          <PlaygroundSystem />
+        </section>
+        <button 
+          class="btn-modal fixed top-0 left-0"
+          onClick={route}
+        >Voltar</button>
       </>
     )
   }
