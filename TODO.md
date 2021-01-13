@@ -4,6 +4,7 @@
 - Save itens in .json or .toml
 - Player options
 - Load Character
+- Save other store
 
 # To v2.0.0
 

@@ -1,6 +1,7 @@
 import { defineComponent, ref } from "vue";
 import { useCharacterStore } from "-/character";
 import { useToast } from "vue-toastification";
+import { useTaughtStore } from "-/class/taught";
 
 export default defineComponent({
   props: {
@@ -14,6 +15,7 @@ export default defineComponent({
   },
   setup(props) {
     const character = useCharacterStore();
+    const taught = useTaughtStore();
     const toast = useToast();
 
     const multiclass = ref([
@@ -128,7 +130,7 @@ export default defineComponent({
               <>
                 <section class="m-:2 w-full">
                   <h2 class="dark:text-default-blueTertiary text-default-black">Classe Secundária</h2>
-                  <select vModel={character.subrace} class="font-ralewayMedium text-sm w-full p-:1 bg-white-one dark:bg-dark-bgHover text-default-black dark:text-default-white">
+                  <select vModel={taught.subclass} class="font-ralewayMedium text-sm w-full p-:1 bg-white-one dark:bg-dark-bgHover text-default-black dark:text-default-white">
                     {multiclass.value.map((cl) => 
                       <option value={cl.code} class="bg-none text-default-black dark:text-default-white">{cl.name}</option>
                     )}
@@ -137,7 +139,7 @@ export default defineComponent({
                 <section class="m-:2 w-full">
                   <h2 class="dark:text-default-blueTertiary text-default-black">Nível da Classe Secundária</h2>
                   <input 
-                    vModel={[character.subClassLevel, ['number']]} 
+                    vModel={[taught.subClassLevel, ['number']]} 
                     type="text"
                     class="font-ralewayMedium text-sm w-full p-:1 bg-white-one dark:bg-dark-bgHover text-default-black dark:text-default-white"
                   />
