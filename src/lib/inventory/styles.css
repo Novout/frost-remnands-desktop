@@ -15,6 +15,10 @@
     @apply text-default-blueDark dark:text-default-blueTertiary text-lg pb-:2;
   }
 
+  .inventory-item-text {
+    @apply font-ralewayMedium text-default-blueDark dark:text-default-blueLight text-lg py-:2 pointer-events-none;
+  }
+
   .inventory-text {
     @apply font-ralewayMedium text-default-blueDark dark:text-default-blueLight xl:text-xl lg:text-xl md:text-sm pointer-events-none;
   }

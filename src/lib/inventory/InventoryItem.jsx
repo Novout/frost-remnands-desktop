@@ -6,7 +6,8 @@ import {
 } from "vue";
 import { useToast } from "vue-toastification";
 import { useCharacterStore } from "-/character";
-import { JsonFileSync, PathRead, PathWrite } from "_/services/fs";
+import { JsonFileSync, PathRead } from "_/services/fs";
+import { useLocalisation } from "@/use/localisation";
 
 export default defineComponent({
   props: {
@@ -82,7 +83,8 @@ export default defineComponent({
     }
 
     return { 
-      ...toRefs(props), 
+      props, 
+      ...useLocalisation(),
       openItem, 
       closeItem, 
       addItem, 
@@ -97,14 +99,26 @@ export default defineComponent({
           class="modal-background"
           v-show={this.toggle}
         >
-          <button
-            class="px-:2 py-:1 bg-default-black dark:bg-default-white text-default-white dark:text-default-black"
-            onClick={this.closeItem}
-          >Fechar</button>
-          <button
-            class="px-:2 py-:1 bg-default-black dark:bg-default-white text-default-white dark:text-default-black"
-            onClick={this.addItem}
-          >Adicionar no Inventário</button>
+          <section class="flex flex-col w-3/4 h-fully overflow-y-auto pt-bar p-:5 bg-white-one dark:bg-dark-bg">
+            <h1 class="h1-title">Item</h1>
+            <p class="inventory-item-text">ID: {this.id}</p>
+            <p class="inventory-item-text">Tipo do Item: {this.item(this.typeId)}</p>
+            <p class="inventory-item-text">Título: {this.title}</p>
+            <p class="inventory-item-text">Descrição: {this.description}</p>
+            <p class="inventory-item-text">Raridade: {this.rarityType(this.rarity)}</p>
+            <p class="inventory-item-text">Bônus: {this.bonus}</p>
+            {this.additional !== "Nenhum" && (<p class="inventory-item-text">Adicional: {this.additional}</p>)}
+            <p class="inventory-item-text">Característica: {this.type}</p>
+            <p class="inventory-item-text">Quantidade: {this.quantity}</p>
+            <button
+              class="btn-modal"
+              onClick={this.closeItem}
+            >Fechar</button>
+            <button
+              class="btn-modal"
+              onClick={this.addItem}
+            >Adicionar no Inventário</button>
+          </section>
         </section>
         <article 
           class="flex flex-1 flex-col justify-around items-center h-44 min-w-40 p-:2 mt-:1 bg-opacity-70 cursor-pointer"

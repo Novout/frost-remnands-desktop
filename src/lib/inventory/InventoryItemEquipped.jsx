@@ -2,11 +2,13 @@ import {
   defineComponent, 
   ref, 
   computed, 
+  toRefs
 } from "vue";
 import { useToast } from "vue-toastification";
 import { useCharacterStore } from "-/character";
 import { JsonFileSync, PathRead } from "_/services/fs";
 import { useToggle } from "@/use/toggle";
+import { useLocalisation } from "@/use/localisation";
 import "./styles.css";
 
 export default defineComponent({
@@ -73,7 +75,8 @@ export default defineComponent({
     }
 
     return { 
-      props, 
+      ...toRefs(props), 
+      ...useLocalisation(),
       openItem, 
       removeItem, 
       toggle, 
@@ -88,21 +91,31 @@ export default defineComponent({
           class="modal-background"
           v-show={this.toggle}
         >
-          <section class="w-2/5 h-medium">
+          <section class="flex flex-col w-3/4 h-fully overflow-y-auto pt-bar p-:5 bg-white-one dark:bg-dark-bg">
+            <h1 class="h1-title">Item</h1>
+            <p class="inventory-item-text">ID: {this.id}</p>
+            <p class="inventory-item-text">Tipo do Item: {this.item(this.typeId)}</p>
+            <p class="inventory-item-text">Título: {this.title}</p>
+            <p class="inventory-item-text">Descrição: {this.description}</p>
+            <p class="inventory-item-text">Raridade: {this.rarityType(this.rarity)}</p>
+            <p class="inventory-item-text">Bônus: {this.bonus}</p>
+            {this.additional !== "Nenhum" && (<p class="inventory-item-text">Adicional: {this.additional}</p>)}
+            <p class="inventory-item-text">Característica: {this.type}</p>
+            <p class="inventory-item-text">Quantidade: {this.quantity}</p>
             <button
-              class="px-:2 py-:1 bg-default-black dark:bg-default-white text-default-white dark:text-default-black"
-              onClick={this.close}
+              class="btn-modal"
+              onClick={this.closeItem}
             >Fechar</button>
             <button
-              class="px-:2 py-:1 bg-default-black dark:bg-default-white text-default-white dark:text-default-black"
+              class="btn-modal"
               onClick={this.removeItem}
-            >Remover do Inventário</button>
+            >Remover</button>
           </section>
         </section>
         <article 
           class="flex flex-col justify-around items-center min-h-44 min-w-40 p-:2 mt-:1 bg-opacity-70 cursor-pointer"
           class={this.rarityBackground}
-          id={this.props.id}
+          id={this.id}
           onClick={this.openItem}
         >
           <h2 class="inventory-text">{this.title}</h2>

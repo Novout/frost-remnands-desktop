@@ -144,7 +144,7 @@ export default defineComponent({
                 bonus,
                 additional,
                 type,
-                typeId,
+                idType,
                 quantity
               }) => 
                 <InventoryItem
@@ -155,7 +155,7 @@ export default defineComponent({
                   bonus={bonus}
                   additional={additional}
                   type={type}
-                  typeId={typeId}
+                  typeId={idType}
                   quantity={quantity}
                 />
               )}
@@ -239,7 +239,7 @@ export default defineComponent({
           <section>
             <h2 class="text-default-blueDark dark:text-default-blueTertiary text-lg">Seu Inventário</h2>
           </section>
-          <section class="flex flex-row xl:flex-wrap lg:flex-nowrap md:flex-nowrap sm:flex-nowrap flex-nowrap py-:1 max-h-44 overflow-x-auto xl:overflow-y-auto lg:overflow-y-auto md:overflow-y-hidden sm:overflow-y-hidden">
+          <section class="flex flex-row flex-wrap py-:1 max-h-44 overflow-y-auto">
             {this.equipment.map(({
               id,
               title,
@@ -248,7 +248,7 @@ export default defineComponent({
               bonus,
               additional,
               type,
-              typeId,
+              idType,
               quantity
             }) => 
               <InventoryItemEquipped
@@ -259,7 +259,7 @@ export default defineComponent({
                 bonus={bonus}
                 additional={additional}
                 type={type}
-                typeId={typeId}
+                typeId={idType}
                 quantity={quantity}
               />
             )}

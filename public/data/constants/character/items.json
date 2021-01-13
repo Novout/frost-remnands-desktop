@@ -24,7 +24,7 @@
   {
     "id":"generic-greatclub",
     "idType": "simple-melee-weapon",
-    "title":"Taco Grando",
+    "title":"Taco Grande",
     "description":"Um taco maior do que o esperado.",
     "rarity":"common",
     "bonus":"1d8 Espancamento",
