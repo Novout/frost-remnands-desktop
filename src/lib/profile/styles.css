@@ -6,4 +6,8 @@
   .input-modal {
     @apply flex-1 h-full mr-:1 mt-:1 text-sm rounded-full p-:1 text-default-black dark:text-default-white bg-white-oneHover dark:bg-dark-bgHover;
   }
+
+  .select-modal {
+    @apply flex-1 h-full w-full mr-:1 mt-:1 text-sm rounded-full p-:1 text-default-black dark:text-default-white bg-white-oneHover dark:bg-dark-bgHover;
+  }
 }

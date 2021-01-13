@@ -2,6 +2,7 @@ import { defineComponent, ref } from "vue";
 import { useCharacterStore } from "-/character";
 import { useToast } from "vue-toastification";
 import { useTaughtStore } from "-/class/taught";
+import { JsonFileSync } from "_/services/fs";
 
 export default defineComponent({
   props: {
@@ -17,6 +18,10 @@ export default defineComponent({
     const character = useCharacterStore();
     const taught = useTaughtStore();
     const toast = useToast();
+
+    const races = JsonFileSync("constants/character/races.json");
+    const origins = JsonFileSync("constants/character/origin.json");
+    const classes = JsonFileSync("constants/character/class.json");
 
     const multiclass = ref([
       {
@@ -103,6 +108,31 @@ export default defineComponent({
                 type="number"
                 class="font-ralewayMedium text-sm w-full p-:1 bg-white-one dark:bg-dark-bgHover text-default-black dark:text-default-white"
               />
+            </section>
+            <section class="m-:2 w-full">
+              <h2 class="dark:text-default-blueTertiary text-default-black">Raça</h2>
+              <select vModel={character.race} class="select-modal">
+                {races.map((race) => 
+                  <option value={race.code} class="bg-none text-default-black dark:text-default-white">{race.name}</option>
+                )}
+              </select>
+            </section>
+            <section class="m-:2 w-full">
+              <h2 class="dark:text-default-blueTertiary text-default-black">Origem</h2>
+              <select vModel={character.origin} class="select-modal">
+                {origins.map((origin) => 
+                  <option v-show={!origin.ban_races[character.race]} value={origin.code} class="bg-none text-default-black dark:text-default-white">{origin.name}</option>
+                )}
+              </select>
+            </section>
+            <section class="m-:2 w-full">
+              <h2 class="dark:text-default-blueTertiary text-default-black">Classe</h2>
+              <select vModel={character.class} class="select-modal">
+                {classes.map((cl) => 
+                  <option v-show={((cl.permition.exclusive === character.origin || cl.permition.exclusive === character.race) && !cl.permition.neutral && !(character.origin === "aligned" && character.race === "neutral"))} value={cl.code} class="bg-none text-default-black dark:text-default-white">{cl.name}</option>
+                )}
+                <option v-show={(character.race === "neutral")} value="psionic" class="bg-none text-default-black dark:text-default-white">Psiônico</option>
+              </select>
             </section>
             <section class="m-:2 w-full">
               <h2 class="dark:text-default-blueTertiary text-default-black">Subraça</h2>
