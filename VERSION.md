@@ -30,7 +30,9 @@
 - Anotation min width
 - Hability item modal
 - Inventory items and components
+- Profile switch class and race
 
 ### Features
 
 - Playground route
+- Inventory item modal
