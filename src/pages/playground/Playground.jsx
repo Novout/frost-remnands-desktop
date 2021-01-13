@@ -1,5 +1,6 @@
 import { defineComponent, ref } from "vue";
 import { useDice } from "@/use/dice";
+import PlaygroundGeneral from "@/lib/playground/PlaygroundGeneral";
 
 export default defineComponent({
   setup() {
@@ -12,8 +13,7 @@ export default defineComponent({
     
     return () => (
       <>
-        <p>{test.value}</p>
-        <button onClick={roll}>Click here</button>
+        <PlaygroundGeneral />
       </>
     )
   }

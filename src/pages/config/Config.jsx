@@ -27,7 +27,7 @@ export default defineComponent({
     });
 
     return () => (
-      <section class="pt-bar px-:5 bg-default-white dark:bg-default-black h-screen">
+      <section class="pt-bar px-:5 bg-white-one dark:bg-dark-bg h-screen">
         <h1 class="text-3xl my-:2 py-:1 border-b border-default-black dark:border-default-blueLight dark:text-default-blueTertiary text-default-blueDark">Opções</h1>
         <section class="flex items-center">
           <router-link 

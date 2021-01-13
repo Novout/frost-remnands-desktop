@@ -1,10 +1,10 @@
 @layer components {
-  .btn-modal {
-    @apply p-:1 mt-:4 text-default-black dark:text-default-white hover:bg-white-oneHover dark:hover:bg-dark-bgHover;
+  .btn-playground {
+    @apply p-:1 text-default-black dark:text-default-white hover:bg-white-oneHover dark:hover:bg-dark-bgHover;
   }
 
   .input-modal {
-    @apply h-full w-20 mr-:1 mt-:1 text-sm rounded-full p-:1 text-default-black dark:text-default-white bg-white-oneHover dark:bg-dark-bgHover;
+    @apply flex-1 h-full mr-:1 text-sm rounded-full p-:1 text-default-black dark:text-default-white bg-white-oneHover dark:bg-dark-bgHover;
   }
 
   .h1-title {
@@ -13,6 +13,10 @@
 
   .h2-title {
     @apply text-default-blueDark dark:text-default-blueTertiary text-lg pb-:2;
+  }
+
+  .p-title {
+    @apply text-default-blueDark pr-:2 dark:text-default-blueTertiary text-base;
   }
 
   .inventory-text {
