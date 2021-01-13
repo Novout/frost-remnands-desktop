@@ -530,12 +530,12 @@ const AnotationItemModal = defineComponent({
           <h1 class="text-2xl text-default-blueDark dark:text-default-blueTertiary border-b border-default-blueDark dark:border-default-blueTertiary mb-:4 pb-:1">Anotações</h1>
           <form class="flex rounded-l-full w-full items-center justify-between h-10">
             <input
-              class="flex-1 h-full mr-:1 text-sm rounded-l-full p-:1 bg-white-oneHover dark:bg-dark-bgHover"
+              class="flex-1 h-full mr-:1 text-sm rounded-l-full p-:1 text-default-black dark:text-default-white bg-white-oneHover dark:bg-dark-bgHover"
               vModel={state.title}
               placeholder="Digite o título..."
             />
             <input 
-              class="flex-1 h-full font-ralewayMedium text-sm w-2/5 p-:1 bg-white-oneHover dark:bg-dark-bgHover"
+              class="flex-1 h-full font-ralewayMedium text-sm w-2/5 p-:1 text-default-black dark:text-default-white bg-white-oneHover dark:bg-dark-bgHover"
               vModel={state.description}
               placeholder="Digite a descrição..."
             />
@@ -546,7 +546,7 @@ const AnotationItemModal = defineComponent({
           </form>
           <section class="flex flex-col rounded-l-full w-full items-start">
             {character.anotations.map(item => (
-              <article class="border border-default-blueDark dark:border-default-blueTertiary p-:2 my-:2 min-h-full">
+              <article class="border border-default-blueDark dark:border-default-blueTertiary p-:2 my-:2 min-w-full min-h-full">
                 <h2 class="text-xl text-default-blueDark dark:text-default-blueTertiary">{item.title}</h2>
                 <p class="font-ralewayMedium py-:1">{item.description}</p>
                 <button

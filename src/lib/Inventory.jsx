@@ -242,7 +242,7 @@ export default defineComponent({
     const { toggle } = toRefs(props);
     const items = [...JsonFileSync("constants/character/items.json"), ...PathRead("items")];
     const added = ref(true);
-    const itemsFiltered = ref(items);
+    const filteredItems = ref(items);
     const search = ref("");
 
     const character = useCharacterStore();
@@ -302,12 +302,12 @@ export default defineComponent({
         return item.title.includes(_search); 
       });
 
-      itemsFiltered.value = filtered;
+      filteredItems.value = filtered;
     })
 
     return { 
       equipment: computed(() => character.equipment),
-      itemsFiltered,
+      filteredItems,
       added,
       search,
       searchClass, 
@@ -353,7 +353,7 @@ export default defineComponent({
               />
             </section>
             <section class="flex flex-row xl:flex-wrap lg:flex-nowrap md:flex-nowrap sm:flex-nowrap flex-nowrap p-:1 max-h-full overflow-x-auto xl:overflow-y-auto lg:overflow-y-auto md:overflow-y-hidden sm:overflow-y-hidden">
-              {this.itemsFiltered.map(({
+              {this.filteredItems.map(({
                 id,
                 title,
                 description,
