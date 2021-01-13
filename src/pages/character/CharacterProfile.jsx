@@ -14,6 +14,7 @@ import { useSave } from "@/use/save";
 import { validateNumber } from "@/utils/validate";
 import Inventory from "@/lib/Inventory.jsx";
 import GenericsView from "@/lib/profile/GenericsView.jsx";
+import HabilityModal from "@/lib/profile/HabilityModal.jsx";
 
 const GenericsBox = defineComponent({
   setup() {
@@ -748,65 +749,10 @@ const ItemsBox = defineComponent({
 
     return () => (
       <>
-        <section 
-          class="modal-background" 
-          v-show={toggle.value}
-        >
-          <section class="flex flex-col justify-start items-center h-fully w-2/4 bg-default-white dark:bg-dark-one">
-            <section class="flex flex-row flex-wrap items-center justify-center mt-:1 w-2/4">
-              <h2 class="text-default-blueTertiary">Força:</h2>
-              <input 
-                vModel={[character.hability.strength, ['number']]}
-                class="text-default-white bg-default-black dark:text-default-black dark:bg-default-white px-:1"
-                type="number" 
-              />
-            </section>
-            <section class="flex flex-row flex-wrap items-center justify-center mt-:1 w-2/4">
-              <h2 class="text-default-blueTertiary">Destreza:</h2>
-              <input 
-                vModel={[character.hability.dexterity, ['number']]}
-                class="text-default-white bg-default-black dark:text-default-black dark:bg-default-white px-:1"
-                type="number" 
-              />
-            </section>
-            <section class="flex flex-row flex-wrap items-center justify-center mt-:1 w-2/4">
-              <h2 class="text-default-blueTertiary">Constituição:</h2>
-              <input 
-                vModel={[character.hability.constitution, ['number']]}
-                class="text-default-white bg-default-black dark:text-default-black dark:bg-default-white px-:1"
-                type="number" 
-              />
-            </section>
-            <section class="flex flex-row flex-wrap items-center justify-center mt-:1 w-2/4">
-              <h2 class="text-default-blueTertiary">Inteligência:</h2>
-              <input 
-                vModel={[character.hability.intelligence, ['number']]}
-                class="text-default-white bg-default-black dark:text-default-black dark:bg-default-white px-:1"
-                type="number" 
-              />
-            </section>
-            <section class="flex flex-row flex-wrap items-center justify-center mt-:1 w-2/4">
-              <h2 class="text-default-blueTertiary">Sabedoria:</h2>
-              <input 
-                vModel={[character.hability.wisdom, ['number']]}
-                class="text-default-white bg-default-black dark:text-default-black dark:bg-default-white px-:1"
-                type="number" 
-              />
-            </section>
-            <section class="flex flex-row flex-wrap items-center justify-center my-:1 w-2/4">
-              <h2 class="text-default-blueTertiary">Carisma:</h2>
-              <input 
-                vModel={[character.hability.charisma, ['number']]}
-                class="text-default-white bg-default-black dark:text-default-black dark:bg-default-white px-:1"
-                type="number" 
-              />
-            </section>
-            <button 
-              onClick={close}
-              class="px-:2 py-:1 mb-:1 bg-default-black dark:bg-default-white text-default-white dark:text-default-black rounded-full cursor-pointer focus:outline-none"
-            >Salvar</button>
-          </section>
-        </section>
+        <HabilityModal 
+          toggle={toggle.value} 
+          close={close}
+        />
         <section class="flex h-auto p-:2">
           <aside 
             class="flex flex-col cursor-pointer flex-nowrap justify-between items-center rounded-lg h-auto w-profile-aside shadow-lg bg-profile p-:1"

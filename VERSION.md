@@ -22,3 +22,10 @@
 - Implement vue-fontawesome-icons
 - New expertises for Player's Handbook v1.0.1
 - Image insert
+
+## v1.0.2
+
+### Fixs
+
+- Anotation min width
+- Hability item modal
