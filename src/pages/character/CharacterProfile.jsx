@@ -15,6 +15,7 @@ import { validateNumber } from "@/utils/validate";
 import Inventory from "@/lib/inventory/Inventory.jsx";
 import GenericsView from "@/lib/profile/GenericsView.jsx";
 import HabilityModal from "@/lib/profile/HabilityModal.jsx";
+import "./styles.css";
 
 const GenericsBox = defineComponent({
   setup() {
@@ -378,32 +379,32 @@ const HitItemModal = defineComponent({
           class="modal-background" 
           v-show={toggle.value}
         >
-          <section class="flex flex-col justify-around items-center h-fully w-2/4 bg-default-white dark:bg-dark-one">
+          <section class="flex flex-col justify-around items-center h-fully w-2/4 bg-white-one dark:bg-dark-bg">
             <section class="flex flex-col items-center justify-center my-:1 w-2/4">
               <h2 class="text-default-blueTertiary">Alterar Dado de Vida</h2>
               <select 
                 vModel={character.hitDice} 
-                class="text-default-black p-1"
+                class="select-modal"
               >
-                <option value="4" class="text-default-black">4</option>
-                <option value="6" class="text-default-black">6</option>
-                <option value="8" class="text-default-black">8</option>
-                <option value="10" class="text-default-black">10</option>
-                <option value="12" class="text-default-black">12</option>
-                <option value="20" class="text-default-black">20</option>
+                <option value="4">4</option>
+                <option value="6">6</option>
+                <option value="8">8</option>
+                <option value="10">10</option>
+                <option value="12">12</option>
+                <option value="20">20</option>
               </select>
             </section>
             <section class="flex flex-col items-center justify-center my-:1 w-2/4">
               <h2 class="text-default-blueTertiary">Alterar Pontos de Vida</h2>
               <input 
                 vModel={character.hitPoints} 
-                class="text-default-black p-1"
+                class="input-modal"
                 type="text" 
               />
             </section>
             <button 
               onClick={close}
-              class="px-:2 py-:1 mb-:1 bg-default-black dark:bg-default-white text-default-white dark:text-default-black rounded-full cursor-pointer focus:outline-none"
+              class="btn-modal"
             >Salvar</button>
           </section>
         </section>

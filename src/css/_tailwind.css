@@ -132,11 +132,7 @@
   select {
     @apply bg-dark-one text-default-white dark:bg-default-white dark:text-default-black cursor-pointer;
   }
-
-  select > option {
-    @apply text-default-white dark:text-default-black;
-  }
-
+  
   button {
     @apply focus:outline-none text-default-black dark:text-default-white border border-default-black dark:border-default-white;
   }

@@ -194,11 +194,17 @@ export default defineComponent({
             </section>
             <section class="m-:2 w-full">
               <h2 class="dark:text-default-blueTertiary text-default-black">Dados de Vida</h2>
-              <input 
-                vModel={[character.hitDice, ['number']]} 
-                type="text"
-                class="font-ralewayMedium text-sm w-full h-full p-:1 bg-white-one dark:bg-dark-bgHover text-default-black dark:text-default-white"
-              />
+              <select 
+                vModel={character.hitDice} 
+                class="select-modal"
+              >
+                <option value="4">4</option>
+                <option value="6">6</option>
+                <option value="8">8</option>
+                <option value="10">10</option>
+                <option value="12">12</option>
+                <option value="20">20</option>
+              </select>
             </section>
           </section>
         </section>
