@@ -33,8 +33,8 @@
     @apply text-lg text-default-blueDark dark:text-default-blueTertiary;
   }
 
-  .form_basic > input {
-    @apply bg-default-black px-:2 w-20;
+  .form-basic > input {
+    @apply bg-default-black px-:2 w-auto;
   }
 
   .item-right-aside {

@@ -12,7 +12,7 @@ import { useToast } from "vue-toastification";
 import { useToggle } from "@/use/toggle";
 import { useSave } from "@/use/save";
 import { validateNumber } from "@/utils/validate";
-import Inventory from "@/lib/Inventory.jsx";
+import Inventory from "@/lib/inventory/Inventory.jsx";
 import GenericsView from "@/lib/profile/GenericsView.jsx";
 import HabilityModal from "@/lib/profile/HabilityModal.jsx";
 

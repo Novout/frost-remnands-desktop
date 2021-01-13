@@ -1,0 +1,21 @@
+@layer components {
+  .btn-modal {
+    @apply p-:1 mt-:4 text-default-black dark:text-default-white hover:bg-white-oneHover dark:hover:bg-dark-bgHover;
+  }
+
+  .input-modal {
+    @apply flex-1 h-full mr-:1 mt-:1 text-sm rounded-full p-:1 text-default-black dark:text-default-white bg-white-oneHover dark:bg-dark-bgHover;
+  }
+
+  .h1-title {
+    @apply text-default-blueDark dark:text-default-blueTertiary text-2xl pb-:2 border-b border-default-blueDark dark:border-default-blueTertiary;
+  }
+
+  .h2-title {
+    @apply text-default-blueDark dark:text-default-blueTertiary text-lg pb-:2;
+  }
+
+  .inventory-text {
+    @apply font-ralewayMedium text-default-blueDark dark:text-default-blueLight xl:text-xl lg:text-xl md:text-sm pointer-events-none;
+  }
+}
