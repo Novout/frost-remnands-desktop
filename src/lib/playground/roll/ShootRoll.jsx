@@ -42,12 +42,28 @@ export default defineComponent({
           <h2 class="p-title flex-1">Atirar</h2>
           <p class="mx-:1">d20 + Destreza ({character.habilityModifier.dexterity}) + {proficiency.shoot ? character.proficiencyBonus : 0} = {result.value}</p>
           <section class="flex justify-center items-center mx-:1">
-            <label for="vantage">Vantagem</label>
-            <input type="checkbox" vModel={vantage.shoot} />
+            <label class="toggle">
+              <input 
+                class="input-custom" 
+                type="checkbox"
+                vModel={vantage.shoot} 
+              />
+              <span class="label-custom">
+                <span class="input-text-custom">Vantagem</span>
+              </span>
+            </label>
           </section>
           <section class="flex justify-center items-center mx-:1">
-            <label for="proficiency">Proficiência</label>
-            <input type="checkbox" vModel={proficiency.shoot} />
+            <label class="toggle">
+              <input 
+                class="input-custom" 
+                type="checkbox"
+                vModel={proficiency.shoot} 
+              />
+              <span class="label-custom">
+                <span class="input-text-custom">Proficiência</span>
+              </span>
+            </label>
           </section>
           <button 
             class="btn-playground"

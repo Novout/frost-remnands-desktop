@@ -183,7 +183,7 @@
   }   
 
   .input-text-custom {
-    @apply font-ralewayMedium;
+    @apply font-ralewayMedium pointer-events-none;
     margin-top: auto;
     margin-bottom: auto;
   }
