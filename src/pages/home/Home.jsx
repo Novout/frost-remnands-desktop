@@ -17,7 +17,7 @@ export default defineComponent({
     return () => (
       <>
         <section 
-          class="bg-center bg-default-white dark:bg-default-black bg-no-repeat bg-cover h-screen w-full overflow-hidden"
+          class="bg-center bg-no-repeat bg-cover h-screen w-full overflow-hidden"
           class={background.value}
         >
           <main class="main flex justify-center items-center flex-col px-:2 bg-none h-medium w-11/12 center transition duration-500 ease-in-out transform hover:-translate-y-1">

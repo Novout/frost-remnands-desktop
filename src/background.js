@@ -21,6 +21,8 @@ const createWindow = () => {
     minHeight: 550,
     frame: false,
     transparent: true,
+    backgroundColor: "#FF000000",
+    center: true,
     webPreferences: {
       nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
       enableRemoteModule: true,
