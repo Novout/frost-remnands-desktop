@@ -31,6 +31,7 @@
 - Hability item modal
 - Inventory items and components
 - Profile switch class and race
+- Relevant delete
 
 ### Features
 
