@@ -444,36 +444,13 @@ const TextItemDescription = defineComponent({
   }
 })
 
-const TextItem = defineComponent({
-  setup() {
-    const { toggle, toggleButton } = useToggle();
-
-    return () => (
-      <>
-        <section class="flex flex-col justify-start items-center w-full bg-dark-one dark:bg-dark-bg dark:hover:bg-dark-bgHover hover:bg-dark-inputHover p-:1 ml-:2 mt-:2">
-          <section class="flex justify-between w-full">
-            <h2 
-              class="font-ralewayMedium text-default-white dark:text-default-white"
-            >Descrição:</h2>
-            <button 
-              class="item-right-button"
-              onClick={toggleButton}
-            ><font-awesome-icon icon={['fas', 'angle-double-right']} size="sm" /></button>
-          </section>
-          {toggle.value && <TextItemDescription />}
-        </section>
-      </>
-    )
-  }
-})
-
 const AnotationItemDescription = defineComponent({
   setup() {
     const character = useCharacterStore();
 
     return () => (
       <>
-        <section class="flex flex-col w-full p-:2 justify-center">
+        <section class="flex flex-col max-h-72 overflow-y-auto w-full p-:2">
           {character.anotations.map(item => (
             <article 
               class="flex my-:1 border-2 border-default-blueDark dark:border-default-blueTertiary flex-col p-:1 justify-between w-full"
