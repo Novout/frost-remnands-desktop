@@ -13,6 +13,11 @@ const ListLoad = defineComponent({
     load: {
       required: true,
       type: String
+    },
+    canon: {
+      required: false,
+      default: false,
+      type: Boolean
     }
   },
   setup(props) {
@@ -48,6 +53,7 @@ const ListLoad = defineComponent({
       list, 
       remove, 
       load, 
+      canon: props.canon,
       title: props.title 
     }
   },
@@ -76,14 +82,15 @@ const ListLoad = defineComponent({
                   class="flex-1 text-xl pointer-events-none text-default-blueDark dark:text-default-blueTertiary dark:hover:text-default-blueTertiaryHover"
                 >{char.name}</h2>
                 <p class="pointer-events-none">Nível {char.level}</p>
+                {!this.canon && 
+                  <button
+                    id={char.name}
+                    class="mx-:1 dark:hover:text-white-oneHover border-none"
+                    onClick={withModifiers(this.remove, ['prevent'])}
+                  >Excluir</button>}
                 <button
                   id={char.name}
-                  class="mx-:1 dark:hover:text-white-oneHover border-none"
-                  onClick={withModifiers(this.remove, ['prevent'])}
-                >Excluir</button>
-                <button
-                  id={char.name}
-                  class="dark:hover:text-white-oneHover border-none"
+                  class="dark:hover:text-white-oneHover ml-:1 border-none"
                   onClick={withModifiers(this.load, ['prevent'])}
                 >Carregar</button>
               </article>
@@ -111,7 +118,8 @@ export default defineComponent({
         />
         <ListLoad 
           title="Personagens Canônicos"
-          load="canon" 
+          load="canon"
+          canon={true}
         />
       </main>
     )
