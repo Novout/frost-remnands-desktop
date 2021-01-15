@@ -437,9 +437,11 @@ const TextItemDescription = defineComponent({
     const character = useCharacterStore();
 
     return () => (
-      <span 
+      <>
+        {character.description ? (<span 
         class="font-ralewayMedium text-base text-default-white dark:text-default-white"
-      >{character.description}</span>
+      >{character.description}</span>) : <p>A descrição está vazia</p>}
+      </>
     )
   }
 })
@@ -581,9 +583,11 @@ const BreakItemDescription = defineComponent({
     const character = useCharacterStore();
 
     return () => (
-      <span 
+      <>
+        {character.breakPoint ? (<span 
         class="font-ralewayMedium text-base text-default-white dark:text-default-white"
-      >{character.breakPoint}</span>
+      >{character.breakPoint}</span>) : <p>O ponto de quebra está vazio</p>}
+      </>
     )
   }
 })

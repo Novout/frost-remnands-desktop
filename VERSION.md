@@ -37,3 +37,13 @@
 
 - Playground route
 - Inventory item modal
+
+## v1.1.0
+
+### Fixs
+
+- Description and breakpoint break with no content
+
+### Features
+
+- Switch description and breakpoint

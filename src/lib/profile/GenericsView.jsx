@@ -177,6 +177,22 @@ export default defineComponent({
               </>
             )}
             <section class="m-:2 w-full">
+              <h2 class="dark:text-default-blueTertiary text-default-black">Descrição do Personagem</h2>
+              <textarea 
+                vModel={character.description} 
+                rows = "8"
+                class="font-ralewayMedium bg-white-one hover:bg-white-oneHover focus:bg-white-oneHover dark:bg-dark-bgHover text-base border-none w-full my-:2 text-default-black dark:text-default-white"
+              />
+            </section>
+            <section class="m-:2 w-full">
+              <h2 class="dark:text-default-blueTertiary text-default-black">Ponto de Quebra</h2>
+              <textarea 
+                vModel={character.breakPoint} 
+                rows = "8"
+                class="font-ralewayMedium bg-white-one hover:bg-white-oneHover focus:bg-white-oneHover dark:bg-dark-bgHover text-base border-none w-full my-:2 text-default-black dark:text-default-white"
+              />
+            </section>
+            <section class="m-:2 w-full">
               <h2 class="dark:text-default-blueTertiary text-default-black">Pontos de Vida</h2>
               <input 
                 vModel={[character.hitPoints, ['number']]} 
