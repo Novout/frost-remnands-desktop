@@ -59,9 +59,9 @@ export default defineComponent({
         v-show={props.toggle}
       >
         <h1 class="h1-title">Perfil</h1>
-        <section class="flex w-full min-h-full flex-wrap justify-between py-:2">
-          <section class="flex w-2/5 justify-around items-center flex-col pt-:2">
-            <section class="flex flex-col justify-between items-center">
+        <section class="flex w-full justify-center flex-wrap">
+          <section class="flex h-full w-2/5 items-center flex-col">
+            <section class="flex justify-center flex-col items-center">
               <h2 class="h2-title">Foto</h2>
               <img 
                 id="img"
@@ -86,11 +86,11 @@ export default defineComponent({
                       </div>
                   </div>
               </div>
+              <button 
+                onClick={props.close}
+                class="p-:1 mt-:3 w-2/4 rounded-full border-2 border-default-blueDark dark:border-default-blueLight"
+              >Salvar</button>
             </section>
-            <button 
-              onClick={props.close}
-              class="p-:1 mt-:3 w-2/4 rounded-full border-2 border-default-blueDark dark:border-default-blueLight"
-            >Salvar</button>
           </section>
           <section class="flex p-:2 h-2/4 w-2/4 justify-between items-center flex-row flex-wrap">
             <section class="mx-:2 w-full">
@@ -181,7 +181,7 @@ export default defineComponent({
               <textarea 
                 vModel={character.description} 
                 rows = "8"
-                class="font-ralewayMedium bg-white-one hover:bg-white-oneHover focus:bg-white-oneHover dark:bg-dark-bgHover text-base border-none w-full my-:2 text-default-black dark:text-default-white"
+                class="font-ralewayMedium bg-white-one hover:bg-white-oneHover focus:bg-white-oneHover dark:bg-dark-bgHover text-base border-none w-full my-:1 text-default-black dark:text-default-white"
               />
             </section>
             <section class="m-:2 w-full">
@@ -189,7 +189,7 @@ export default defineComponent({
               <textarea 
                 vModel={character.breakPoint} 
                 rows = "8"
-                class="font-ralewayMedium bg-white-one hover:bg-white-oneHover focus:bg-white-oneHover dark:bg-dark-bgHover text-base border-none w-full my-:2 text-default-black dark:text-default-white"
+                class="font-ralewayMedium bg-white-one hover:bg-white-oneHover focus:bg-white-oneHover dark:bg-dark-bgHover text-base border-none w-full my-:1 text-default-black dark:text-default-white"
               />
             </section>
             <section class="m-:2 w-full">
