@@ -38,8 +38,8 @@ export default defineComponent({
         <section class="flex items-center my-:2">
           <h2 class="mr-:2">Tema</h2>
           <select vModel={theme.value} class="rounded-lg p-1">
-            <option value="light">Claro</option>
-            <option value="dark">Escuro</option>
+            <option value="light" class="text-default-white dark:text-default-black">Claro</option>
+            <option value="dark" class="text-default-white dark:text-default-white">Escuro</option>
           </select>
         </section>
         <section class="flex items-center my-:2">
