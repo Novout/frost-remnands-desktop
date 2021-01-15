@@ -43,7 +43,11 @@
 ### Fixs
 
 - Description and breakpoint break with no content
+- Refactor components in profile character
+- Refactor colors in create character
+- Remove CI
 
 ### Features
 
 - Switch description and breakpoint
+- FAQ
