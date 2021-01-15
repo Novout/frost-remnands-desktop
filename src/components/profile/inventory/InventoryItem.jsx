@@ -2,7 +2,6 @@ import {
   defineComponent, 
   ref, 
   computed, 
-  toRefs, 
 } from "vue";
 import { useToast } from "vue-toastification";
 import { useCharacterStore } from "-/character";

@@ -355,7 +355,6 @@ export default defineComponent({
         PathWrite("characters", [...save, character.$state]);
         router.push("/profile");
       } catch(error) {
-        console.log(error);
         toast.error("Ocorreu um erro ao salvar o personagem :(");
       }
     }

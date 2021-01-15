@@ -1,25 +1,31 @@
 import { 
-  defineComponent,
-  ref, 
-  reactive, 
+  defineComponent,  
   onMounted, 
-  watch 
 } from "vue";
 import { JsonFileSync } from "_/services/fs";
 import { useCharacterStore } from "-/character";
-import { useRouter } from "vue-router";
 import { useToast } from "vue-toastification";
 import { useToggle } from "@/use/toggle";
-import { useSave } from "@/use/save";
-import { validateNumber } from "@/utils/validate";
-import Inventory from "@/lib/inventory/Inventory.jsx";
-import GenericsView from "@/lib/profile/GenericsView.jsx";
-import HabilityModal from "@/lib/profile/HabilityModal.jsx";
+import HabilityItem from "@/components/profile/HabilityItem.jsx";
+import InventoryItem from "@/components/profile/InventoryItem.jsx";
+import ExpertiseItem from "@/components/profile/ExpertiseItem.jsx";
+import ProficiencyItem from "@/components/profile/ProficiencyItem.jsx";
+import GenericsView from "@/components/profile/GenericsView.jsx";
+import GenericsMain from "@/components/profile/GenericsMain.jsx";
+import HabilityModal from "@/components/profile/HabilityModal.jsx";
+import DataAside from "@/components/profile/DataAside.jsx";
+import GenericsAside from "@/components/profile/GenericsAside.jsx";
+import ExaustAside from "@/components/profile/ExaustAside.jsx";
+import ResourceAside from "@/components/profile/ResourceAside.jsx";
+import HitAside from "@/components/profile/HitAside.jsx";
+import BreakAside from "@/components/profile/BreakAside.jsx";
+import TextAside from "@/components/profile/TextAside.jsx";
+import AnotationAside from "@/components/profile/AnotationAside.jsx";
+import TalentsAside from "@/components/profile/TalentsAside.jsx";
 import "./styles.css";
 
 const GenericsBox = defineComponent({
   setup() {
-    const character = useCharacterStore();
     const { toggle, open, close } = useToggle();
 
     onMounted(() => {
@@ -30,660 +36,8 @@ const GenericsBox = defineComponent({
 
     return () => (
       <>
-        <GenericsView 
-          toggle={toggle.value} 
-          close={close} 
-        />
-        <header 
-          class="flex flex-col flex-nowrap cursor-pointer"
-          onClick={open}
-        >
-          <section class="flex flex-row flex-nowrap justify-around items-center h-profile-header">
-            <h1 
-              class="text-3vw text-default-black dark:text-default-white"
-            >{character.name}</h1>
-            <section class="flex flex-row flex-nowrap">
-              <section class="py-:1 px-:2">
-                <h2 
-                  class="text-default-black dark:text-default-white font-ralewayMedium text-3vh border-b-2 border-default-black dark:border-default-white mb-1"
-                >{character.getCharacterClass} / {character.level}</h2>
-                <p 
-                  class="text-default-black dark:text-default-white text font-ralewayMedium text-3vh"
-                >Classe / Nível</p>
-              </section>
-              <section class="py-:1 px-:2">
-                <h2 
-                  class="text-default-black dark:text-default-white font-ralewayMedium text-3vh border-b-2 border-default-black dark:border-default-white mb-1"
-                >{character.getRaceName}</h2>
-                <p 
-                  class="text-default-black dark:text-default-white text-3vh font-ralewayMedium"
-                >Raça</p>
-              </section>
-              <section class="py-:1 px-:2">
-                <h2 
-                  class="text-default-black dark:text-default-white font-ralewayMedium text-3vh border-b-2 border-default-black dark:border-default-white mb-1"
-                >{character.getOriginName}</h2>
-                <p 
-                  class="text-default-black dark:text-default-white text-3vh font-ralewayMedium"
-                >Origem</p>
-              </section>
-            </section>
-          </section>
-        </header>
-      </>
-    )
-  }
-})
-
-const HabilityItem = defineComponent({
-  props: {
-    hability: {
-      type: String,
-      required: true
-    },
-    modifier: {
-      type: Number,
-      required: true
-    },
-    total: {
-      type: Number,
-      required: true
-    }
-  },
-  setup(props) {
-    return () => (
-      <>
-        <article class="character-hability">
-          <p class="text-sm font-ralewayMedium">{props.hability}</p>
-          <p class="text-2xl font-ralewayMedium">{props.modifier}</p>
-          <p 
-            class="bg-default-white text-lg dark:bg-dark-one dark:text-default-white py-1 px-:3 rounded-full text-default-black hover:bg-default-blueLight dark:hover:bg-default-blueDark font-ralewayMedium"
-          >{props.total}</p>
-        </article>
-      </>
-    )
-  }
-})
-
-const ProficiencyItem = defineComponent({
-  setup() {
-    const character = useCharacterStore();
-
-    return () => (
-      <>
-        <article class="character-proficiency bg-profile">
-          <p 
-            class="bg-default-white pointer-events-none py-:1 px-:2 dark:text-default-white text-default-black rounded-full dark:bg-default-black ml-:2"
-          >{character.getProficiencyBonus}</p>
-          <p 
-          class="flex pointer-events-none justify-around items-center font-ralewayMedium"
-          >Proficiência</p>
-        </article>
-      </>
-    )
-  }
-})
-
-const ExpertiseItem = defineComponent({
-  setup() {
-    const character = useCharacterStore();
-
-    const expertises = JsonFileSync("constants/character/expertise.json");
-
-    return () => (
-      <>
-        {expertises.map((expertise) => {
-          return (
-            <article class="flex justify-between items-center mt-:1 bg-white-one dark:bg-dark-bg hover:bg-white-oneHover dark:hover:bg-dark-bgHover w-full p-:1">
-              <label class="toggle">
-                <input 
-                  class="input-custom" 
-                  type="checkbox"
-                  vModel={character.expertises[expertise.code]} 
-                />
-                <span class="label-custom">
-                  <span class="input-text-custom">{expertise.name}</span>
-                </span>
-              </label>
-              <p 
-                class="pointer-events-none"
-              >
-                {(character.habilityModifier[expertise.type] + (character.expertises[expertise.code] ? character.proficiencyBonus : 0))}
-              </p>
-            </article>
-          )
-        })}
-      </>
-    )
-  }
-})
-
-const DataItem = defineComponent({
-  setup() {
-    const { TOAST } = JsonFileSync("localisation/pt_BR.json");
-    const character = useCharacterStore();
-    const toast = useToast();
-    const modal = reactive({
-      isOpen: false,
-      payload: undefined,
-      id: "",
-      title: "",
-      save: "Salvar"
-    });
-
-    const modalOpen = (event) => {
-      modal.id = event.target.id;
-      modal.payload = undefined;
-      const execute = {
-        "initiative": () => {
-          modal.title = "Alterar Iniciativa";
-          return;
-        },
-        "ca": () => {
-          modal.title = "Alterar CA";
-          return;
-        },
-        "speed": () => {
-          modal.title = "Alterar Velocidade Base";
-          return;
-        },
-      }[modal.id]() || (() =>  { return; })();
-
-      modal.isOpen = true;
-    }
-
-    const closeModal = () => {
-      if(validateNumber(modal.payload)) {
-        const execute = {
-          "initiative": () => {
-            character.initiative = modal.payload;
-          },
-          "ca": () => {
-            character.CA = modal.payload;
-          },
-          "speed": () => {
-            character.speed = modal.payload;
-          }
-        }[modal.id]() || (() =>  { return; })();
-        modal.isOpen = false;
-        toast.success(TOAST.PROFILE_ITEMS_SUCCESS);
-        return;
-      }
-
-      toast.error(TOAST.PROFILE_INTEGER_ERROR);
-    }
-
-    const toggleChance = () => character.lastChance = !character.lastChance;
-
-    return () => (
-      <>
-        <section 
-          class="modal-background"
-          v-show={modal.isOpen}
-        >
-          <article class="flex flex-col justify-between min-h-60 items-start dark:bg-dark-bg bg-white-one p-:3">
-            <h1 class="font-poppinsMedium text-xl text-default-blueDark dark:text-default-blueTertiary">{modal.title}</h1>
-            <input 
-              class="flex-1 h-full mr-:1 mt-:1 text-sm rounded-full p-:1 text-default-black dark:text-default-white bg-white-oneHover dark:bg-dark-bgHover"
-              type="text"
-              vModel={modal.payload} 
-            />
-            <button 
-              class="p-:1 mt-:4 text-default-black dark:text-default-white hover:bg-white-oneHover dark:hover:bg-dark-bgHover"
-              onClick={closeModal}
-            >{modal.save}</button>
-          </article>
-        </section>
-        <section class="flex justify-around items-center w-full bg-profile p-:1 ml-:2">
-          <article 
-            class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer flex-1 dark:hover:bg-dark-bgHover"
-            id="initiative"
-            onClick={modalOpen}
-          >
-            <h2 
-              class="pointer-events-none font-ralewayMedium"
-            >Iniciativa</h2>
-            <p 
-              class="pointer-events-none"
-            >{character.initiative}</p>
-          </article>
-          <article 
-            class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer flex-1 dark:hover:bg-dark-bgHover"
-            id="ca"
-            onClick={modalOpen}
-          >
-            <h2 
-              class="pointer-events-none font-ralewayMedium"
-            >CA</h2>
-            <p 
-              class="pointer-events-none"
-            >{character.CA}</p>
-          </article>
-          <article 
-            class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer flex-1 dark:hover:bg-dark-bgHover"
-            id="speed"
-            onClick={modalOpen}
-          >
-            <h2 
-              class="pointer-events-none font-ralewayMedium"
-            >Velocidade</h2>
-            <p 
-              class="pointer-events-none"
-            >{character.speed} pés</p>
-          </article>
-          <article 
-            class="flex flex-col flex-nowrap justify-center items-center py-:3 px-:1 cursor-pointer flex-1 dark:hover:bg-dark-bgHover" 
-            onClick={toggleChance}
-          >
-            <h2 class="font-ralewayMedium">UC</h2>
-            {character.lastChance ? <p>Sim</p> : <p>Não</p>}
-          </article>
-        </section>
-      </>
-    )
-  }
-})
-
-const GenericsItem = defineComponent({
-  setup() {
-    const { saveCharacter } = useSave();
-    const router = useRouter();
-    const toast = useToast();
-
-    const save = () => {
-      const canon = JsonFileSync("constants/character/canon.json");
-      const character = useCharacterStore();
-        
-      if(!canon.includes(character.name)) {
-        saveCharacter();
-        toast.success("Personagem salvo com sucesso!");
-      } else {
-        toast.error("Não é possível salvar um Personagem Relevante.");
-      }
-    }
-
-    const initialMenu = () => {
-      router.push("/");
-    }
-
-    const playground = () => {
-      router.push("/playground");
-    }
-
-    return () => (
-      <section
-        class="flex flex-row sm:justify-between md:justify-between lg:justify-around xl:justify-around items-center w-full bg-profile p-:1 ml-:2 mb-:2"
-      >
-        <button
-          class="p-:1 border rounded-md dark:border-default-white border-default-black"
-          onClick={initialMenu}
-        >Menu Inicial</button>
-        <button
-          class="p-:1 border rounded-md dark:border-default-white border-default-black"
-          onClick={playground}
-        >Playground</button>
-        <button
-          class="p-:1 border rounded-md dark:border-default-white border-default-black"
-          onClick={save}
-        >Salvar Personagem</button>
-      </section>
-    )
-  }
-})
-
-const ExaustList = defineComponent({
-  setup() {
-    const character = useCharacterStore();
-
-    const subTime = () => {
-      character.exhaustionTime = character.exhaustionTime - 1;
-      character.exhaustion = false;
-      if(character.exhaustionTime === 0) {
-        character.exhaustion = true;
-        character.exhaustionTime = 3;
-      }
-    }
-
-    return () => (
-      <section class="flex justify-between xl:justify-around lg:justify-between md:justify-between sm:justify-between p-:2 w-full h-full">
-        <section class="flex flex-col p-:1 justify-center items-center">
-          <h2 class="font-ralewayMedium">Exaustão Atual</h2>
-          <p>{character.exhaustion ? "Disponível" : "Não-Disponível"}</p>
-        </section>
-        <section
-          class="flex flex-col p-:1 justify-center items-center cursor-pointer"
-          onClick={subTime}
-        >
-          <h2 class="font-ralewayMedium">Tempo de Exaustão</h2>
-          <p>{character.exhaustionTime}</p>
-        </section>
-      </section>
-    )
-  }
-})
-
-const HitItemModal = defineComponent({
-  setup() {
-    const { TOAST } = JsonFileSync("localisation/pt_BR.json");
-    const toast = useToast();
-    const character = useCharacterStore();
-    const { toggle, open, close } = useToggle();
-
-    watch(toggle, (toggle) => {
-      if(!toggle) toast.success(TOAST.PROFILE_ITEMS_SUCCESS);
-    })
-
-    return () => (
-      <>
-        <section 
-          class="modal-background" 
-          v-show={toggle.value}
-        >
-          <section class="flex flex-col justify-around items-center h-fully w-2/4 bg-white-one dark:bg-dark-bg">
-            <section class="flex flex-col items-center justify-center my-:1 w-2/4">
-              <h2 class="text-default-blueTertiary">Alterar Dado de Vida</h2>
-              <select 
-                vModel={character.hitDice} 
-                class="select-modal"
-              >
-                <option value="4">4</option>
-                <option value="6">6</option>
-                <option value="8">8</option>
-                <option value="10">10</option>
-                <option value="12">12</option>
-                <option value="20">20</option>
-              </select>
-            </section>
-            <section class="flex flex-col items-center justify-center my-:1 w-2/4">
-              <h2 class="text-default-blueTertiary">Alterar Pontos de Vida</h2>
-              <input 
-                vModel={character.hitPoints} 
-                class="input-modal"
-                type="text" 
-              />
-            </section>
-            <button 
-              onClick={close}
-              class="btn-modal"
-            >Salvar</button>
-          </section>
-        </section>
-        <section 
-          onClick={open}
-          class="flex flex-row w-full py-:2 px-:1 justify-between items-center"
-        >
-          <section 
-            id="hit-dice"
-            class="flex flex-1 flex-col justify-center items-center h-full p-:1 cursor-pointer"
-          >
-            <h2 class="font-ralewayMedium text-default-white hover:text-white-one">Dado de Vida</h2>
-            <p class="text-default-white hover:text-white-oneHover">1d{character.hitDice}</p>
-          </section>
-          <section 
-            id="hit-points"
-            class="flex flex-1 flex-col justify-center items-center h-full p-:1 cursor-pointer"
-          >
-            <h2 class="font-ralewayMedium text-default-white hover:text-white-one">Pontos de Vida</h2>
-            <p class="text-default-white hover:text-white-oneHover">{character.hitPoints}</p>
-          </section>
-        </section>
-      </>
-    )
-  }
-})
-
-const TextItemDescription = defineComponent({
-  setup() {
-    const character = useCharacterStore();
-
-    return () => (
-      <>
-        {character.description ? (<span 
-        class="font-ralewayMedium text-base text-default-white dark:text-default-white"
-      >{character.description}</span>) : <p>A descrição está vazia</p>}
-      </>
-    )
-  }
-})
-
-const AnotationItemDescription = defineComponent({
-  setup() {
-    const character = useCharacterStore();
-
-    return () => (
-      <>
-        <section class="flex flex-col max-h-72 overflow-y-auto w-full p-:2">
-          {character.anotations.map(item => (
-            <article 
-              class="flex my-:1 border-2 border-default-blueDark dark:border-default-blueTertiary flex-col p-:1 justify-between w-full"
-            >   
-              <h2 
-                class="font-ralewayMedium text-default-blueDark dark:text-default-blueTertiary text-lg"
-              >{item.title}</h2>
-              <span 
-                class="font-ralewayMedium text-base w-full"
-              >{item.description}</span>
-            </article>
-          ))}
-        </section>
-      </>
-    )
-  }
-})
-
-const AnotationItemModal = defineComponent({
-  props: ["toggle"],
-  setup(props) {
-    const character = useCharacterStore();
-    const toast = useToast();
-
-    const state = reactive({
-      title: "",
-      description: ""
-    });
-
-    const add = () => {
-      const item = {
-        title: state.title,
-        description: state.description
-      }
-
-      character.anotations.push(item);
-
-      state.title = "";
-      state.description = "";
-
-      toast.success("Anotação criada com sucesso!");
-    }
-
-    const remove = (event) => {
-      const id = event.target.id;
-
-      const filtered = character.anotations.filter(item => item.title !== id);
-      character.anotations = filtered;
-
-      toast.success("Anotação excluida com sucesso!");
-    }
-
-    return () => (
-      <section class="flex items-center justify-center full-background">
-        <section class="h-fully overflow-y-auto p-:2 w-4/5 bg-white-one dark:bg-dark-bg">
-          <h1 class="text-2xl text-default-blueDark dark:text-default-blueTertiary border-b border-default-blueDark dark:border-default-blueTertiary mb-:4 pb-:1">Anotações</h1>
-          <form class="flex rounded-l-full w-full items-center justify-between h-10">
-            <input
-              class="flex-1 h-full mr-:1 text-sm rounded-l-full p-:1 text-default-black dark:text-default-white bg-white-oneHover dark:bg-dark-bgHover"
-              vModel={state.title}
-              placeholder="Digite o título..."
-            />
-            <input 
-              class="flex-1 h-full font-ralewayMedium text-sm w-2/5 p-:1 text-default-black dark:text-default-white bg-white-oneHover dark:bg-dark-bgHover"
-              vModel={state.description}
-              placeholder="Digite a descrição..."
-            />
-            <button
-              class="p-:1 text-lg focus:outline-none bg-default-white hover:bg-white-one dark:bg-default-black dark:hover:bg-dark-oneHover"
-              onClick={add}
-            >+</button>
-          </form>
-          <section class="flex flex-col rounded-l-full w-full items-start">
-            {character.anotations.map(item => (
-              <article class="border border-default-blueDark dark:border-default-blueTertiary p-:2 my-:2 min-w-full min-h-full">
-                <h2 class="text-xl text-default-blueDark dark:text-default-blueTertiary">{item.title}</h2>
-                <p class="font-ralewayMedium py-:1">{item.description}</p>
-                <button
-                  id={item.title}
-                  class="w-10 mt-:2 hover:bg-default-red"
-                  onClick={remove}
-                >-</button>
-              </article>
-            ))}
-          </section>
-          <button 
-            class="font-ralewayMedium p-:1 mt-:3 text-default-black dark:text-default-white"
-            onClick={props.toggle}
-          >Fechar</button>
-        </section>
-      </section>
-    )
-  }
-})
-
-const AnotationItem = defineComponent({
-  setup() {
-    const { toggle, toggleButton } = useToggle();
-    const toggleModal = ref(false);
-    const toggleModalButton = () => toggleModal.value = !toggleModal.value;
-
-    return () => (
-      <>
-        <section class="flex flex-col justify-start items-center w-full bg-profile p-:1 ml-:2 mt-:2">
-          <section class="flex justify-between w-full">
-            <h2 
-              class="flex-1 font-ralewayMedium"
-            >Anotações:</h2>
-            <button 
-              class="item-right-button text-default-white mr-:1" 
-              onClick={toggleModalButton}
-            >+</button>
-            <button 
-              class="item-right-button"
-              onClick={toggleButton}
-            ><font-awesome-icon icon={['fas', 'angle-double-right']} size="sm" /></button>
-          </section>
-          {toggle.value && <AnotationItemDescription />}
-        </section>
-        {toggleModal.value && <AnotationItemModal toggle={toggleModalButton} />}
-      </>
-    )
-  }
-})
-
-const BreakItemDescription = defineComponent({
-  setup() {
-    const character = useCharacterStore();
-
-    return () => (
-      <>
-        {character.breakPoint ? (<span 
-        class="font-ralewayMedium text-base text-default-white dark:text-default-white"
-      >{character.breakPoint}</span>) : <p>O ponto de quebra está vazio</p>}
-      </>
-    )
-  }
-})
-
-const InventoryItem = defineComponent({
-  setup() {
-    const { toggle, toggleButton } = useToggle();
-
-    return () => (
-      <>
-        <section class="flex flex-col justify-start items-center bg-profile w-full p-:1 ml-:2 mt-:2">
-          <section class="flex justify-between w-full">
-            <h2 
-              class="font-ralewayMedium"
-            >Inventário:</h2>
-            <button 
-              class="item-right-button"
-              onClick={toggleButton}
-            ><font-awesome-icon icon={['fas', 'angle-double-right']} size="sm" /></button>
-          </section>
-          {toggle.value && <Inventory toggle={toggle} />}
-        </section>
-      </>
-    )
-  }
-})
-
-const TalentsList = defineComponent({
-  setup() {
-    const character = useCharacterStore();
-
-    return () => (
-      <section class="flex flex-col items-center w-full max-h-60 overflow-y-auto py-:2">
-        {character.talents.map(talent => 
-          <article class="sm:w-full md:w-full lg:w-4/5 xl:w-2/3 border-2 rounded-sm my-:1 border-default-blueLight dark:border-default-blueTertiary p-:1">
-            <h2 class="text-lg mb-:1 border-b dark:text-default-white text-default-black">{talent.title}</h2>
-            <p class="font-ralewayMedium mb-:1 dark:text-default-white text-default-black">{talent.description}</p>
-            <p class="font-ralewayMedium mb-:1 dark:text-default-white text-default-black">{talent.bonus}</p>
-          </article>
-        )}
-      </section>
-    )
-  }
-})
-
-const ResourceList = defineComponent({
-  setup() {
-    const character = useCharacterStore();
-    const toggleModal = ref(false);
-    const toggleModalButton = () => {
-      toggleModal.value = !toggleModal.value;
-    }
-
-    return () => (
-      <>
-        <section
-          class="modal-background"
-          v-show={toggleModal.value}
-        >
-          <section class="flex flex-col justify-around items-center w-3/4 h-fully bg-white-one dark:bg-dark-one p-:2">
-            <section>
-              <label class="font-ralewayMedium text-lg mr-:2 text-default-blueDark dark:text-default-blueTertiary">Efrium</label>
-              <input 
-                class="dark:bg-dark-bgHover bg-white-oneHover"
-                vModel={[character.efrium, ['number']]} 
-              />
-            </section>
-            <section>
-              <label class="font-ralewayMedium text-lg mr-:2 text-default-blueDark dark:text-default-blueTertiary">Recursos Base</label>
-              <input 
-                class="dark:bg-dark-bgHover bg-white-oneHover"
-                vModel={[character.baseResource, ['number']]} 
-              />
-            </section>
-            <button
-              class="pt-:1"
-              onClick={toggleModalButton}
-            >Fechar</button>
-          </section>
-        </section>
-        <section class="flex w-full p-:1 justify-around items-center">
-          <section 
-            class="flex flex-col justify-center items-center cursor-pointer"
-            onClick={toggleModalButton}
-          >
-            <p>Efrium</p>
-            <p>{character.efrium}</p>
-          </section>
-          <section 
-            class="flex flex-col justify-center items-center cursor-pointer"
-            onClick={toggleModalButton}
-          >
-            <p>Recurso Base</p>
-            <p>{character.baseResource}</p>
-          </section>
-        </section>
+        <GenericsView toggle={toggle.value} close={close} />
+        <GenericsMain open={open} />
       </>
     )
   }
@@ -776,33 +130,33 @@ const ItemsBox = defineComponent({
             <ExpertiseItem />
           </section>
           <section class="flex flex-col flex-nowrap justify-start items-center h-auto w-profile-general ml-:1">
-            <GenericsItem />
-            <DataItem />
+            <GenericsAside />
+            <DataAside />
             <AsideTemplate 
               title="Exaustão" 
-              component={ExaustList}
+              component={ExaustAside}
             />
             <AsideTemplate 
               title="Recursos" 
-              component={ResourceList}
+              component={ResourceAside}
             />
-            <AnotationItem />
+            <AnotationAside />
             <AsideTemplate 
               title="Vida" 
-              component={HitItemModal}
+              component={HitAside}
             />
             <AsideTemplate 
               title="Descrição" 
-              component={TextItemDescription}
+              component={TextAside}
             />
             <AsideTemplate 
               title="Ponto de Quebra" 
-              component={BreakItemDescription}
+              component={BreakAside}
             />
             <InventoryItem />
             <AsideTemplate 
               title="Talentos" 
-              component={TalentsList}
+              component={TalentsAside}
             />
           </section>
         </section>
@@ -810,16 +164,6 @@ const ItemsBox = defineComponent({
     )
   }
 })
-
-/*
-const PlaygroundBox = defineComponent({
-  setup() {
-    return () => (
-      <><p>a</p></>
-    )
-  }
-})
-*/
 
 export default defineComponent({
   name: "CharacterProfile",

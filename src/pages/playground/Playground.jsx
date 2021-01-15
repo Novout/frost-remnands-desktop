@@ -1,7 +1,7 @@
 import { defineComponent } from "vue";
 import { useRouter } from "vue-router";
-import PlaygroundGeneral from "@/lib/playground/PlaygroundGeneral.jsx";
-import PlaygroundSystem from "@/lib/playground/PlaygroundSystem.jsx";
+import PlaygroundGeneral from "@/components/playground/PlaygroundGeneral.jsx";
+import PlaygroundSystem from "@/components/playground/PlaygroundSystem.jsx";
 
 export default defineComponent({
   setup() {
