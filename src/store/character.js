@@ -267,6 +267,5 @@ export const useCharacterStore = defineStore({
 
       return quantity;
     },
-  },
-  actions: {},
+  }
 })
