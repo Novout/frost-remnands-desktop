@@ -14,6 +14,7 @@ import GenericsView from "@/components/profile/GenericsView.jsx";
 import GenericsMain from "@/components/profile/GenericsMain.jsx";
 import HabilityModal from "@/components/profile/HabilityModal.jsx";
 import DataAside from "@/components/profile/DataAside.jsx";
+import TemplateAside from "@/components/profile/TemplateAside.jsx";
 import GenericsAside from "@/components/profile/GenericsAside.jsx";
 import ExaustAside from "@/components/profile/ExaustAside.jsx";
 import ResourceAside from "@/components/profile/ResourceAside.jsx";
@@ -38,40 +39,6 @@ const GenericsBox = defineComponent({
       <>
         <GenericsView toggle={toggle.value} close={close} />
         <GenericsMain open={open} />
-      </>
-    )
-  }
-})
-
-const AsideTemplate = defineComponent({
-  props: {
-    title: {
-      required: true,
-      type: String
-    },
-    component: {
-      required: true
-    }
-  },
-  setup(props) {
-    const { toggle, toggleButton } = useToggle();
-
-    return () => (
-      <>
-        <section class="flex flex-col justify-start items-center bg-profile w-full p-:1 ml-:2 mt-:2">
-          <section class="flex justify-between w-full">
-            <h2 
-              class="font-ralewayMedium"
-            >{props.title}</h2>
-            <button 
-              class="item-right-button" 
-              onClick={toggleButton}
-            ><font-awesome-icon 
-              icon={['fas', 'angle-double-right']} size="sm"
-            /></button>
-          </section>
-          {toggle.value && <props.component />}
-        </section>
       </>
     )
   }
@@ -132,29 +99,29 @@ const ItemsBox = defineComponent({
           <section class="flex flex-col flex-nowrap justify-start items-center h-auto w-profile-general ml-:1">
             <GenericsAside />
             <DataAside />
-            <AsideTemplate 
+            <TemplateAside 
               title="Exaustão" 
               component={ExaustAside}
             />
-            <AsideTemplate 
+            <TemplateAside 
               title="Recursos" 
               component={ResourceAside}
             />
             <AnotationAside />
-            <AsideTemplate 
+            <TemplateAside 
               title="Vida" 
               component={HitAside}
             />
-            <AsideTemplate 
+            <TemplateAside 
               title="Descrição" 
               component={TextAside}
             />
-            <AsideTemplate 
+            <TemplateAside 
               title="Ponto de Quebra" 
               component={BreakAside}
             />
             <InventoryItem />
-            <AsideTemplate 
+            <TemplateAside 
               title="Talentos" 
               component={TalentsAside}
             />
