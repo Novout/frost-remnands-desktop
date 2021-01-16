@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a href="https://novout.github.io/frost-remnands/rpg/">
-    <img src="./src/assets/github/logo.png" alt="Logo" width="15%">
+    <img src="./src/assets/github/logo.png" alt="Logo" width="18%">
   </a>
 
   <h3 align="center">Restos da Geada - Aplicação Desktop</h3>
@@ -11,7 +11,7 @@
 
 ## Sobre o Projeto
 
-Aplicação desktop para o RPG [Restos da Geada](https://novout.github.io/frost-remnands/), com a intenção de trazer uma experiência de compêndium satisfátoria.
+Aplicação desktop para o RPG [Restos da Geada](https://novout.github.io/frost-remnands/), com a intenção de trazer uma experiência de compêndium satisfatória.
 
 ## Conteúdo
 
